@@ -39,7 +39,7 @@ namespace Assets.Scripts.Player
         {
             if (isAlive)
             {
-                _isPlayerGrounded = JumpRaycaster.CheckIfIsGrounded(_playerCollider);
+                //_isPlayerGrounded = JumpRaycaster.CheckIfIsGrounded(_playerCollider);
                 MoveByCharacterController();
             }
         }
@@ -47,26 +47,26 @@ namespace Assets.Scripts.Player
         {
             SetPlayerYVelocityToZero();
             MovePlayerByAxis();
-            WatchForPlayerJump();
+            //WatchForPlayerJump();
         }
         private void SetPlayerYVelocityToZero()
         {
-            if (_isPlayerGrounded && _jumpVelocity.y < 0)
-            {
-                _jumpVelocity.y = 0f;
-                HasJumped = false;
-            }
+            //if (_isPlayerGrounded && _jumpVelocity.y < 0)
+            //{
+            //    _jumpVelocity.y = 0f;
+            //    HasJumped = false;
+            //}
         }
         private void MovePlayerByAxis()
         {
-            var move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            var move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
             _controller.Move(move * Time.deltaTime * _playerMoveSpeed);
             
 
-            if (move != Vector3.zero)
+            if (move != Vector2.zero)
             {
                 IsMoving = true;
-                gameObject.transform.forward = move;
+                gameObject.transform.up = move;
             }
             else
             {
@@ -75,13 +75,13 @@ namespace Assets.Scripts.Player
         }
         private void WatchForPlayerJump()
         {
-            if (Input.GetButtonDown("Jump") && _isPlayerGrounded)
-            {   
-                HasJumped = true;
-                _jumpVelocity.y += Mathf.Sqrt(-_jumpThrust * _fallForce * _gravity);
-            }
+            //if (Input.GetButtonDown("Jump") && _isPlayerGrounded)
+            //{   
+            //    HasJumped = true;
+            //    _jumpVelocity.y += Mathf.Sqrt(-_jumpThrust * _fallForce * _gravity);
+            //}
 
-            ReturnPlayerToGround();
+            //ReturnPlayerToGround();
         }
         private void ReturnPlayerToGround()
         {
