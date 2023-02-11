@@ -1,9 +1,9 @@
 using Assets.Scripts.Core.Enemies;
 using Assets.Scripts.Core.Interfaces;
 
-namespace Assets.Scripts.Enemies.Blob
+namespace Assets.Scripts.Enemies.Ships
 {
-    public class RangedBlobMinion : RangedEnemy, IDamageable, IMoveable
+    public class Shooter : RangedEnemy, IDamageable, IMoveable
     {
 
         public void Move(bool isAlive)

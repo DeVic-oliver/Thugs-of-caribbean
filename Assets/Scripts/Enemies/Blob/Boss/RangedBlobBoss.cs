@@ -1,7 +1,7 @@
 ﻿using Assets.Scripts.Core.Enemies;
 using Assets.Scripts.Core.Interfaces;
 
-namespace Assets.Scripts.Enemies.Blob
+namespace Assets.Scripts.Enemies.Ships.Boss
 {
     public class RangedBlobBoss : RangedEnemy, IMoveable, IDamageable
     {

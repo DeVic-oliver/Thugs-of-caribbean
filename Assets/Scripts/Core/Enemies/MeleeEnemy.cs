@@ -5,17 +5,19 @@ namespace Assets.Scripts.Core.Enemies
     public abstract class MeleeEnemy : EnemyBase
     {
         [SerializeField] protected float _moveSpeed;
+        [SerializeField] protected float _attackDamage;
+
 
         protected virtual void MoveTowardsEnemy()
         {
             var direction = GetMoveTowardsEnemyVector();
-            transform.position = new Vector3(direction.x, transform.position.y, direction.z);
+            transform.position = new Vector3(direction.x, direction.y, 0);
             LookToTargetSmoothly();
         }
      
-        public Vector3 GetMoveTowardsEnemyVector()
+        public Vector2 GetMoveTowardsEnemyVector()
         {
-            return Vector3.MoveTowards(transform.position, _enemyGameObject.transform.position, _moveSpeed * Time.deltaTime);
+            return Vector2.MoveTowards(transform.position, _enemyGameObject.transform.position, _moveSpeed * Time.deltaTime);
         }
     }
 }
