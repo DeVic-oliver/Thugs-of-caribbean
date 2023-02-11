@@ -3,9 +3,9 @@ using Assets.Scripts.Core.Enemies;
 using Assets.Scripts.Core.Interfaces;
 using DG.Tweening;
 
-namespace Assets.Scripts.Enemies.Blob
+namespace Assets.Scripts.Enemies.Ships
 {
-    public class MeleeBlobMinion : MeleeEnemy, IMoveable, IDamageable, IPushable
+    public class Chaser : MeleeEnemy, IMoveable, IDamageable
     {
         public void Move(bool isAlive)
         {
@@ -18,13 +18,6 @@ namespace Assets.Scripts.Enemies.Blob
         public void TakeDamage(int damageValue)
         {
             DecreaseHealthByDamageWithFlashFeedback(damageValue);
-            PlayDamageComponentVFX("bloodSpill");
-        }
-
-        public void Push(Vector3 force)
-        {
-            var forceVector = new Vector3(transform.localPosition.x - force.z, transform.position.y, transform.localPosition.z - force.z);
-            transform.DOMove(forceVector, .1f);
         }
 
         new void Start()
