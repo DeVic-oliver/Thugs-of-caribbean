@@ -7,6 +7,7 @@ namespace Assets.Scripts.Core.Enemies
         [SerializeField] protected float _moveSpeed;
         [SerializeField] protected float _attackDamage;
 
+
         protected virtual void MoveTowardsEnemy()
         {
             var direction = GetMoveTowardsEnemyVector();
