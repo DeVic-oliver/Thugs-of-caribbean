@@ -17,17 +17,23 @@ namespace Assets.Scripts.Core.Enemies
         [Header("Detection setup")]
         [SerializeField] protected float _rangeDetection = 15f;
         [SerializeField] protected GameObject _enemyGameObject;
-        [SerializeField] private float _rotationSlerpStep = 0.7f;
         [Space(10f)]
         [SerializeField] protected DamageComponent _damageComponent;
 
         private Coroutine _deathCoroutine;
+        private Collider2D _collider;
+
+
+        private void Awake()
+        {
+            _damageComponent = GetComponent<DamageComponent>();
+            _collider = GetComponent<Collider2D>();
+        }
 
         protected virtual void Start()
         {
-            _damageComponent = GetComponent<DamageComponent>();
             _deathCoroutine = null;
-            GetComponent<Collider2D>().enabled = true;
+            _collider.enabled = true;
         }
 
         protected virtual void Update()
@@ -48,7 +54,7 @@ namespace Assets.Scripts.Core.Enemies
             if (!IsAlive && _deathCoroutine == null)
             {
                 _deathCoroutine = StartCoroutine(DeathCoroutine());
-                GetComponent<Collider>().enabled = false;
+                _collider.enabled = false;
             }
         }
         IEnumerator DeathCoroutine()
