@@ -66,5 +66,18 @@ namespace Assets.Scripts.Player
               return transform.position + (_unitsPerMove * transform.up * _moveSpeed * Time.deltaTime);
         }
 
+        private void OnCollisionExit2D(Collision2D collision)
+        {
+            if (collision.gameObject.CompareTag("island"))
+            {
+                ResetPhysicsVelocity();
+            }
+        }
+        private void ResetPhysicsVelocity()
+        {
+            _rigidbody.angularVelocity = 0f;
+            _rigidbody.velocity = Vector2.zero;
+        }
+
     }
 }
