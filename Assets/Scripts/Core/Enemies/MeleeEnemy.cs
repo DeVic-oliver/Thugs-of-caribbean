@@ -5,6 +5,7 @@ namespace Assets.Scripts.Core.Enemies
     public abstract class MeleeEnemy : EnemyBase
     {
         [SerializeField] protected float _moveSpeed;
+        [SerializeField] protected float _attackDamage;
 
         protected virtual void MoveTowardsEnemy()
         {

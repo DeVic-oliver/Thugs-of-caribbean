@@ -2,6 +2,7 @@
 using Assets.Scripts.Core.Enemies;
 using Assets.Scripts.Core.Interfaces;
 using DG.Tweening;
+using Assets.Scripts.Player;
 
 namespace Assets.Scripts.Enemies.Ships
 {
@@ -29,6 +30,20 @@ namespace Assets.Scripts.Enemies.Ships
         {
             base.Update();
             Move(IsAlive);
+        }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            PlayerHealth player = collision.gameObject.GetComponent<PlayerHealth>();
+            if(player != null)
+            {
+                player.TakeDamage((int)_attackDamage);
+                DestroyMyself();
+            }
+        }
+        private void DestroyMyself()
+        {
+            gameObject.SetActive(false);
         }
     }
 }
