@@ -12,9 +12,9 @@ namespace Assets.Scripts.Player
         [SerializeField] private float _moveSpeed = 250f;
         [SerializeField] private float _rotateSpeed = 130f;
 
-
         private Rigidbody2D _rigidbody;
 
+        private float _unitsPerMove = 1f;
 
         void Start()
         {
@@ -54,15 +54,16 @@ namespace Assets.Scripts.Player
         }
         private void MoveRigidbodyIfIsAlive()
         {
-            if (_health.IsAlive)
+            if (_health.IsAlive && Input.GetKey(KeyCode.W))
             {
+                
                 Vector2 dir = GetDirectionWherePlayerFaces();
                 _rigidbody.MovePosition(dir);
             }
         }
         private Vector2 GetDirectionWherePlayerFaces()
         {
-            return transform.position + (Input.GetAxis("Vertical") * transform.up * _moveSpeed * Time.deltaTime);
+              return transform.position + (_unitsPerMove * transform.up * _moveSpeed * Time.deltaTime);
         }
 
     }
