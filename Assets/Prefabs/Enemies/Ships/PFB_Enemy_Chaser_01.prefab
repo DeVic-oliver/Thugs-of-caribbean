@@ -9,6 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 861796061388751740}
+  - component: {fileID: 6457535084117140048}
+  - component: {fileID: 977742415}
+  - component: {fileID: 977742416}
   m_Layer: 0
   m_Name: PFB_Enemy_Chaser_01
   m_TagString: Untagged
@@ -32,6 +35,66 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &6457535084117140048
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4258240438542307602}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &977742415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4258240438542307602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fe92f7806dd4b44389668a467af75a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthPoints: 5
+  _rangeDetection: 15
+  _enemyGameObject: {fileID: 0}
+  _rotationSlerpStep: 0.7
+  _damageComponent: {fileID: 977742416}
+  _moveSpeed: 2
+--- !u!114 &977742416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4258240438542307602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ecd298456670b04c8c548d99f9dc7ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyMeshRenderer: {fileID: 0}
+  _damageFeedbackColor: {r: 0, g: 0, b: 0, a: 0}
+  _flashSpeed: 1
+  _vfxDict: []
 --- !u!1 &5976709504375103213
 GameObject:
   m_ObjectHideFlags: 0
