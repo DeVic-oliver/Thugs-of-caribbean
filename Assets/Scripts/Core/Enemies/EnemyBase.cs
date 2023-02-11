@@ -27,7 +27,7 @@ namespace Assets.Scripts.Core.Enemies
         {
             _damageComponent = GetComponent<DamageComponent>();
             _deathCoroutine = null;
-            GetComponent<Collider>().enabled = true;
+            GetComponent<Collider2D>().enabled = true;
         }
 
         protected virtual void Update()
@@ -73,8 +73,10 @@ namespace Assets.Scripts.Core.Enemies
 
         protected void LookToTargetSmoothly()
         {
-            var lookRotation = Quaternion.LookRotation(_enemyGameObject.transform.position - transform.position);
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, _rotationSlerpStep * Time.deltaTime);
+            var direction = (_enemyGameObject.transform.position - transform.position).normalized;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            float offset = 90f;
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + offset));
         }
 
         protected void DecreaseHealthByDamageWithFlashFeedback(int damage)
