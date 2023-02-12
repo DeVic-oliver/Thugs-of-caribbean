@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.InputSystem.HID;
 
 namespace Assets.Scripts.Utils.SightRaycast._2D
 {
@@ -27,6 +26,11 @@ namespace Assets.Scripts.Utils.SightRaycast._2D
                 return true;
             }
             return false;
+        }
+
+        public static void DebugRaycast(Transform origin, float rangeDetection, Color rayColor)
+        {
+            Debug.DrawRay(origin.position, origin.up * rangeDetection, rayColor);
         }
     }
 }
