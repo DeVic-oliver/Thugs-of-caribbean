@@ -5,14 +5,11 @@ namespace Assets.Scripts.Weapons.Guns
 {
     public abstract class GunBase : MonoBehaviour
     {
-        // A gun can have states to divide funcionalities. (FIRING, RELOADING, IDLE, EMPTY)
-        //Should create those states?
         
         [SerializeField] protected int _ammoMagazineCapacity;
         protected int _currentMagazineAmount;
 
         [SerializeField] protected float _reloadTime;
-
 
         [SerializeField] protected Transform _gunBarrel;
         [SerializeField] protected BulletBase _bulletType;
