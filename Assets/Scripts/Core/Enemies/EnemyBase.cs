@@ -23,6 +23,9 @@ namespace Assets.Scripts.Core.Enemies
         private Coroutine _deathCoroutine;
         private Collider2D _collider;
 
+        public float _rotationSlerpStep = 2f;
+
+        protected Collider2D GetCollider() { return _collider; }
 
         private void Awake()
         {
@@ -82,7 +85,8 @@ namespace Assets.Scripts.Core.Enemies
             var direction = (_enemyGameObject.transform.position - transform.position).normalized;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             float offset = 90f;
-            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - offset));
+            var lookRotation = Quaternion.Euler(new Vector3(0, 0, angle - offset));
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, _rotationSlerpStep * Time.deltaTime);
         }
 
         protected void DecreaseHealthByDamageWithFlashFeedback(int damage)

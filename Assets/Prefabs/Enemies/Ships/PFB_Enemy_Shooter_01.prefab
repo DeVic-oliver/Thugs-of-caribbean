@@ -1,5 +1,89 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &68251326
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 68251327}
+  - component: {fileID: 68251328}
+  m_Layer: 3
+  m_Name: Capsule
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &68251327
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68251326}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.31, z: 0}
+  m_LocalScale: {x: 1, y: 3, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3537547660201686346}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &68251328
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68251326}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 1976217295
+  m_SortingLayer: 2
+  m_SortingOrder: 10
+  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 2}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &142458460917278500
 GameObject:
   m_ObjectHideFlags: 0
@@ -14,7 +98,7 @@ GameObject:
   - component: {fileID: 6087223713285697727}
   - component: {fileID: 7169616098798670950}
   - component: {fileID: 5256530818694105097}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PFB_Enemy_Shooter_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,6 +120,7 @@ Transform:
   - {fileID: 5331341283706863621}
   - {fileID: 7294970574081157142}
   - {fileID: 7608906657790867954}
+  - {fileID: 68251327}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -52,9 +137,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthPoints: 30
-  _rangeDetection: 20
+  _rangeDetection: 3
   _enemyGameObject: {fileID: 0}
   _damageComponent: {fileID: 6087223713285697727}
+  _rotationSlerpStep: 2
 --- !u!114 &2432776013511101723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponPosition: {fileID: 7608906657790867954}
-  _projectile: {fileID: 8014393617178877986, guid: 85546f2ae8300bf4ca4bb7e737ec610e, type: 3}
+  _projectile: {fileID: -8623744886358968357, guid: 85546f2ae8300bf4ca4bb7e737ec610e, type: 3}
   _intervalBetweenShoots: 2
   _ammoAmount: 10
   _reloadTimeSeconds: 4
@@ -148,7 +234,7 @@ GameObject:
   - component: {fileID: 7294970574081157142}
   - component: {fileID: 1186118696533655975}
   - component: {fileID: 4598000805088891001}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5016,7 +5102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7608906657790867954}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Guns
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -5048,7 +5134,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4229493745564572135}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Single_Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5080,7 +5166,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5331341283706863621}
   - component: {fileID: 9080596551089767915}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SPRITE
   m_TagString: Untagged
   m_Icon: {fileID: 0}

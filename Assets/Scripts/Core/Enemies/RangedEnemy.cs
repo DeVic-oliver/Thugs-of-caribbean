@@ -9,6 +9,8 @@ namespace Assets.Scripts.Core.Enemies
     {
         protected RangedWeapon _weapon;
         protected bool _isShooting;
+        protected bool _isEnemyOnSight;
+
 
         protected override void Start()
         {
@@ -24,7 +26,7 @@ namespace Assets.Scripts.Core.Enemies
 
         protected void ShootIfEnemyIsNearby()
         {
-            if (CheckIfEnemyIsNearby())
+            if (CheckIfEnemyIsNearby() && _isEnemyOnSight)
             {
                 _isShooting = true;
                 _weapon.Shoot();
