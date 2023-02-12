@@ -4,5 +4,6 @@ namespace Assets.Scripts.Weapons.Projectiles
 {
     public class CannonBall : Projectile
     {
+        
     }
 }
