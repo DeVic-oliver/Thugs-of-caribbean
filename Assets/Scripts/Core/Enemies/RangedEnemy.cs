@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using Assets.Scripts.Core.Components.Weapon;
+using Assets.Scripts.Utils.SightRaycast._2D;
 
 namespace Assets.Scripts.Core.Enemies
 {
@@ -11,6 +12,7 @@ namespace Assets.Scripts.Core.Enemies
         protected bool _isShooting;
         protected bool _isEnemyOnSight;
 
+        protected string _enemyLayerMask = "Player";
 
         protected override void Start()
         {
@@ -26,6 +28,8 @@ namespace Assets.Scripts.Core.Enemies
 
         protected void ShootIfEnemyIsNearby()
         {
+            _isEnemyOnSight = SightRaycaster2D.CheckGameObjectOnSight(transform, _rangeDetection, _enemyLayerMask);
+
             if (CheckIfEnemyIsNearby() && _isEnemyOnSight)
             {
                 _isShooting = true;

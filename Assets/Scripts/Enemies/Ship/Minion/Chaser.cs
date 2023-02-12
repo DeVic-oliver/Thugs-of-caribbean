@@ -3,7 +3,6 @@ using Assets.Scripts.Core.Enemies;
 using Assets.Scripts.Core.Interfaces;
 using DG.Tweening;
 using Assets.Scripts.Player;
-using System.Collections;
 
 namespace Assets.Scripts.Enemies.Ships
 {

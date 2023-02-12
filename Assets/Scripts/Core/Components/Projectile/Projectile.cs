@@ -1,5 +1,6 @@
 using Assets.Scripts.Core.Interfaces;
 using System.Collections;
+using System.Security;
 using UnityEngine;
 
 namespace Assets.Scripts.Core.Components.Projectile
@@ -8,8 +9,8 @@ namespace Assets.Scripts.Core.Components.Projectile
     {
         [SerializeField] protected float _projectileSpeed;
         [SerializeField] protected int _damage;
+        [SerializeField] protected SpriteRenderer _sprite;
 
-        private float _timeToDisable = 1.5f;
 
         protected virtual void Update()
         {
@@ -27,23 +28,7 @@ namespace Assets.Scripts.Core.Components.Projectile
             if (damageable != null)
             {
                 damageable.TakeDamage(_damage);
-                DisableMe();
             }
-        }
-        public void DisableMe()
-        {
-            _projectileSpeed = 0;
-            StartCoroutine("DisableInstance");
-        }
-        private IEnumerator DisableInstance()
-        {
-            float count = 0;
-            while(count < _timeToDisable)
-            {
-                count += Time.deltaTime;
-                yield return null;
-            }
-            gameObject.SetActive(false);
         }
     }
 }

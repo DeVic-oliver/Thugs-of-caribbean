@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8358855896569305926}
   - component: {fileID: 1338619019919997079}
   - component: {fileID: -8623744886358968357}
+  - component: {fileID: 1822631380624829048}
   m_Layer: 0
   m_Name: PFB_Cannon_Enemy_Ball
   m_TagString: Untagged
@@ -116,3 +117,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _projectileSpeed: 3
   _damage: 20
+  _sprite: {fileID: 8358855896569305926}
+--- !u!114 &1822631380624829048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7983572406348100724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e47795b0f8c69141a24a19eac6d9a9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timeToDisable: 1.5
