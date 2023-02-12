@@ -1,6 +1,4 @@
 using Assets.Scripts.Core.Interfaces;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.Core.Components.Projectile
@@ -17,7 +15,7 @@ namespace Assets.Scripts.Core.Components.Projectile
         
         protected virtual void LaunchProjectile()
         {
-            transform.Translate(Vector3.forward * _projectileSpeed * Time.deltaTime);
+            transform.Translate(Vector3.up * _projectileSpeed * Time.deltaTime);
         }
 
         protected virtual void OnTriggerEnter(Collider other)

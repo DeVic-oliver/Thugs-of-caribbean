@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Core.Components.Projectile;
+using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts.Weapons.Guns
@@ -12,7 +13,7 @@ namespace Assets.Scripts.Weapons.Guns
         [SerializeField] protected float _reloadTime;
 
         [SerializeField] protected Transform _gunBarrel;
-        [SerializeField] protected BulletBase _bulletType;
+        [SerializeField] protected Projectile _bulletType;
 
         public bool IsReloading { get; private set; }
 
