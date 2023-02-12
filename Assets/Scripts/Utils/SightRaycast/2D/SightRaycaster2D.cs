@@ -1,27 +1,28 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem.HID;
 
 namespace Assets.Scripts.Utils.SightRaycast._2D
 {
     public static class SightRaycaster2D
     {
-        public static bool CheckGameObjectOnSight(Vector2 fireOrigin, Collider2D collider, float maxRange, string targetLayerMask)
+        public static bool CheckGameObjectOnSight(Transform origin, float rangeDetection, string targetLayerMask)
         {
-            var origin = new Vector2(fireOrigin.x, fireOrigin.y + collider.bounds.extents.y);
+            var originVector = new Vector2(origin.position.x, origin.position.y);
             var targetMask = LayerMask.GetMask(targetLayerMask);
-            bool raycast = Physics2D.Raycast(origin, Vector2.up, maxRange, targetMask);
+            RaycastHit2D hit2D = Physics2D.Raycast(originVector, origin.up, rangeDetection, targetMask);
 
-            if (raycast)
+            if (hit2D.collider != null)
             {
                 return true;
             }
             return false;
         }
-        public static bool CheckGameObjectOnSight(Vector2 fireOrigin, float originOffset, float maxRange, LayerMask targetLayerMask)
+        public static bool CheckGameObjectOnSight(Transform origin, float rangeDetection, LayerMask targetLayerMask)
         {
-            var origin = new Vector2(fireOrigin.x, fireOrigin.y + originOffset);
-            bool raycast = Physics2D.Raycast(origin, Vector2.up, maxRange, targetLayerMask);
+            var originVector = new Vector2(origin.position.x, origin.position.y);
+            RaycastHit2D hit2D = Physics2D.Raycast(originVector, Vector2.up, rangeDetection, targetLayerMask);
 
-            if (raycast)
+            if (hit2D.collider != null)
             {
                 return true;
             }
