@@ -4,7 +4,6 @@ using UnityEngine;
 namespace Assets.Scripts.Core.Components.Weapon
 {
     using Assets.Scripts.Core.Components.Projectile;
-    using Assets.Scripts.Core.Enemies;
 
     public class RangedWeapon : MonoBehaviour
     {
@@ -68,8 +67,5 @@ namespace Assets.Scripts.Core.Components.Weapon
                 gameObject.transform.parent = null;
             }
         }
-
-
-
     }
 }
