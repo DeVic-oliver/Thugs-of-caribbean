@@ -17,7 +17,7 @@ namespace Assets.Scripts.Enemies.Ships
         public void TakeDamage(int damageValue)
         {
             DecreaseHealthByDamageWithFlashFeedback(damageValue);
-            PlayDamageComponentVFX("bloodSpill");
+            //PlayDamageComponentVFX("bloodSpill");
         }
 
         new void Start()

@@ -7,7 +7,7 @@ namespace Assets.Scripts.Weapons.Guns
     public class Shotgun : GunBase
     {
         [SerializeField] private float _spreadAngle = 5;
-        private float _bulletsQuantityOnShoot = 4;
+        private float _bulletsQuantityOnShoot = 2;
 
         
         protected override void CreateBullet()
@@ -56,7 +56,7 @@ namespace Assets.Scripts.Weapons.Guns
         {
             var bullet = Instantiate(_bulletType, _gunBarrel);
             bullet.transform.localPosition = _gunBarrel.localPosition;
-            bullet.transform.localEulerAngles = Vector3.zero + Vector3.up * (spread * spreadMultiplier);
+            bullet.transform.localEulerAngles = Vector3.zero + Vector3.forward * (spread * spreadMultiplier);
             bullet.transform.parent = null;
         }
     }

@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using Assets.Scripts.Core.Interfaces;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 namespace Assets.Scripts.Player
 {

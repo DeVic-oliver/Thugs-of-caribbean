@@ -82,7 +82,7 @@ namespace Assets.Scripts.Core.Enemies
             var direction = (_enemyGameObject.transform.position - transform.position).normalized;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             float offset = 90f;
-            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + offset));
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - offset));
         }
 
         protected void DecreaseHealthByDamageWithFlashFeedback(int damage)
