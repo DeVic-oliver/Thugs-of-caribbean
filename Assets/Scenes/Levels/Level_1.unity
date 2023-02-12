@@ -164,7 +164,7 @@ GameObject:
   m_Component:
   - component: {fileID: 414739362}
   - component: {fileID: 414739361}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Triple_Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 416895237}
   - component: {fileID: 416895236}
   - component: {fileID: 416895240}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2685,7 +2685,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1129189760}
   - component: {fileID: 1129189761}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Guns
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -2700,7 +2700,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1129189759}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.683, z: 0}
+  m_LocalPosition: {x: 0, y: 0.646, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -35789,7 +35789,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1476622974}
   - component: {fileID: 1476622975}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SPRITE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36025,7 +36025,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1985678566}
   - component: {fileID: 1985678567}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Single_Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36761,7 +36761,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4258240438542307602, guid: 293831d3d8f7ad547b3e25f485832bea, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8295323267124999731, guid: 293831d3d8f7ad547b3e25f485832bea, type: 3}
       propertyPath: m_LocalRotation.w
@@ -36802,13 +36802,13 @@ PrefabInstance:
       value: PFB_Enemy_Shooter_01
       objectReference: {fileID: 0}
     - target: {fileID: 930502196273977602, guid: b6876783af6c3994f9c34f751c84a8be, type: 3}
+      propertyPath: _rangeDetection
+      value: 9.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 930502196273977602, guid: b6876783af6c3994f9c34f751c84a8be, type: 3}
       propertyPath: _enemyGameObject
       value: 
       objectReference: {fileID: 416895232}
-    - target: {fileID: 2432776013511101723, guid: b6876783af6c3994f9c34f751c84a8be, type: 3}
-      propertyPath: _projectile
-      value: 
-      objectReference: {fileID: -8623744886358968357, guid: 85546f2ae8300bf4ca4bb7e737ec610e, type: 3}
     - target: {fileID: 3537547660201686346, guid: b6876783af6c3994f9c34f751c84a8be, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -36851,6 +36851,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3537547660201686346, guid: b6876783af6c3994f9c34f751c84a8be, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7169616098798670950, guid: b6876783af6c3994f9c34f751c84a8be, type: 3}
+      propertyPath: m_Size.x
+      value: 1.9918013
+      objectReference: {fileID: 0}
+    - target: {fileID: 7169616098798670950, guid: b6876783af6c3994f9c34f751c84a8be, type: 3}
+      propertyPath: m_Size.y
+      value: 3.3765805
+      objectReference: {fileID: 0}
+    - target: {fileID: 7169616098798670950, guid: b6876783af6c3994f9c34f751c84a8be, type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7169616098798670950, guid: b6876783af6c3994f9c34f751c84a8be, type: 3}
+      propertyPath: m_Offset.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -23,7 +23,7 @@ namespace Assets.Scripts.Player
 
         void Update()
         {
-            Move(_health.IsAlive);
+            Move(_health.IsAlive);         
         }
         public void Move(bool isAlive)
         {
