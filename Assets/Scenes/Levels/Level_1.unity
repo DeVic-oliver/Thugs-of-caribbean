@@ -36797,18 +36797,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1745630212}
     m_Modifications:
+    - target: {fileID: 68251326, guid: b6876783af6c3994f9c34f751c84a8be, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 142458460917278500, guid: b6876783af6c3994f9c34f751c84a8be, type: 3}
       propertyPath: m_Name
       value: PFB_Enemy_Shooter_01
       objectReference: {fileID: 0}
+    - target: {fileID: 142458460917278500, guid: b6876783af6c3994f9c34f751c84a8be, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 930502196273977602, guid: b6876783af6c3994f9c34f751c84a8be, type: 3}
       propertyPath: _rangeDetection
-      value: 9.29
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 930502196273977602, guid: b6876783af6c3994f9c34f751c84a8be, type: 3}
       propertyPath: _enemyGameObject
       value: 
       objectReference: {fileID: 416895232}
+    - target: {fileID: 2881003848466528883, guid: b6876783af6c3994f9c34f751c84a8be, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3537547660201686346, guid: b6876783af6c3994f9c34f751c84a8be, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -36853,6 +36865,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4797239397445896373, guid: b6876783af6c3994f9c34f751c84a8be, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150415130763521929, guid: b6876783af6c3994f9c34f751c84a8be, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7169616098798670950, guid: b6876783af6c3994f9c34f751c84a8be, type: 3}
       propertyPath: m_Size.x
       value: 1.9918013
@@ -36867,6 +36887,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7169616098798670950, guid: b6876783af6c3994f9c34f751c84a8be, type: 3}
       propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7499579189453334747, guid: b6876783af6c3994f9c34f751c84a8be, type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -25,8 +25,6 @@ namespace Assets.Scripts.Core.Enemies
 
         public float _rotationSlerpStep = 2f;
 
-        protected Collider2D GetCollider() { return _collider; }
-
         private void Awake()
         {
             _damageComponent = GetComponent<DamageComponent>();
