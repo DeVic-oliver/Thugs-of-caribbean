@@ -8,7 +8,7 @@ namespace Assets.Scripts.Core.Components.Damage
     public class DamageComponent : MonoBehaviour
     {
         [Header("Damage settings")]
-        [SerializeField] private MeshRenderer _enemyMeshRenderer;
+        [SerializeField] private SpriteRenderer _renderer;
         [SerializeField] private Color _damageFeedbackColor;
         [SerializeField] private float _flashSpeed = 1f;
 
@@ -21,7 +21,7 @@ namespace Assets.Scripts.Core.Components.Damage
         {
             if (!_currentColorTween.IsActive())
             {
-                _currentColorTween = _enemyMeshRenderer.material.DOColor(_damageFeedbackColor, "_EmissionColor", _flashSpeed).SetLoops(2, LoopType.Yoyo);
+                _currentColorTween = _renderer.DOColor(_damageFeedbackColor, _flashSpeed).SetLoops(2, LoopType.Yoyo);
             }
         }
 
