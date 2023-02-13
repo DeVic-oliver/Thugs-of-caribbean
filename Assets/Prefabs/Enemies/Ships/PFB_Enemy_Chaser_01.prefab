@@ -4881,6 +4881,7 @@ GameObject:
   - component: {fileID: 861796061388751740}
   - component: {fileID: 6457535084117140048}
   - component: {fileID: 977742415}
+  - component: {fileID: 3772578686596101515}
   - component: {fileID: 977742416}
   - component: {fileID: 8219246087426965055}
   m_Layer: 0
@@ -4945,12 +4946,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fe92f7806dd4b44389668a467af75a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthPoints: 5
   _rangeDetection: 15
   _enemyGameObject: {fileID: 0}
   _damageComponent: {fileID: 977742416}
+  _rotationSlerpStep: 2
   _moveSpeed: 2
   _attackDamage: 0
+--- !u!114 &3772578686596101515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4258240438542307602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55e4f7b3409114044a30221aae6d8b11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 100
 --- !u!114 &977742416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4963,7 +4977,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ecd298456670b04c8c548d99f9dc7ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyMeshRenderer: {fileID: 0}
+  _renderer: {fileID: 0}
   _damageFeedbackColor: {r: 0, g: 0, b: 0, a: 0}
   _flashSpeed: 1
   _vfxDict:

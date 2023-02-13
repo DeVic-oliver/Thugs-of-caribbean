@@ -5179,6 +5179,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5331341283706863621}
   - component: {fileID: 9080596551089767915}
+  - component: {fileID: 182717046}
   m_Layer: 0
   m_Name: SPRITE
   m_TagString: Untagged
@@ -5253,3 +5254,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &182717046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7499579189453334747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d4837322e070a445becac99fef22eb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spritesList:
+  - ID: HEALTHY
+    Sprite: {fileID: 21300000, guid: 2fced29dd9483e54fbd91d29931e1c26, type: 3}
+  - ID: DAMAGED
+    Sprite: {fileID: 21300000, guid: dbbed561d99c4534bbc3a681ab765791, type: 3}
+  - ID: CRITICAL
+    Sprite: {fileID: 21300000, guid: 57f556c0a29a52742ba6c79c3c73a01a, type: 3}
+  - ID: DESTROYED
+    Sprite: {fileID: 21300000, guid: 1f046a561b7c0f84ebbea95514b151df, type: 3}
+  _renderer: {fileID: 9080596551089767915}
+  _healthComponent: {fileID: 5959720903335747994}
