@@ -3,10 +3,10 @@ using System.Collections;
 using UnityEngine;
 namespace Assets.Scripts.Core.Components._2DComponents
 {
-    public abstract class SpriteChanger : MonoBehaviour
+    public abstract class SpriteChanger<T> : MonoBehaviour
     {
-        [SerializeField] private List<SpriteDict> _spritesList;
-        private Dictionary<string, Sprite> _spriteDicts;
+        [SerializeField] private List<SpriteDict<T>> _spritesList;
+        private Dictionary<T, Sprite> _spriteDicts = new();
         [SerializeField] private SpriteRenderer _renderer;
 
         // Use this for initialization
@@ -21,12 +21,12 @@ namespace Assets.Scripts.Core.Components._2DComponents
                 _spriteDicts.Add(sprite.ID, sprite.Sprite);
             }
         }
-        protected virtual void ChangeCurrentSpriteTo(string ID)
+        protected virtual void ChangeCurrentSpriteTo(T ID)
         {
             var sprite = GetSprite(ID);
             _renderer.sprite = sprite;
         }
-        protected virtual Sprite GetSprite(string ID)
+        protected virtual Sprite GetSprite(T ID)
         {
             return _spriteDicts[ID];
         }
@@ -34,9 +34,9 @@ namespace Assets.Scripts.Core.Components._2DComponents
     }
 
     [System.Serializable]
-    class SpriteDict
+    public class SpriteDict<T>
     {
-        public string ID;
+        public T ID;
         public Sprite Sprite;
     }
 
