@@ -29,7 +29,7 @@ namespace Assets.Scripts.Enemies.Ships
         new void Update()
         {
             base.Update();
-            Move(IsAlive);
+            Move(_health.IsAlive);
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
@@ -43,7 +43,7 @@ namespace Assets.Scripts.Enemies.Ships
         }
         private void DestroyMyself()
         {
-            _healthPoints = 0;
+            _health.KillMe();
         }
     }
 }
