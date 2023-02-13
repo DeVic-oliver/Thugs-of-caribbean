@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
-using Assets.Scripts.Core.Components;
+﻿using UnityEngine;
 namespace Assets.Scripts.Core.Components._2DComponents
 {
     public enum HealthStates
