@@ -16,17 +16,12 @@ namespace Assets.Scripts.Core.Components
         }
         private void UpdateHealthBar()
         {
-            _fillableHealthBar.fillAmount = GetHealthPercentage();
+            _fillableHealthBar.fillAmount = GetNormalizedPercentage();
         }
-        private float GetHealthPercentage()
+        private float GetNormalizedPercentage()
         {
-            var percentage = (_health.CurrentHealth * 100f) / _health.GetTotalHealth();
-            percentage = GetNormalizedPercentage(percentage);
-            return percentage;
-        }
-        private float GetNormalizedPercentage(float value)
-        {
-            return value / 100f;
+            var percentage = _health.GetHealthPercentage();
+            return percentage / 100f;
         }
     }
 }

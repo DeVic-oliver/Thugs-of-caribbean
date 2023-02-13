@@ -8,12 +8,11 @@ namespace Assets.Scripts.Core.Components
         public float CurrentHealth { get; protected set; }
         [SerializeField] protected float _health = 100f;
 
-        protected virtual void DecreaseHealth()
+        public virtual void DecreaseHealth()
         {
             CurrentHealth = GetZeroOrPositiveHealthDecreasedByValue(1f);
         }
-
-        protected virtual void DecreaseHealth(float value)
+        public virtual void DecreaseHealth(float value)
         {
             CurrentHealth = GetZeroOrPositiveHealthDecreasedByValue(value);
         }
@@ -23,7 +22,18 @@ namespace Assets.Scripts.Core.Components
             return _health;
         }
 
-        protected float GetZeroOrPositiveHealthDecreasedByValue(float value)
+        public void KillMe()
+        {
+            CurrentHealth = 0;
+        }
+
+        public float GetHealthPercentage()
+        {
+            var percentage = (CurrentHealth * 100f) / GetTotalHealth();
+            return percentage;
+        }
+
+    protected float GetZeroOrPositiveHealthDecreasedByValue(float value)
         {
             var health = CurrentHealth - value;
             if(health < 0)
