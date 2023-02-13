@@ -29,7 +29,7 @@ namespace Assets.Scripts.Enemies.Ships
         new void Update()
         {
             base.Update();
-            Move(IsAlive);
+            Move(_health.IsAlive);
         }
     }
 }

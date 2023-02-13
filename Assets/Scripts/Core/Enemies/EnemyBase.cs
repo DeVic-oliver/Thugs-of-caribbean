@@ -5,15 +5,12 @@ using Assets.Scripts.Core.Components.Damage;
 
 namespace Assets.Scripts.Core.Enemies
 {
-    [RequireComponent(typeof(DamageComponent))]
+    [RequireComponent(typeof(DamageComponent), typeof(EnemyHealth))]
     public abstract class EnemyBase : MonoBehaviour
     {
-        public bool IsAlive { get; private set; }
         public bool IsAttacking { get; private set; }
-
-        [Header("Health")]
-        [SerializeField] protected int _healthPoints = 5;
-
+        protected EnemyHealth _health;
+        
         [Header("Detection setup")]
         [SerializeField] protected float _rangeDetection = 15f;
         [SerializeField] protected GameObject _enemyGameObject;
@@ -29,6 +26,7 @@ namespace Assets.Scripts.Core.Enemies
         {
             _damageComponent = GetComponent<DamageComponent>();
             _collider = GetComponent<Collider2D>();
+            _health = GetComponent<EnemyHealth>();
         }
 
         protected virtual void Start()
@@ -39,20 +37,11 @@ namespace Assets.Scripts.Core.Enemies
 
         protected virtual void Update()
         {
-            IsAlive = CheckIfHasHealthPoints();
             PlayDeathVFXIfNotAlive();
-        }
-        private bool CheckIfHasHealthPoints()
-        {
-            if (_healthPoints > 0)
-            {
-                return true;
-            }
-            return false;
         }
         private void PlayDeathVFXIfNotAlive()
         {
-            if (!IsAlive && _deathCoroutine == null)
+            if (!_health.IsAlive && _deathCoroutine == null)
             {
                 _deathCoroutine = StartCoroutine(DeathCoroutine());
                 _collider.enabled = false;
@@ -68,7 +57,6 @@ namespace Assets.Scripts.Core.Enemies
             }
             gameObject.SetActive(false);
         }
-
         protected virtual bool CheckIfEnemyIsNearby()
         {
             if(Vector3.Distance(_enemyGameObject.transform.position, gameObject.transform.position) < _rangeDetection)
@@ -77,7 +65,6 @@ namespace Assets.Scripts.Core.Enemies
             }
             return false;
         }
-
         protected void LookToTargetSmoothly()
         {
             var direction = (_enemyGameObject.transform.position - transform.position).normalized;
@@ -89,15 +76,8 @@ namespace Assets.Scripts.Core.Enemies
 
         protected void DecreaseHealthByDamageWithFlashFeedback(int damage)
         {
-            if (damage >= _healthPoints)
-            {
-                _healthPoints = 0;
-            }
-            else
-            {
-                _damageComponent.FlashShader();
-                _healthPoints -= damage;
-            }
+            _damageComponent.FlashShader();
+            _health.DecreaseHealth(damage);
         }
 
         protected void PlayDamageComponentVFX(string id)
