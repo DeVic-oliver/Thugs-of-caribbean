@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 68251327}
   - component: {fileID: 68251328}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,11 +94,12 @@ GameObject:
   m_Component:
   - component: {fileID: 3537547660201686346}
   - component: {fileID: 930502196273977602}
+  - component: {fileID: 5959720903335747994}
   - component: {fileID: 2432776013511101723}
   - component: {fileID: 6087223713285697727}
   - component: {fileID: 7169616098798670950}
   - component: {fileID: 5256530818694105097}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: PFB_Enemy_Shooter_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,11 +137,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80c1eb9b5cd6d834090d5ccaba587a05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthPoints: 30
-  _rangeDetection: 3
+  _rangeDetection: 10
   _enemyGameObject: {fileID: 0}
   _damageComponent: {fileID: 6087223713285697727}
   _rotationSlerpStep: 2
+--- !u!114 &5959720903335747994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142458460917278500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55e4f7b3409114044a30221aae6d8b11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 100
 --- !u!114 &2432776013511101723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,8 +183,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ecd298456670b04c8c548d99f9dc7ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyMeshRenderer: {fileID: 0}
-  _damageFeedbackColor: {r: 0, g: 0, b: 0, a: 0}
+  _renderer: {fileID: 9080596551089767915}
+  _damageFeedbackColor: {r: 0, g: 0, b: 0, a: 1}
   _flashSpeed: 1
   _vfxDict:
   - ID: death
@@ -189,7 +202,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.0047124624}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -200,7 +213,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.0744312, y: 3.2902343}
+  m_Size: {x: 1.9918013, y: 3.3765805}
   m_EdgeRadius: 0
 --- !u!50 &5256530818694105097
 Rigidbody2D:
@@ -234,7 +247,7 @@ GameObject:
   - component: {fileID: 7294970574081157142}
   - component: {fileID: 1186118696533655975}
   - component: {fileID: 4598000805088891001}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: VFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5102,7 +5115,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7608906657790867954}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Guns
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -5134,7 +5147,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4229493745564572135}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Single_Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5166,7 +5179,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5331341283706863621}
   - component: {fileID: 9080596551089767915}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: SPRITE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
