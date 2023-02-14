@@ -43,10 +43,12 @@ namespace Assets.Scripts.Core.Components
             }
             return health;
         }
-
-        protected virtual void Start()
+        private void Awake()
         {
             CurrentHealth = _health;
+        }
+        protected virtual void Start()
+        {
             HasDied = false;
         }
 
