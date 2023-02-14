@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using Assets.Scripts.Core.Enemies;
 using Assets.Scripts.Core.Interfaces;
-using DG.Tweening;
 using Assets.Scripts.Player;
+using Assets.Scripts.Core.Components.Counters;
 
 namespace Assets.Scripts.Enemies.Ships
 {
-    public class Chaser : MeleeEnemy, IMoveable, IDamageable
+    public class Chaser : MeleeEnemy, IMoveable, IDamageable, IScoreable
     {
         public void Move(bool isAlive)
         {
@@ -26,9 +26,8 @@ namespace Assets.Scripts.Enemies.Ships
             base.Start();
         }
         
-        new void Update()
+        private void Update()
         {
-            base.Update();
             Move(_health.IsAlive);
         }
 
@@ -44,6 +43,11 @@ namespace Assets.Scripts.Enemies.Ships
         private void DestroyMyself()
         {
             _health.KillMe();
+        }
+
+        public void CountScore()
+        {
+            ScoreCounter.PlayerPoints += _enemyScoreValue;
         }
     }
 }

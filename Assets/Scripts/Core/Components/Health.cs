@@ -5,6 +5,7 @@ namespace Assets.Scripts.Core.Components
     public abstract class Health : MonoBehaviour
     {
         public bool IsAlive { get; protected set; }
+        public bool HasDied { get; set; }
         public float CurrentHealth { get; protected set; }
         [SerializeField] protected float _health = 100f;
 
@@ -33,7 +34,7 @@ namespace Assets.Scripts.Core.Components
             return percentage;
         }
 
-    protected float GetZeroOrPositiveHealthDecreasedByValue(float value)
+        protected float GetZeroOrPositiveHealthDecreasedByValue(float value)
         {
             var health = CurrentHealth - value;
             if(health < 0)
@@ -46,6 +47,7 @@ namespace Assets.Scripts.Core.Components
         protected virtual void Start()
         {
             CurrentHealth = _health;
+            HasDied = false;
         }
 
         protected virtual void Update()
