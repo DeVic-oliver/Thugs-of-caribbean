@@ -5031,6 +5031,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fe92f7806dd4b44389668a467af75a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemyScoreValue: 1
   _timeToDisapearAfterDeath: 2.5
   _rangeDetection: 15
   _enemyGameObject: {fileID: 0}
