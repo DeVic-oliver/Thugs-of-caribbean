@@ -11,18 +11,14 @@ namespace Assets.Scripts.Core.Components.Counters
         private float _timer;
         [SerializeField] private TextMeshProUGUI _timerUI;
 
-        private void Start()
+        public void StartTimer()
         {
             _timer = _timerLimit * 60;
             HasTimerReachedZero = false;
-        }
-        public void StartTimer()
-        {
             StartCoroutine("StartCounter");
         }
         private IEnumerator StartCounter()
         {
-            Debug.Log("Coroutine started");
             while(_timer >= 0)
             {
                 _timer -= Time.deltaTime;

@@ -10,10 +10,14 @@ namespace Assets.Scripts.Core.Components.Counters
 
         [SerializeField] private TextMeshProUGUI _pointCounterUI;
 
-
         private void LateUpdate()
         {
             _pointCounterUI.text = $"Score: {PlayerPoints.ToString()}";
+        }
+
+        public void ResetScore()
+        {
+            PlayerPoints = 0;
         }
     }
 }
