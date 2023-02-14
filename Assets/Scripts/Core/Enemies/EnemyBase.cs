@@ -2,22 +2,28 @@
 using System.Collections;
 using UnityEngine;
 using Assets.Scripts.Core.Components.Damage;
+using System;
 
 namespace Assets.Scripts.Core.Enemies
 {
     [RequireComponent(typeof(DamageComponent), typeof(EnemyHealth))]
     public abstract class EnemyBase : MonoBehaviour
     {
-        public bool IsAttacking { get; private set; }
+        [SerializeField] protected int _enemyScoreValue;
+
         protected EnemyHealth _health;
-        
+        [Header("Death Setup")]
+        [SerializeField] private float _timeToDisapearAfterDeath = 2.5f;
+        private float _timeToDeisapear;
+
+        [Space(10f)]
         [Header("Detection setup")]
         [SerializeField] protected float _rangeDetection = 15f;
         [SerializeField] protected GameObject _enemyGameObject;
         [Space(10f)]
         [SerializeField] protected DamageComponent _damageComponent;
 
-        private Coroutine _deathCoroutine;
+
         private Collider2D _collider;
 
         public float _rotationSlerpStep = 2f;
@@ -31,32 +37,34 @@ namespace Assets.Scripts.Core.Enemies
 
         protected virtual void Start()
         {
-            _deathCoroutine = null;
+            _timeToDeisapear = _timeToDisapearAfterDeath;
             _collider.enabled = true;
         }
 
-        protected virtual void Update()
+        private void LateUpdate()
         {
             PlayDeathVFXIfNotAlive();
         }
         private void PlayDeathVFXIfNotAlive()
         {
-            if (!_health.IsAlive && _deathCoroutine == null)
+            if (!_health.IsAlive && !_health.HasDied)
             {
-                _deathCoroutine = StartCoroutine(DeathCoroutine());
-                _collider.enabled = false;
+                _health.HasDied = true;
+                StartCoroutine("DeathCoroutine");
             }
         }
         IEnumerator DeathCoroutine()
         {
-            var deathVFX = _damageComponent.GetVFXFromDict("death");
-            deathVFX.Play();
-            while (deathVFX.isPlaying)
+            _damageComponent.PlayDeathVFX();
+            _collider.enabled = false;
+            while (_timeToDeisapear >= 0)
             {
+                _timeToDeisapear -= Time.deltaTime;
                 yield return null;
             }
             gameObject.SetActive(false);
         }
+
         protected virtual bool CheckIfEnemyIsNearby()
         {
             if(Vector3.Distance(_enemyGameObject.transform.position, gameObject.transform.position) < _rangeDetection)
@@ -78,11 +86,6 @@ namespace Assets.Scripts.Core.Enemies
         {
             _damageComponent.FlashShader();
             _health.DecreaseHealth(damage);
-        }
-
-        protected void PlayDamageComponentVFX(string id)
-        {
-            _damageComponent.GetVFXFromDict(id).Play();
         }
     }
 }
