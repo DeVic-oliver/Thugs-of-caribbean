@@ -7,6 +7,7 @@ namespace Assets.Scripts.Enemies.Ships
 {
     public class Shooter : RangedEnemy, IDamageable, IMoveable, IScoreable
     {
+        public bool InstanceScored { get; set; }
 
         public void Move(bool isAlive)
         {
@@ -30,11 +31,16 @@ namespace Assets.Scripts.Enemies.Ships
         {
             base.Update();
             Move(_health.IsAlive);
+            CountScore();
         }
 
         public void CountScore()
         {
-            ScoreCounter.PlayerPoints += _enemyScoreValue;
+            if (!_health.IsAlive && !InstanceScored)
+            {
+                ScoreCounter.PlayerPoints += _enemyScoreValue;
+                InstanceScored = true;
+            }
         }
     }
 }

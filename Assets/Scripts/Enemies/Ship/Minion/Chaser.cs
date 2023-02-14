@@ -8,6 +8,8 @@ namespace Assets.Scripts.Enemies.Ships
 {
     public class Chaser : MeleeEnemy, IMoveable, IDamageable, IScoreable
     {
+        public bool InstanceScored { get; set; }
+
         public void Move(bool isAlive)
         {
             if (isAlive && base.CheckIfEnemyIsNearby())
@@ -18,12 +20,22 @@ namespace Assets.Scripts.Enemies.Ships
         
         public void TakeDamage(int damageValue)
         {
+            CheckIfDamageKillsInstance(damageValue);
             DecreaseHealthByDamageWithFlashFeedback(damageValue);
+        }
+        private void CheckIfDamageKillsInstance(int damageValue)
+        {
+            if(damageValue >= _health.CurrentHealth && !InstanceScored)
+            {
+                CountScore();
+                InstanceScored = true;
+            }
         }
 
         new void Start()
         {
             base.Start();
+            InstanceScored = false;
         }
         
         private void Update()
