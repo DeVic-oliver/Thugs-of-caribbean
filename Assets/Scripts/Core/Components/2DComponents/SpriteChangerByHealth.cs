@@ -17,11 +17,6 @@ namespace Assets.Scripts.Core.Components._2DComponents
             base.Start();
         }
 
-        private void Update()
-        {
-            Debug.Log(_healthComponent.GetHealthPercentage());
-        }
-
         private void LateUpdate()
         {
             SwitchSpriteByHealthPercentage();
