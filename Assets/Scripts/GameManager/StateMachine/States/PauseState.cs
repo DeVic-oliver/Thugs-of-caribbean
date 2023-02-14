@@ -27,9 +27,20 @@
 
         public void OnStateEnter(StateMachine stateMachine)
         {
+            DisableAllActionsExceptPause();
             _pauseMenu.SetActive(true);
             PauseGame();
             _goToGameplayState = false;
+        }
+        private void DisableAllActionsExceptPause()
+        {
+            foreach (var item in _inputSystem.actions)
+            {
+                if (item.name != "Pause")
+                {
+                    item.Disable();
+                }
+            }
         }
         private void PauseGame()
         {

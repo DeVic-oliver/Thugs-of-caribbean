@@ -37112,7 +37112,6 @@ GameObject:
   - component: {fileID: 1540723525}
   - component: {fileID: 1540723527}
   - component: {fileID: 1540723530}
-  - component: {fileID: 1540723529}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -37176,64 +37175,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerHealth: {fileID: 416895238}
   _pauseUI: {fileID: 1773948274}
---- !u!114 &1540723529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1540723524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: fed6c9bdeec92f34886af3a605447093, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: fff5aea0-4869-4871-af32-83fcac7a781a
-    m_ActionName: Default/Shoot[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: ef3a9a67-f4be-4a90-9201-0f927bbebb5f
-    m_ActionName: Default/Change Weapon[/Keyboard/1,/Keyboard/2]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 941c4684-1bb8-4183-92e7-f6a81e717178
-    m_ActionName: Default/Navigation[/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 91079c05-be30-4324-83cb-d200b72ace2a
-    m_ActionName: Default/Pause[/Keyboard/escape]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Default
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!114 &1540723530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37249,7 +37190,7 @@ MonoBehaviour:
   _gameTimer: {fileID: 1540723527}
   _scoreCounter: {fileID: 1540723525}
   _playerHealth: {fileID: 416895238}
-  _inputSystem: {fileID: 1540723529}
+  _inputSystem: {fileID: 416895240}
   _pauseMenu: {fileID: 1773948274}
   _resumeButton: {fileID: 40931975}
 --- !u!1 &1567911496

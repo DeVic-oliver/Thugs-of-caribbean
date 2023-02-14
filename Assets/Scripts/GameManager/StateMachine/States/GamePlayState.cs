@@ -24,8 +24,16 @@
         }
         public void OnStateEnter(StateMachine stateMachine)
         {
+            EnablePlayerInputActions();
             ResumeGame();
             _pauseMenu.SetActive(false);
+        }
+        private void EnablePlayerInputActions()
+        {
+            foreach (var item in _inputSystem.actions)
+            {
+                    item.Enable();
+            }
         }
         private void ResumeGame()
         {
