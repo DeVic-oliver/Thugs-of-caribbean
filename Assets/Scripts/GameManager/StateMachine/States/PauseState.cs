@@ -3,21 +3,44 @@
     using Devic.Scripts.Utils.StateMachine;
     using UnityEngine;
     using UnityEngine.InputSystem;
-
+    using UnityEngine.UI;
     public class PauseState : IConcreteState
     {
         private PlayerInput _inputSystem;
         private InputAction _pauseAction;
+        private Button _resumeButton;
+        private GameObject _pauseMenu;
+        private bool _goToGameplayState;
 
-        public PauseState(PlayerInput inputSystem)
+        public PauseState(PlayerInput inputSystem, GameObject pauseMenu, Button resumeButton)
         {
             _inputSystem = inputSystem;
             _pauseAction = _inputSystem.actions.FindAction("Pause");
+            _resumeButton = resumeButton;
+            _pauseMenu = pauseMenu;
+            _resumeButton.onClick.AddListener(ResumeGame);
+        }
+        private void ResumeGame()
+        {
+            _goToGameplayState = true;
         }
 
         public void OnStateEnter(StateMachine stateMachine)
         {
+            DisableAllActionsExceptPause();
+            _pauseMenu.SetActive(true);
             PauseGame();
+            _goToGameplayState = false;
+        }
+        private void DisableAllActionsExceptPause()
+        {
+            foreach (var item in _inputSystem.actions)
+            {
+                if (item.name != "Pause")
+                {
+                    item.Disable();
+                }
+            }
         }
         private void PauseGame()
         {
@@ -28,12 +51,19 @@
         }
         public void OnUpdateState(StateMachine stateMachine)
         {
-            ChangeToPauseStateWhenPauseActionIsPerformed(stateMachine);
-
+            ChangeToPlayStateWhenPauseActionIsPerformed(stateMachine);
+            ChangeToPlayStateIfResumeButtonClicked(stateMachine);
         }
-        private void ChangeToPauseStateWhenPauseActionIsPerformed(StateMachine stateMachine)
+        private void ChangeToPlayStateWhenPauseActionIsPerformed(StateMachine stateMachine)
         {
             _pauseAction.performed += ctx => stateMachine.SwitchState("GAMEPLAY");
+        }
+        private void ChangeToPlayStateIfResumeButtonClicked(StateMachine stateMachine)
+        {
+            if (_goToGameplayState)
+            {
+                stateMachine.SwitchState("GAMEPLAY");
+            }
         }
     }
 }
