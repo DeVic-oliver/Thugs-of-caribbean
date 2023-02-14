@@ -20,9 +20,8 @@ namespace Assets.Scripts.Core.Enemies
             _weapon = GetComponent<RangedWeapon>();
         }
 
-        protected override void Update()
+        protected void Update()
         {
-            base.Update();
             ShootIfEnemyIsNearby();
         }
 
