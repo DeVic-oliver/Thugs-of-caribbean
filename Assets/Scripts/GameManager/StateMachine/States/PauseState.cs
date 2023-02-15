@@ -4,6 +4,8 @@
     using UnityEngine;
     using UnityEngine.InputSystem;
     using UnityEngine.UI;
+    using UnityEngine.SceneManagement;
+
     public class PauseState : IConcreteState
     {
         private StateMachine _machine;
@@ -13,6 +15,7 @@
         private Button _exitButton;
         private GameObject _pauseMenu;
         private bool _canGoToGameplayState;
+        private int _mainMenuSceneIndex = 0;
 
         public PauseState(PlayerInput inputSystem, GameObject pauseMenu, Button resumeButton, Button exitButton)
         {
@@ -36,10 +39,7 @@
         }
         private void ExitGame()
         {
-            Debug.Log("EXITING");
-            ///LOAD MAIN MENU SCENE
-            //var mainMenu = SceneManager.GetSceneByBuildIndex(0);
-            //SceneManager.LoadScene(mainMenu.buildIndex);
+            SceneManager.LoadScene(_mainMenuSceneIndex);
         }
 
         public void OnStateEnter(StateMachine stateMachine)

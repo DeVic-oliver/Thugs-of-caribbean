@@ -10,8 +10,9 @@
         private GameObject _gameOverUI;
         private Button _restartButton;
         private Button _exitButton;
-
         private bool _canRestartGame = false;
+
+        private int _mainMenuSceneIndex = 0;
 
         public GameOverState(GameObject gameoverUI, Button restartButton, Button exitButton)
         {
@@ -28,11 +29,7 @@
         }
         private void ExitGame()
         {
-            Debug.Log("EXITING");
-
-            ///LOAD MAIN MENU SCENE
-            //var mainMenu = SceneManager.GetSceneByBuildIndex(0);
-            //SceneManager.LoadScene(mainMenu.buildIndex);
+            SceneManager.LoadScene(_mainMenuSceneIndex);
         }
 
         public void OnStateEnter(StateMachine stateMachine)
