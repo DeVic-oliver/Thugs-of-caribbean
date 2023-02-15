@@ -9,20 +9,30 @@
         private PlayerInput _inputSystem;
         private InputAction _pauseAction;
         private Button _resumeButton;
+        private Button _exitButton;
         private GameObject _pauseMenu;
         private bool _goToGameplayState;
 
-        public PauseState(PlayerInput inputSystem, GameObject pauseMenu, Button resumeButton)
+        public PauseState(PlayerInput inputSystem, GameObject pauseMenu, Button resumeButton, Button exitButton)
         {
             _inputSystem = inputSystem;
             _pauseAction = _inputSystem.actions.FindAction("Pause");
             _resumeButton = resumeButton;
             _pauseMenu = pauseMenu;
             _resumeButton.onClick.AddListener(ResumeGame);
+            _exitButton = exitButton;
+            _exitButton.onClick.AddListener(ExitGame);
         }
         private void ResumeGame()
         {
             _goToGameplayState = true;
+        }
+        private void ExitGame()
+        {
+            Debug.Log("EXITING");
+            ///LOAD MAIN MENU SCENE
+            //var mainMenu = SceneManager.GetSceneByBuildIndex(0);
+            //SceneManager.LoadScene(mainMenu.buildIndex);
         }
 
         public void OnStateEnter(StateMachine stateMachine)
