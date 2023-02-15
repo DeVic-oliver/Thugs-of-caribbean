@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     private TimerCounter _timer;
     [SerializeField] private PlayerHealth _playerHealth;
     [SerializeField] private GameObject _pauseUI;
+    [SerializeField] private GameObject _gameOverUI;
+
     // Start is called before the first frame update
     void Start()
     {
