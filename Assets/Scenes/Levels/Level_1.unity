@@ -998,7 +998,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 416895232}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.4, y: 4.3, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -37816,8 +37816,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerHealth: {fileID: 416895238}
-  _pauseUI: {fileID: 1773948274}
-  _gameOverUI: {fileID: 0}
 --- !u!114 &1540723530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37832,6 +37830,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameTimer: {fileID: 1540723527}
   _scoreCounter: {fileID: 1540723525}
+  _player: {fileID: 416895232}
   _playerHealth: {fileID: 416895238}
   _playerInputSystem: {fileID: 416895240}
   _pauseMenu: {fileID: 1773948274}
@@ -44264,7 +44263,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 861796061388751740, guid: 293831d3d8f7ad547b3e25f485832bea, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.17958663
+      value: -7.19
       objectReference: {fileID: 0}
     - target: {fileID: 861796061388751740, guid: 293831d3d8f7ad547b3e25f485832bea, type: 3}
       propertyPath: m_LocalPosition.z
@@ -44334,7 +44333,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3537547660201686346, guid: b6876783af6c3994f9c34f751c84a8be, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.5736393
+      value: -9.84
       objectReference: {fileID: 0}
     - target: {fileID: 3537547660201686346, guid: b6876783af6c3994f9c34f751c84a8be, type: 3}
       propertyPath: m_LocalPosition.y
