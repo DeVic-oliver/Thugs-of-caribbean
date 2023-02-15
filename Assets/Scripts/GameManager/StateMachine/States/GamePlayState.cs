@@ -24,6 +24,7 @@
         }
         public void OnStateEnter(StateMachine stateMachine)
         {
+            Debug.Log("WELCOME TO GAMEPLAY STATE");
             EnablePlayerInputActions();
             ResumeGame();
             _pauseMenu.SetActive(false);

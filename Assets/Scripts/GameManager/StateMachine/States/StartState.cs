@@ -2,6 +2,8 @@
 {
     using Assets.Scripts.Core.Components.Counters;
     using Devic.Scripts.Utils.StateMachine;
+    using UnityEngine;
+
     public class StartState : IConcreteState
     {
         private TimerCounter _gameTimer;
@@ -14,6 +16,8 @@
         }
         public void OnStateEnter(StateMachine stateMachine)
         {
+            Debug.Log("WELCOME TO START STATE");
+
             _gameTimer.StartTimer();
             _scoreCounter.ResetScore();
         }
