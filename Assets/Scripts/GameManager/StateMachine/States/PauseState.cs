@@ -6,12 +6,13 @@
     using UnityEngine.UI;
     public class PauseState : IConcreteState
     {
+        private StateMachine _machine;
         private PlayerInput _inputSystem;
         private InputAction _pauseAction;
         private Button _resumeButton;
         private Button _exitButton;
         private GameObject _pauseMenu;
-        private bool _goToGameplayState;
+        private bool _canGoToGameplayState;
 
         public PauseState(PlayerInput inputSystem, GameObject pauseMenu, Button resumeButton, Button exitButton)
         {
@@ -22,10 +23,16 @@
             _resumeButton.onClick.AddListener(ResumeGame);
             _exitButton = exitButton;
             _exitButton.onClick.AddListener(ExitGame);
+            AllowGoToPlayStateByActionsPerformed();
         }
+        private void AllowGoToPlayStateByActionsPerformed()
+        {
+            _pauseAction.performed += ctx => _canGoToGameplayState = true;
+        }
+
         private void ResumeGame()
         {
-            _goToGameplayState = true;
+            _canGoToGameplayState = true;
         }
         private void ExitGame()
         {
@@ -38,18 +45,26 @@
         public void OnStateEnter(StateMachine stateMachine)
         {
             Debug.Log("WELCOME TO PAUSE STATE");
+            InitStateMachineIfItsNull(stateMachine);
+            _canGoToGameplayState = false;
+            PauseGame();
             DisableAllActionsExceptPause();
             _pauseMenu.SetActive(true);
-            PauseGame();
-            _goToGameplayState = false;
+        }
+        private void InitStateMachineIfItsNull(StateMachine stateMachine)
+        {
+            if (_machine == null)
+            {
+                _machine = stateMachine;
+            }
         }
         private void DisableAllActionsExceptPause()
         {
-            foreach (var item in _inputSystem.actions)
+            foreach (var action in _inputSystem.actions)
             {
-                if (item.name != "Pause")
+                if (action.name != "Pause")
                 {
-                    item.Disable();
+                    action.Disable();
                 }
             }
         }
@@ -60,20 +75,16 @@
                 Time.timeScale = 0;
             }
         }
+
         public void OnUpdateState(StateMachine stateMachine)
         {
-            ChangeToPlayStateWhenPauseActionIsPerformed(stateMachine);
-            ChangeToPlayStateIfResumeButtonClicked(stateMachine);
+            GoToPlayStateIfItsAllowed();
         }
-        private void ChangeToPlayStateWhenPauseActionIsPerformed(StateMachine stateMachine)
+        private void GoToPlayStateIfItsAllowed()
         {
-            _pauseAction.performed += ctx => stateMachine.SwitchState("GAMEPLAY");
-        }
-        private void ChangeToPlayStateIfResumeButtonClicked(StateMachine stateMachine)
-        {
-            if (_goToGameplayState)
+            if (_canGoToGameplayState)
             {
-                stateMachine.SwitchState("GAMEPLAY");
+                _machine.SwitchState("GAMEPLAY");
             }
         }
     }

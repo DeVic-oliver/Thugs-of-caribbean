@@ -45,14 +45,13 @@
 
         public void OnUpdateState(StateMachine stateMachine)
         {
-            CheckIfCanGoToStartState();
+            CheckIfCanGoToStartState(stateMachine);
         }
-        private void CheckIfCanGoToStartState()
+        private void CheckIfCanGoToStartState(StateMachine stateMachine)
         {
             if (_canRestartGame)
             {
-                var currentScene = SceneManager.GetActiveScene();
-                SceneManager.LoadScene(currentScene.buildIndex);
+                stateMachine.SwitchState("START");
             }
         }
     }
