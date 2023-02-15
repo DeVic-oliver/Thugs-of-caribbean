@@ -8,11 +8,13 @@
 
     public class GamePlayState : IConcreteState
     {
+        private StateMachine _machine;
         private TimerCounter _gameTimer;
         private PlayerHealth _playerHealth;
         private PlayerInput _inputSystem;
         private InputAction _pauseAction;
         private GameObject _pauseMenu;
+        private bool _canGoToPauseState = false;
 
         public GamePlayState(TimerCounter gameTimer, PlayerHealth playerHealth, PlayerInput inputSystem, GameObject pauseMenu)
         {
@@ -21,13 +23,30 @@
             _inputSystem = inputSystem;
             _pauseAction = _inputSystem.actions.FindAction("Pause");
             _pauseMenu = pauseMenu;
+            AllowGoToPauseStateByActionsPerformed();
         }
+        private void AllowGoToPauseStateByActionsPerformed()
+        {
+            _pauseAction.performed += ctx => _canGoToPauseState = true;
+        }
+
         public void OnStateEnter(StateMachine stateMachine)
         {
+            Debug.Log("WELCOME TO GAMEPLAY STATE");
+            InitStateMachineIfItsNull(stateMachine);
+            _canGoToPauseState = false;
             EnablePlayerInputActions();
             ResumeGame();
             _pauseMenu.SetActive(false);
         }
+        private void InitStateMachineIfItsNull(StateMachine stateMachine)
+        {
+            if (_machine == null)
+            {
+                _machine = stateMachine;
+            }
+        }
+
         private void EnablePlayerInputActions()
         {
             foreach (var item in _inputSystem.actions)
@@ -42,21 +61,25 @@
                 Time.timeScale = 1;
             }
         }
-
+       
         public void OnUpdateState(StateMachine stateMachine)
         {
-            ChangeToPauseStateWhenPauseActionIsPerformed(stateMachine);
-            ChangeToGameOverWhenPlayerDiesOrTimeEnds(stateMachine);
+            GoToPauseStateIfItsAllowed();
+            ChangeToGameOverWhenPlayerDiesOrTimeEnds();
         }
-        private void ChangeToPauseStateWhenPauseActionIsPerformed(StateMachine stateMachine)
+        private void GoToPauseStateIfItsAllowed()
         {
-            _pauseAction.performed += ctx => stateMachine.SwitchState("PAUSE");
+            if (_canGoToPauseState)
+            {
+                _machine.SwitchState("PAUSE");
+            }
         }
-        private void ChangeToGameOverWhenPlayerDiesOrTimeEnds(StateMachine stateMachine)
+       
+        private void ChangeToGameOverWhenPlayerDiesOrTimeEnds()
         {
             if(_playerHealth.HasDied || _gameTimer.HasTimerReachedZero)
             {
-                stateMachine.SwitchState("GAMEOVER");
+                _machine.SwitchState("GAMEOVER");
             }
         }
 

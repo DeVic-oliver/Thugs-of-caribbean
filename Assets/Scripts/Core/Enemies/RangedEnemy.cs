@@ -34,7 +34,7 @@ namespace Assets.Scripts.Core.Enemies
                 _isShooting = true;
                 _weapon.Shoot();
             }
-            else if(!CheckIfEnemyIsNearby())
+            else if(!CheckIfEnemyIsNearby() || !_health.IsAlive)
             {
                 _isShooting = false;
                 _weapon.StopShoot();
