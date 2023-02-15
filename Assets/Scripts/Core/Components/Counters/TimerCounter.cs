@@ -7,13 +7,13 @@ namespace Assets.Scripts.Core.Components.Counters
     public class TimerCounter : MonoBehaviour
     {
         public bool HasTimerReachedZero { get; private set; }
-        [SerializeField] private float _timerLimit;
         private float _timer;
         [SerializeField] private TextMeshProUGUI _timerUI;
 
         public void StartTimer()
         {
-            _timer = _timerLimit * 60;
+            var limit = PlayerPrefs.GetInt("TIMER_LIMIT");
+            _timer = limit * 60;
             HasTimerReachedZero = false;
             StartCoroutine("StartCounter");
         }
