@@ -37,6 +37,7 @@
 
         public void OnStateEnter(StateMachine stateMachine)
         {
+            Debug.Log("WELCOME TO PAUSE STATE");
             DisableAllActionsExceptPause();
             _pauseMenu.SetActive(true);
             PauseGame();
