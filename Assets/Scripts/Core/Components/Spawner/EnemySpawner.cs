@@ -1,18 +1,21 @@
 namespace Assets.Scripts.Core.Components.Spawner
 {
+    using Assets.Scripts.Core.Enemies;
     using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
 
-    public class Spawner : MonoBehaviour
+    public class EnemySpawner : MonoBehaviour
     {
+        [SerializeField] private GameObject _enemyTarget;
+
         [Header("Spawn areas")]
         [SerializeField] private List<SpawnArea> _spawnAreas;
         private int _spawnInterval;
 
         [Space(10f)]
         [Header("GameObjects to spawn")]
-        [SerializeField] private List<GameObject> _gameObjectsToSpawn;
+        [SerializeField] private List<EnemyBase> _enemiesToSpawn;
 
         private Coroutine _currentCoroutine;
 
@@ -26,10 +29,10 @@ namespace Assets.Scripts.Core.Components.Spawner
         {
             if(_currentCoroutine == null)
             {
-                Debug.Log("COROUTINE STARTED");
                 _currentCoroutine = StartCoroutine("SpawnObject");
             }
         }
+
         public void StopSpawning()
         {
             if( _currentCoroutine != null)
@@ -37,25 +40,3 @@ namespace Assets.Scripts.Core.Components.Spawner
                 StopCoroutine(_currentCoroutine);
             }
         }
-        private IEnumerator SpawnObject()
-        {
-            GameObject gameObject = _gameObjectsToSpawn.GetRandomItem();
-            var counter = 0f;
-            while (counter <= 30f)
-            {
-                counter += Time.deltaTime;
-                foreach (var area in _spawnAreas)
-                {
-                    Debug.Log("SEARCHING FOR AREA");
-                    if (area.IsInvisible)
-                    {
-                        Debug.Log("AREA FOUND");
-                        area.SpawnGameObject(gameObject);
-                        break;
-                    }
-                }
-                yield return new WaitForSeconds(_spawnInterval);
-            }
-        }
-    }
-}
