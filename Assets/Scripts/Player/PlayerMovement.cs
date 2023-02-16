@@ -8,12 +8,11 @@ namespace Assets.Scripts.Player
     {
         private PlayerHealth _health;
 
-        [SerializeField] private float _moveSpeed = 250f;
+        [SerializeField] private float _moveSpeed = 6;
         [SerializeField] private float _rotateSpeed = 130f;
 
         private Rigidbody2D _rigidbody;
 
-        private float _unitsPerMove = 1f;
 
         void Start()
         {
@@ -62,7 +61,8 @@ namespace Assets.Scripts.Player
         }
         private Vector2 GetDirectionWherePlayerFaces()
         {
-              return transform.position + (_unitsPerMove * transform.up * _moveSpeed * Time.deltaTime);
+              var value = Mathf.Abs(Input.GetAxis("Vertical"));
+              return transform.position + (value * transform.up * _moveSpeed * Time.deltaTime);
         }
 
         private void OnCollisionExit2D(Collision2D collision)
