@@ -40,3 +40,34 @@ namespace Assets.Scripts.Core.Components.Spawner
                 StopCoroutine(_currentCoroutine);
             }
         }
+
+        private IEnumerator SpawnObject()
+        {
+            var counter = 0f;
+            while (counter <= 30f)
+            {
+                foreach (var area in _spawnAreas)
+                {
+                    if (area.IsInvisible)
+                    {
+                        EnemyBase gameObject = _enemiesToSpawn.GetRandomItem();
+                        InjectEnemyTarget(gameObject, _enemyTarget);
+                        var obj = GetEnemyObjectAfterCast(gameObject);
+                        area.SpawnGameObject(obj);
+                        break;
+                    }
+                }
+                counter += Time.deltaTime;
+                yield return new WaitForSeconds(_spawnInterval);
+            }
+        }
+        private void InjectEnemyTarget(EnemyBase enemy, GameObject target)
+        {
+            enemy.EnemyGameObject = target;
+        }
+        private GameObject GetEnemyObjectAfterCast(EnemyBase enemy)
+        {
+            return enemy.gameObject;
+        }
+    }
+}
