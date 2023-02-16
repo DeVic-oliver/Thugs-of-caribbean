@@ -56,7 +56,7 @@ namespace Assets.Scripts.Core.Components
             IsAlive = CheckIfIsAliveByHealthAmmout();
         }
         
-        protected bool CheckIfIsAliveByHealthAmmout()
+        public bool CheckIfIsAliveByHealthAmmout()
         {
             if (CurrentHealth > 0)
             {
