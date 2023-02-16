@@ -37,7 +37,7 @@ namespace Assets.Scripts.Enemies.Ships
             base.Start();
             InstanceScored = false;
         }
-        
+
         private void Update()
         {
             Move(_health.IsAlive);
