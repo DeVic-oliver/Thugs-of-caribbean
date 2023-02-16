@@ -48,6 +48,7 @@ namespace Assets.Scripts.Core.Components
         {
             CurrentHealth = _health;
             HasDied = false;
+            IsAlive = CheckIfIsAliveByHealthAmmout();
         }
 
         protected virtual void Update()
