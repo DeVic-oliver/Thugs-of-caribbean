@@ -17,7 +17,7 @@ namespace Assets.Scripts.Core.Enemies
      
         public Vector2 GetMoveTowardsEnemyVector()
         {
-            return Vector2.MoveTowards(transform.position, _enemyGameObject.transform.position, _moveSpeed * Time.deltaTime);
+            return Vector2.MoveTowards(transform.position, EnemyGameObject.transform.position, _moveSpeed * Time.deltaTime);
         }
     }
 }

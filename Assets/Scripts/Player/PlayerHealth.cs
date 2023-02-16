@@ -16,9 +16,8 @@ namespace Assets.Scripts.Player
             _damageComponent.FlashShader();
         }
 
-        new void Start()
+        private void Start()
         {
-            base.Start();
             _damageComponent = GetComponent<DamageComponent>();
         }
 

@@ -43,13 +43,12 @@ namespace Assets.Scripts.Core.Components
             }
             return health;
         }
+
         private void Awake()
         {
             CurrentHealth = _health;
-        }
-        protected virtual void Start()
-        {
             HasDied = false;
+            IsAlive = CheckIfIsAliveByHealthAmmout();
         }
 
         protected virtual void Update()
@@ -57,7 +56,7 @@ namespace Assets.Scripts.Core.Components
             IsAlive = CheckIfIsAliveByHealthAmmout();
         }
         
-        protected bool CheckIfIsAliveByHealthAmmout()
+        public bool CheckIfIsAliveByHealthAmmout()
         {
             if (CurrentHealth > 0)
             {

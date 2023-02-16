@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.Scripts.Core.Components.Spawner
@@ -7,21 +8,24 @@ namespace Assets.Scripts.Core.Components.Spawner
     {
         public bool IsInvisible { get; private set; }
 
-        private void OnBecameInvisible()
-        {
-            IsInvisible = true;
-        }
 
         private void OnBecameVisible()
         {
             IsInvisible = false;
         }
 
+        private void OnBecameInvisible()
+        {
+            IsInvisible = true;
+        }
+
         public void SpawnGameObject(GameObject gameObject)
         {
-            Debug.Log("SPAWNED AT:" + transform.position);
-            var obj = Instantiate(gameObject, gameObject.transform);
-            obj.transform.SetParent(null);
+            var obj = Instantiate(gameObject, transform.position, gameObject.transform.rotation);
+            if(obj.transform.parent != null)
+            {
+                obj.transform.SetParent(null);
+            }
         }
     }
 }

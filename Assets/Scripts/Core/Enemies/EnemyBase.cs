@@ -18,8 +18,8 @@ namespace Assets.Scripts.Core.Enemies
 
         [Space(10f)]
         [Header("Detection setup")]
+        public GameObject EnemyGameObject;
         [SerializeField] protected float _rangeDetection = 15f;
-        [SerializeField] protected GameObject _enemyGameObject;
         [Space(10f)]
         [SerializeField] protected DamageComponent _damageComponent;
 
@@ -67,7 +67,7 @@ namespace Assets.Scripts.Core.Enemies
 
         protected virtual bool CheckIfEnemyIsNearby()
         {
-            if(Vector3.Distance(_enemyGameObject.transform.position, gameObject.transform.position) < _rangeDetection)
+            if(Vector3.Distance(EnemyGameObject.transform.position, gameObject.transform.position) < _rangeDetection)
             {
                 return true;
             }
@@ -75,7 +75,7 @@ namespace Assets.Scripts.Core.Enemies
         }
         protected void LookToTargetSmoothly()
         {
-            var direction = (_enemyGameObject.transform.position - transform.position).normalized;
+            var direction = (EnemyGameObject.transform.position - transform.position).normalized;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             float offset = 90f;
             var lookRotation = Quaternion.Euler(new Vector3(0, 0, angle - offset));
