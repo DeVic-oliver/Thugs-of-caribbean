@@ -25,7 +25,7 @@
         }
         private void RestartGame()
         {
-            _canRestartGame = true;
+            SceneManager.LoadScene(1);
         }
         private void ExitGame()
         {
