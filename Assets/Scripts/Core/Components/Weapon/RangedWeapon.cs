@@ -4,6 +4,7 @@ using UnityEngine;
 namespace Assets.Scripts.Core.Components.Weapon
 {
     using Assets.Scripts.Core.Components.Projectile;
+    using Devic.Scripts.Utils.Pools;
 
     public class RangedWeapon : MonoBehaviour
     {
@@ -15,6 +16,13 @@ namespace Assets.Scripts.Core.Components.Weapon
         [SerializeField] protected float _reloadTimeSeconds = 2f;
 
         private Coroutine _currentCoroutine;
+
+        public static ProjectilePool Pool;
+
+        private void Awake()
+        {
+            Pool = new(_projectile);
+        }
 
         public void Shoot()
         {
@@ -54,11 +62,11 @@ namespace Assets.Scripts.Core.Components.Weapon
         }
         protected virtual void ShootProjectileFromWeaponPosition()
         {
-            if (_projectile != null)
-            {
-                Instantiate(_projectile, _weaponPosition.position, _weaponPosition.rotation);
-                RemoveParent(_projectile.gameObject);
-            }
+            var projectile = Pool.GetProjectileFromPool();
+            projectile.transform.position = _weaponPosition.position;
+            projectile.transform.rotation = _weaponPosition.rotation;
+            RemoveParent(_projectile.gameObject);
+            Pool.SetProjectilPoolIfItHasNone(projectile);
         }
         private void RemoveParent(GameObject gameObject)
         {

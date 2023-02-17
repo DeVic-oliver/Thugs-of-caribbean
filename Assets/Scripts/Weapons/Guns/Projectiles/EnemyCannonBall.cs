@@ -1,19 +1,15 @@
 ﻿using Assets.Scripts.Core.Components.Projectile;
+using Assets.Scripts.Core.Components.Weapon;
+using Assets.Scripts.Core.Enemies;
 using Assets.Scripts.Player;
 using UnityEngine;
+using System.Collections;
+
 
 namespace Assets.Scripts.Weapons.Guns.Projectiles
 {
-    [RequireComponent(typeof(CannonBallDisabler))]
     public class EnemyCannonBall : Projectile
     {
-        private CannonBallDisabler _disabler;
-
-
-        private void Start()
-        {
-            _disabler = GetComponent<CannonBallDisabler>();
-        }
 
         protected override void OnTriggerEnter2D(Collider2D other)
         {
@@ -23,8 +19,18 @@ namespace Assets.Scripts.Weapons.Guns.Projectiles
                 player.TakeDamage(_damage);
                 _projectileSpeed = 0;
                 _sprite.enabled = false;
-                _disabler.DisableMe();
+                RangedWeapon.Pool.BackToPool(this);
             }
+        }
+        protected override IEnumerator TimerToBackPool()
+        {
+            float count = 0;
+            while (count <= _timeToBackPool)
+            {
+                count += Time.deltaTime;
+                yield return null;
+            }
+            RangedWeapon.Pool.BackToPool(this);
         }
     }
 }

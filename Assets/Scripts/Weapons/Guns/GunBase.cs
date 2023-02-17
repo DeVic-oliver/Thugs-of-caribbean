@@ -66,10 +66,7 @@ namespace Assets.Scripts.Weapons.Guns
             var bullet = _pool.GetProjectileFromPool();
             bullet.transform.position = transform.position;
             bullet.transform.rotation = transform.rotation;
-            if (bullet.MyPool == null)
-            {
-                bullet.MyPool = _pool;
-            }
+            _pool.SetProjectilPoolIfItHasNone(bullet);
         }
         protected void DecreaseMagazineAmmo()
         {
