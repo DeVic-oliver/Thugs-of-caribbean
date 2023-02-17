@@ -36,7 +36,16 @@
         }
         private void PlayGame()
         {
+            CheckIfSettingsWasSaved();
             SceneManager.LoadScene(_initialLevelIndex);
+        }
+        private void CheckIfSettingsWasSaved()
+        {
+            if(PlayerPrefs.GetInt("TIMER_LIMIT") == 0 || PlayerPrefs.GetInt("ENEMEIS_SPAWN_INTERVAL") == 0 )
+            {
+                PlayerPrefs.SetInt("TIMER_LIMIT", (int)_gameTimeLimitSlider.value);
+                PlayerPrefs.SetInt("ENEMEIS_SPAWN_INTERVAL", (int)_enemySpawnIntervalSlider.value);
+            }
         }
         private void SaveSettings()
         {
