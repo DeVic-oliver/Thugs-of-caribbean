@@ -48,6 +48,7 @@
         {
             if (_canRestartGame)
             {
+                _gameOverUI.SetActive(false);
                 stateMachine.SwitchState("START");
             }
         }

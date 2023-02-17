@@ -1,6 +1,7 @@
 ﻿namespace Assets.Scripts.GameManager.StateMachine
 {
     using Assets.Scripts.Core.Components.Counters;
+    using Assets.Scripts.Core.Components.Spawner;
     using Assets.Scripts.Player;
     using Devic.Scripts.Utils.StateMachine;
     using UnityEngine;
@@ -10,12 +11,14 @@
         private TimerCounter _gameTimer;
         private ScoreCounter _scoreCounter;
         private PlayerHealth _player;
+        private EnemySpawner _enemySpawner;
 
-        public StartState(TimerCounter gameTimer, ScoreCounter scoreCounter, GameObject player)
+        public StartState(TimerCounter gameTimer, ScoreCounter scoreCounter, PlayerHealth player, EnemySpawner enemySpawner)
         {
             _gameTimer = gameTimer;
             _scoreCounter = scoreCounter;
             _player = player;
+            _enemySpawner = enemySpawner;
         }
         public void OnStateEnter(StateMachine stateMachine)
         {
@@ -24,6 +27,8 @@
             _gameTimer.StartTimer();
             _scoreCounter.ResetScore();
             ResetPlayerData();
+            _enemySpawner.ResetEnemies();
+            _enemySpawner.StopSpawning();
         }
         private void ResetPlayerData()
         {
