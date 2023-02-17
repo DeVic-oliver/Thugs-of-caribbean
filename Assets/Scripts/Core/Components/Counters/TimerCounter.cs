@@ -26,6 +26,7 @@ namespace Assets.Scripts.Core.Components.Counters
                 yield return new WaitForSeconds(Time.deltaTime);
             }
             HasTimerReachedZero = true;
+            _timerUI.text = "00:00";
         }
         private string DisplayTime(float timeToDisplay)
         {
