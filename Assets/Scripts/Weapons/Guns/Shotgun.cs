@@ -20,15 +20,7 @@ namespace Assets.Scripts.Weapons.Guns
         {
             var bullet = _pool.GetProjectileFromPool();
             SetProjectileTransformBasedOnParent(bullet, _gunBarrel);
-            SetProjectilPoolIfItHasNone(bullet);
-        }
-
-        private void SetProjectilPoolIfItHasNone(Projectile projectile) 
-        {
-            if (projectile.MyPool == null)
-            {
-                projectile.MyPool = _pool;
-            }
+            _pool.SetProjectilPoolIfItHasNone(bullet);
         }
 
         private void CreateSpreadedBullets()
@@ -44,7 +36,7 @@ namespace Assets.Scripts.Weapons.Guns
                 spreadAngleAux = TogglePositiveNegativeByIndexMod(spreadAngleAux, i);
                 var projectileRotation = GetRotationForSpreadProjectile(spreadAngleAux, spreadMultiplier);
                 SetProjectileTransformBasedOnParent(bullets[i], _gunBarrel, projectileRotation);
-                SetProjectilPoolIfItHasNone(bullets[i]);
+                _pool.SetProjectilPoolIfItHasNone(bullets[i]);
             }
         }
         private int IncrementMultiplierByIndexModZero(int multiplier, int index)
