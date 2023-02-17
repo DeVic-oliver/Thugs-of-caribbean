@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -8,11 +9,14 @@ namespace Assets.Scripts.Core.Components.Counters
     {
         public static int PlayerPoints;
 
-        [SerializeField] private TextMeshProUGUI _pointCounterUI;
+        [SerializeField] private List<TextMeshProUGUI> _pointCounterUI;
 
         private void LateUpdate()
         {
-            _pointCounterUI.text = $"Score: {PlayerPoints.ToString()}";
+            foreach (var counter in _pointCounterUI)
+            {
+                counter.text = $"Score: {PlayerPoints.ToString()}";
+            }
         }
 
         public void ResetScore()
