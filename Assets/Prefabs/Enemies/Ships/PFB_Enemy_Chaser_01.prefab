@@ -5046,12 +5046,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyScoreValue: 1
   _timeToDisapearAfterDeath: 2.5
-  _rangeDetection: 15
-  _enemyGameObject: {fileID: 6838194504582583549, guid: 990b0900e0122fe49abc2508e3d36b5d, type: 3}
+  EnemyGameObject: {fileID: 0}
+  _rangeDetection: 30
   _damageComponent: {fileID: 977742416}
   _rotationSlerpStep: 2
   _moveSpeed: 2
-  _attackDamage: 90
+  _attackDamage: 20
 --- !u!114 &977742416
 MonoBehaviour:
   m_ObjectHideFlags: 0

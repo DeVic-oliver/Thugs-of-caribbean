@@ -22,6 +22,15 @@ namespace Assets.Scripts.Core.Components.Damage
 
         private Tween _currentColorTween;
 
+
+        private void Start()
+        {
+            if(_currentColorTween != null)
+            {
+                _currentColorTween.Kill();
+            }
+        }
+
         public void FlashShader()
         {
             if (!_currentColorTween.IsActive())

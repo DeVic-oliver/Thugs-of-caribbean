@@ -65,5 +65,12 @@ namespace Assets.Scripts.Core.Components
             return false;
         }
 
+        public void ResetStatus()
+        {
+            CurrentHealth = _health;
+            IsAlive = true;
+            HasDied = false;
+        }
+
     }
 }

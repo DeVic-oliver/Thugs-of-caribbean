@@ -25,7 +25,7 @@
         }
         private void RestartGame()
         {
-            _canRestartGame = true;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         private void ExitGame()
         {
@@ -48,6 +48,7 @@
         {
             if (_canRestartGame)
             {
+                _gameOverUI.SetActive(false);
                 stateMachine.SwitchState("START");
             }
         }

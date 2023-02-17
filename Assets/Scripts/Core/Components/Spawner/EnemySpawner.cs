@@ -23,7 +23,6 @@ namespace Assets.Scripts.Core.Components.Spawner
         void Start()
         {
             _spawnInterval = PlayerPrefs.GetInt("ENEMEIS_SPAWN_INTERVAL");
-            StartSpawnObjects();
         }
 
         public void StartSpawnObjects()
@@ -40,6 +39,11 @@ namespace Assets.Scripts.Core.Components.Spawner
             {
                 StopCoroutine(_currentCoroutine);
             }
+        }
+
+        public void ResetEnemies()
+        {
+
         }
 
         private IEnumerator SpawnObject()

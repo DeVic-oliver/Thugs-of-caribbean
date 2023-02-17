@@ -10,9 +10,7 @@ public class PlayerGun : MonoBehaviour
 
     [SerializeField] private GunBase _mainGun;
     [SerializeField] private GunBase _gun2;
-    [SerializeField] private GunBase _gun3;
-    [SerializeField] private GunBase _gun4;
-    private GunBase[] _guns = new GunBase[4];
+    private GunBase[] _guns = new GunBase[2];
     
     private GunBase _currentGun;
 
@@ -26,8 +24,6 @@ public class PlayerGun : MonoBehaviour
     {
         _guns[0] = _mainGun;
         _guns[1] = _gun2;
-        _guns[2] = _gun3;
-        _guns[3] = _gun4;
     }
 
     private void Update()

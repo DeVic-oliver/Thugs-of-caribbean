@@ -1,6 +1,7 @@
 ﻿namespace Assets.Scripts.GameManager.StateMachine
 {
     using Assets.Scripts.Core.Components.Counters;
+    using Assets.Scripts.Core.Components.Spawner;
     using Assets.Scripts.Player;
     using Devic.Scripts.Utils.StateMachine;
     using UnityEngine;
@@ -14,15 +15,17 @@
         private PlayerInput _inputSystem;
         private InputAction _pauseAction;
         private GameObject _pauseMenu;
+        private EnemySpawner _enemySpawner;
         private bool _canGoToPauseState = false;
 
-        public GamePlayState(TimerCounter gameTimer, PlayerHealth playerHealth, PlayerInput inputSystem, GameObject pauseMenu)
+        public GamePlayState(TimerCounter gameTimer, PlayerHealth playerHealth, PlayerInput inputSystem, GameObject pauseMenu, EnemySpawner enemySpawner)
         {
             _gameTimer = gameTimer;
             _playerHealth = playerHealth;
             _inputSystem = inputSystem;
             _pauseAction = _inputSystem.actions.FindAction("Pause");
             _pauseMenu = pauseMenu;
+            _enemySpawner = enemySpawner;
             AllowGoToPauseStateByActionsPerformed();
         }
         private void AllowGoToPauseStateByActionsPerformed()
@@ -38,6 +41,7 @@
             EnablePlayerInputActions();
             ResumeGame();
             _pauseMenu.SetActive(false);
+            _enemySpawner.StartSpawnObjects();
         }
         private void InitStateMachineIfItsNull(StateMachine stateMachine)
         {

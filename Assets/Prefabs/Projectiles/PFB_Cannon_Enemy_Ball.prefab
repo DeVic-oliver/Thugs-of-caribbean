@@ -118,6 +118,7 @@ MonoBehaviour:
   _projectileSpeed: 3
   _damage: 20
   _sprite: {fileID: 8358855896569305926}
+  _timeToBackPool: 8
 --- !u!114 &1822631380624829048
 MonoBehaviour:
   m_ObjectHideFlags: 0
