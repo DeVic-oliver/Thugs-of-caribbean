@@ -1,6 +1,7 @@
 ﻿namespace Assets.Scripts.GameManager.StateMachine
 {
     using Assets.Scripts.Core.Components.Counters;
+    using Assets.Scripts.Player;
     using Devic.Scripts.Utils.StateMachine;
     using UnityEngine;
 
@@ -8,7 +9,7 @@
     {
         private TimerCounter _gameTimer;
         private ScoreCounter _scoreCounter;
-        private GameObject _player;
+        private PlayerHealth _player;
 
         public StartState(TimerCounter gameTimer, ScoreCounter scoreCounter, GameObject player)
         {
@@ -22,10 +23,11 @@
             Time.timeScale = 1;
             _gameTimer.StartTimer();
             _scoreCounter.ResetScore();
-            ResetPlayerPosition();
+            ResetPlayerData();
         }
-        private void ResetPlayerPosition()
+        private void ResetPlayerData()
         {
+            _player.ResetStatus();
             _player.transform.position = new Vector2(0, 0);
         }
 
