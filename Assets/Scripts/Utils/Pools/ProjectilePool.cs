@@ -1,11 +1,11 @@
-﻿using Assets.Scripts.Core.Components.Projectile;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Pool;
-
+﻿
 namespace Devic.Scripts.Utils.Pools
 {
+    using Assets.Scripts.Core.Components.Projectile;
+    using System.Collections.Generic;
+    using UnityEngine;
+    using UnityEngine.Pool;
+    
     public class ProjectilePool
     {
         // Collection checks will throw errors if we try to release an item that is already in the pool.

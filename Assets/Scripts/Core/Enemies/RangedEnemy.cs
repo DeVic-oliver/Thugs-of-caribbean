@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using UnityEngine;
-using Assets.Scripts.Core.Components.Weapon;
-using Assets.Scripts.Utils.SightRaycast._2D;
-
-namespace Assets.Scripts.Core.Enemies
+﻿namespace Assets.Scripts.Core.Enemies
 {
+    using UnityEngine;
+    using Assets.Scripts.Core.Components.Weapon;
+    using Assets.Scripts.Utils.SightRaycast._2D;
+
     [RequireComponent(typeof(RangedWeapon))]
     public abstract class RangedEnemy : EnemyBase
     {

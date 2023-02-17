@@ -1,13 +1,11 @@
-﻿using Assets.Scripts.Core.Components.Projectile;
-using Assets.Scripts.Core.Components.Weapon;
-using Assets.Scripts.Core.Enemies;
-using Assets.Scripts.Player;
-using UnityEngine;
-using System.Collections;
-
-
-namespace Assets.Scripts.Weapons.Guns.Projectiles
+﻿namespace Assets.Scripts.Weapons.Guns.Projectiles
 {
+    using Assets.Scripts.Core.Components.Projectile;
+    using Assets.Scripts.Core.Components.Weapon;
+    using Assets.Scripts.Player;
+    using UnityEngine;
+    using System.Collections;
+
     public class EnemyCannonBall : Projectile
     {
 

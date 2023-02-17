@@ -1,12 +1,10 @@
-using Assets.Scripts.Core.Interfaces;
-using Devic.Scripts.Utils.Pools;
-using System.Collections;
-using System.Security;
-using Unity.VisualScripting;
-using UnityEngine;
-
 namespace Assets.Scripts.Core.Components.Projectile
 {
+    using Assets.Scripts.Core.Interfaces;
+    using Devic.Scripts.Utils.Pools;
+    using System.Collections;
+    using UnityEngine;
+
     public abstract class Projectile : MonoBehaviour
     {
         [SerializeField] protected float _projectileSpeed;

@@ -1,10 +1,9 @@
-using Assets.Scripts.Core.Components.Counters;
-using Assets.Scripts.Core.Enemies;
-using Assets.Scripts.Core.Interfaces;
-using UnityEngine;
-
 namespace Assets.Scripts.Enemies.Ships
 {
+    using Assets.Scripts.Core.Components.Counters;
+    using Assets.Scripts.Core.Enemies;
+    using Assets.Scripts.Core.Interfaces;
+    
     public class Shooter : RangedEnemy, IDamageable, IMoveable, IScoreable
     {
         public bool InstanceScored { get; set; }

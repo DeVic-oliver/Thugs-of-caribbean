@@ -1,10 +1,10 @@
-﻿using Assets.Scripts.Core.Components.Projectile;
-using Devic.Scripts.Utils.Pools;
-using System.Collections;
-using UnityEngine;
-
-namespace Assets.Scripts.Weapons.Guns
+﻿namespace Assets.Scripts.Weapons.Guns
 {
+    using Assets.Scripts.Core.Components.Projectile;
+    using Devic.Scripts.Utils.Pools;
+    using System.Collections;
+    using UnityEngine;
+
     public abstract class GunBase : MonoBehaviour
     {
         

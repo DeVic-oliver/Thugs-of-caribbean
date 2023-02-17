@@ -1,10 +1,9 @@
-﻿using Assets.Scripts.Core.Components.Projectile;
-using System;
-using System.Collections;
-using UnityEngine;
-
-namespace Assets.Scripts.Weapons.Guns
+﻿namespace Assets.Scripts.Weapons.Guns
 {
+    using Assets.Scripts.Core.Components.Projectile;
+    using System;
+    using UnityEngine;
+
     public class Shotgun : GunBase
     {
         [SerializeField] private float _spreadAngle = 5;

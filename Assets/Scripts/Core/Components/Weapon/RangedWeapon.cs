@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using UnityEngine;
-
-namespace Assets.Scripts.Core.Components.Weapon
+﻿namespace Assets.Scripts.Core.Components.Weapon
 {
+    using System.Collections;
+    using UnityEngine;
     using Assets.Scripts.Core.Components.Projectile;
     using Devic.Scripts.Utils.Pools;
 
