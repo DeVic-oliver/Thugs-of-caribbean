@@ -5051,7 +5051,7 @@ MonoBehaviour:
   _damageComponent: {fileID: 977742416}
   _rotationSlerpStep: 2
   _moveSpeed: 2
-  _attackDamage: 90
+  _attackDamage: 20
 --- !u!114 &977742416
 MonoBehaviour:
   m_ObjectHideFlags: 0

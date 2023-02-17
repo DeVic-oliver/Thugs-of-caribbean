@@ -58,7 +58,7 @@ MonoBehaviour:
   _enemyScoreValue: 5
   _timeToDisapearAfterDeath: 2.5
   EnemyGameObject: {fileID: 0}
-  _rangeDetection: 15
+  _rangeDetection: 20
   _damageComponent: {fileID: 6087223713285697727}
   _rotationSlerpStep: 2
 --- !u!114 &5959720903335747994
