@@ -33,7 +33,7 @@ namespace Assets.Scripts.Core.Components.Damage
 
         public void FlashShader()
         {
-            if (_currentColorTween == null)
+            if (!_currentColorTween.IsActive())
             {
                 _currentColorTween = _renderer.DOColor(_damageFeedbackColor, _flashSpeed).SetLoops(2, LoopType.Yoyo);
             }

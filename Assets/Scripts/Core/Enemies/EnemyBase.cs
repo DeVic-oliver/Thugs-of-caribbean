@@ -1,11 +1,9 @@
-﻿using DG.Tweening;
-using System.Collections;
-using UnityEngine;
-using Assets.Scripts.Core.Components.Damage;
-using System;
-
-namespace Assets.Scripts.Core.Enemies
+﻿namespace Assets.Scripts.Core.Enemies
 {
+    using System.Collections;
+    using UnityEngine;
+    using Assets.Scripts.Core.Components.Damage;
+
     [RequireComponent(typeof(DamageComponent), typeof(EnemyHealth))]
     public abstract class EnemyBase : MonoBehaviour
     {
