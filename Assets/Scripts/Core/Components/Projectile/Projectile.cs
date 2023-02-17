@@ -42,11 +42,11 @@ namespace Assets.Scripts.Core.Components.Projectile
             StartOnBackToPool();
         }
 
-        private void StartOnBackToPool()
+        protected virtual void StartOnBackToPool()
         {
             StartCoroutine("TimerToBackPool");
         }
-        IEnumerator TimerToBackPool()
+        protected virtual IEnumerator TimerToBackPool()
         {
             float count = 0;
             while (count <= _timeToBackPool)
