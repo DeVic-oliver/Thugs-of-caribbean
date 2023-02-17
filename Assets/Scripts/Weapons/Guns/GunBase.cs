@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Core.Components.Projectile;
+using Devic.Scripts.Utils.Pools;
 using System.Collections;
 using UnityEngine;
 
@@ -19,6 +20,13 @@ namespace Assets.Scripts.Weapons.Guns
 
         public float AmmoInMagazinePercentage { get; private set; }
 
+        protected ProjectilePool _pool;
+
+        private void Awake()
+        {
+            _pool = new(_bulletType);
+        }
+
         protected void Start()
         {
             IsReloading = false;
@@ -30,7 +38,6 @@ namespace Assets.Scripts.Weapons.Guns
         {
             return _currentMagazineAmount;
         }
-
 
         public virtual void Shoot()
         {
@@ -56,9 +63,13 @@ namespace Assets.Scripts.Weapons.Guns
         }
         protected virtual void CreateBullet()
         {
-            var bullet = Instantiate(_bulletType);
-            bullet.transform.position = _gunBarrel.position;
-            bullet.transform.rotation = _gunBarrel.rotation;
+            var bullet = _pool.GetProjectileFromPool();
+            bullet.transform.position = transform.position;
+            bullet.transform.rotation = transform.rotation;
+            if (bullet.MyPool == null)
+            {
+                bullet.MyPool = _pool;
+            }
         }
         protected void DecreaseMagazineAmmo()
         {
@@ -85,7 +96,6 @@ namespace Assets.Scripts.Weapons.Guns
             }
             ReloadMagazine();
             IsReloading = false;
-            Debug.Log($"Gun fully reloaded: {_currentMagazineAmount} ammo in magazine");
             yield break;
         }
         private void ReloadMagazine()

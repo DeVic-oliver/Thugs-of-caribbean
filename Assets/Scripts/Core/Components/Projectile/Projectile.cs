@@ -1,6 +1,8 @@
 using Assets.Scripts.Core.Interfaces;
+using Devic.Scripts.Utils.Pools;
 using System.Collections;
 using System.Security;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.Scripts.Core.Components.Projectile
@@ -10,6 +12,9 @@ namespace Assets.Scripts.Core.Components.Projectile
         [SerializeField] protected float _projectileSpeed;
         [SerializeField] protected int _damage;
         [SerializeField] protected SpriteRenderer _sprite;
+        [SerializeField] protected float _timeToBackPool = 1.5f;
+
+        public ProjectilePool MyPool;
 
 
         protected virtual void Update()
@@ -28,7 +33,28 @@ namespace Assets.Scripts.Core.Components.Projectile
             if (damageable != null)
             {
                 damageable.TakeDamage(_damage);
+                MyPool.BackToPool(this);
             }
+        }
+
+        private void OnEnable()
+        {
+            StartOnBackToPool();
+        }
+
+        private void StartOnBackToPool()
+        {
+            StartCoroutine("TimerToBackPool");
+        }
+        IEnumerator TimerToBackPool()
+        {
+            float count = 0;
+            while (count <= _timeToBackPool)
+            {
+                count += Time.deltaTime;
+                yield return null;
+            }
+            MyPool.BackToPool(this);
         }
     }
 }
