@@ -67,5 +67,13 @@ namespace Devic.Scripts.Utils.Pools
             m_Pool.Release(projectileToBack);
         }
 
+        public void SetProjectilPoolIfItHasNone(Projectile projectile)
+        {
+            if (projectile.MyPool == null)
+            {
+                projectile.MyPool = this;
+            }
+        }
+
     }
 }
