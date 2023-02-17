@@ -1,5 +1,4 @@
-﻿
-namespace Devic.Scripts.Utils.Pools
+﻿namespace Devic.Scripts.Utils.Pools
 {
     using Assets.Scripts.Core.Components.Projectile;
     using System.Collections.Generic;
