@@ -5253,8 +5253,6 @@ MonoBehaviour:
   _ammoAmount: {fileID: 0}
   _mainGun: {fileID: 6838194502728812826}
   _gun2: {fileID: 6838194504584752732}
-  _gun3: {fileID: 0}
-  _gun4: {fileID: 0}
 --- !u!1 &6838194503641111852
 GameObject:
   m_ObjectHideFlags: 0
@@ -5356,7 +5354,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6838194504515409350}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.1200001, y: -4.4795866, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -5471,7 +5469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 6
-  _rotateSpeed: 100
+  _rotateSpeed: 250
 --- !u!114 &6838194504582583547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5484,7 +5482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a84c3f286a81ba45ae9b7088c3d8f86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 999
+  _health: 100
 --- !u!50 &6838194504582583544
 Rigidbody2D:
   serializedVersion: 4
