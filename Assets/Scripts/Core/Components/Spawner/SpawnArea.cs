@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using Unity.VisualScripting;
-using UnityEngine;
-
-namespace Assets.Scripts.Core.Components.Spawner
+﻿namespace Assets.Scripts.Core.Components.Spawner
 {
+    using UnityEngine;
+    
     public class SpawnArea : MonoBehaviour
     {
         public bool IsInvisible { get; private set; }
