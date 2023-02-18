@@ -8,6 +8,24 @@ namespace Assets.Scripts.Core.Components.Spawner
     {
         public bool IsInvisible { get; private set; }
 
+        private Renderer _renderer;
+
+        private void Awake()
+        {
+            _renderer = GetComponent<Renderer>();
+        }
+
+        private void Start()
+        {
+            CheckIfIsInvisibleByCamera();
+        }
+        private void CheckIfIsInvisibleByCamera()
+        {
+            if (!_renderer.isVisible)
+            {
+                IsInvisible = true;
+            }
+        }
 
         private void OnBecameVisible()
         {
