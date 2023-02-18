@@ -1341,8 +1341,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Settings
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 548bcf29164e4ca4490b373b19d55905, type: 2}
+  m_sharedMaterial: {fileID: 7132739601731684592, guid: 548bcf29164e4ca4490b373b19d55905, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1586,7 +1586,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 12.851856}
+  m_AnchoredPosition: {x: 0, y: 12.851868}
   m_SizeDelta: {x: -330.4454, y: -135.41629}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &830530770
@@ -3268,8 +3268,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 548bcf29164e4ca4490b373b19d55905, type: 2}
+  m_sharedMaterial: {fileID: 7132739601731684592, guid: 548bcf29164e4ca4490b373b19d55905, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3513,8 +3513,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -84.8}
-  m_SizeDelta: {x: 484.65, y: 50}
+  m_AnchoredPosition: {x: 0, y: -200}
+  m_SizeDelta: {x: 988.715, y: 169.3597}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &2143810463
 MonoBehaviour:
@@ -3538,8 +3538,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Thugs of caribbean
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 548bcf29164e4ca4490b373b19d55905, type: 2}
+  m_sharedMaterial: {fileID: 7132739601731684592, guid: 548bcf29164e4ca4490b373b19d55905, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3563,8 +3563,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 80
+  m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
