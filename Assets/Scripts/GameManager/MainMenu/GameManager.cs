@@ -29,12 +29,6 @@
         [Header("Audio")]
         [SerializeField] private UIAudioManagerBase _uiAudioManager;
 
-
-        private void Awake()
-        {
-            _uiAudioManager = GetComponent<UIAudioManagerBase>();
-        }
-
         private void Start()
         {
             _settingsUI.SetActive(false);
