@@ -43,15 +43,18 @@
         {
             if(PlayerPrefs.GetInt("TIMER_LIMIT") == 0 || PlayerPrefs.GetInt("ENEMEIS_SPAWN_INTERVAL") == 0 )
             {
-                PlayerPrefs.SetInt("TIMER_LIMIT", (int)_gameTimeLimitSlider.value);
-                PlayerPrefs.SetInt("ENEMEIS_SPAWN_INTERVAL", (int)_enemySpawnIntervalSlider.value);
+                SavePlayerPrefs();
             }
         }
         private void SaveSettings()
         {
+            SavePlayerPrefs();
+            _settingsUI.SetActive(false);
+        }
+        private void SavePlayerPrefs()
+        {
             PlayerPrefs.SetInt("TIMER_LIMIT", (int)_gameTimeLimitSlider.value);
             PlayerPrefs.SetInt("ENEMEIS_SPAWN_INTERVAL", (int)_enemySpawnIntervalSlider.value);
-            _settingsUI.SetActive(false);
         }
         private void OpenSettings()
         {
