@@ -1,5 +1,6 @@
 namespace Assets.Scripts.Core.Components.Projectile
 {
+    using Assets.Scripts.Core.Components._2DComponents;
     using Assets.Scripts.Core.Interfaces;
     using Devic.Scripts.Utils.Pools;
     using System.Collections;
@@ -13,6 +14,11 @@ namespace Assets.Scripts.Core.Components.Projectile
         [SerializeField] protected float _timeToBackPool = 1.5f;
 
         public ProjectilePool MyPool;
+
+        [Header("Audio Setup")]
+        [SerializeField] protected AudioClip _firedAudio;
+        [SerializeField] protected AudioClip _impactAudio;
+        [SerializeField] protected AudioSource _source;
 
 
         protected virtual void Update()
