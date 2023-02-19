@@ -4,6 +4,7 @@
     using UnityEngine;
     using UnityEngine.UI;
     using UnityEngine.SceneManagement;
+    using Assets.Scripts.Core.Components.Audio;
 
     public class GameOverState : IConcreteState
     {
@@ -14,7 +15,9 @@
 
         private int _mainMenuSceneIndex = 0;
 
-        public GameOverState(GameObject gameoverUI, Button restartButton, Button exitButton)
+        private UIAudioManagerBase _uiAudioManager;
+
+        public GameOverState(GameObject gameoverUI, Button restartButton, Button exitButton, UIAudioManagerBase uiAudioManager)
         {
             _gameOverUI = gameoverUI;
             _restartButton = restartButton;
@@ -22,13 +25,18 @@
 
             _restartButton.onClick.AddListener(RestartGame);
             _exitButton.onClick.AddListener(ExitGame);
+            _uiAudioManager = uiAudioManager;
+
         }
         private void RestartGame()
         {
+            _uiAudioManager.PlayButtonClick();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         private void ExitGame()
         {
+            _uiAudioManager.PlayButtonClick();
+
             SceneManager.LoadScene(_mainMenuSceneIndex);
         }
 

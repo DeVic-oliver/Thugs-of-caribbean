@@ -4,6 +4,9 @@
     using UnityEngine.UI;
     using UnityEngine.SceneManagement;
     using TMPro;
+    using Assets.Scripts.Core.Components.Audio;
+    using System.Collections;
+
     public class GameManager : MonoBehaviour
     {
         [SerializeField] private int _initialLevelIndex;
@@ -22,11 +25,15 @@
         [Space(5f)]
         [SerializeField] private Slider _gameTimeLimitSlider;
         [SerializeField] private TextMeshProUGUI _gameTimeLimitCounterUI;
+        [Space(5f)]
+        [Header("Audio")]
+        [SerializeField] private UIAudioManagerBase _uiAudioManager;
 
         private void Start()
         {
             _settingsUI.SetActive(false);
             InitEventListenersOnButtons();
+            InitSliderInvoke();
         }
         private void InitEventListenersOnButtons()
         {
@@ -34,10 +41,23 @@
             _settingsButton.onClick.AddListener(OpenSettings);
             _saveSettingsButton.onClick.AddListener(SaveSettings);
         }
+        private void InitSliderInvoke()
+        {
+            _enemySpawnIntervalSlider.onValueChanged.AddListener(delegate { _uiAudioManager.PlaySliderSound(); });
+            _gameTimeLimitSlider.onValueChanged.AddListener(delegate { _uiAudioManager.PlaySliderSound(); });
+        }
+
         private void PlayGame()
         {
             CheckIfSettingsWasSaved();
+            StartCoroutine("LoadGameAfterClickSound");
+        }
+        private IEnumerator LoadGameAfterClickSound()
+        {
+            _uiAudioManager.PlayButtonClick();
+            yield return new WaitForSeconds(_uiAudioManager.ButtonClick.length);
             SceneManager.LoadScene(_initialLevelIndex);
+
         }
         private void CheckIfSettingsWasSaved()
         {
@@ -49,6 +69,7 @@
         private void SaveSettings()
         {
             SavePlayerPrefs();
+            _uiAudioManager.PlayButtonClick();
             _settingsUI.SetActive(false);
         }
         private void SavePlayerPrefs()
@@ -58,6 +79,7 @@
         }
         private void OpenSettings()
         {
+            _uiAudioManager.PlayButtonClick();
             _settingsUI.SetActive(true);
         }
 

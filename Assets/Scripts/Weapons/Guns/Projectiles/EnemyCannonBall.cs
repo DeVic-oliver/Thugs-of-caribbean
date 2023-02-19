@@ -15,10 +15,14 @@
             if (player != null)
             {
                 player.TakeDamage(_damage);
-                _projectileSpeed = 0;
-                _sprite.enabled = false;
-                RangedWeapon.Pool.BackToPool(this);
+                DisableComponents();
+                _source.PlayOneShot(_impactAudio);
+                _explosion.PlaySpriteExplosition();
             }
+        }
+        protected override void OnEnable()
+        {
+            StartCoroutine("TimerToBackPool");
         }
         protected override IEnumerator TimerToBackPool()
         {

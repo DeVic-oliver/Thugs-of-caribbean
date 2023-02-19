@@ -1,5 +1,6 @@
 namespace Assets.Scripts.Core.Components.Projectile
 {
+    using Assets.Scripts.Core.Components._2DComponents;
     using Assets.Scripts.Core.Interfaces;
     using Devic.Scripts.Utils.Pools;
     using System.Collections;
@@ -7,13 +8,29 @@ namespace Assets.Scripts.Core.Components.Projectile
 
     public abstract class Projectile : MonoBehaviour
     {
-        [SerializeField] protected float _projectileSpeed;
-        [SerializeField] protected int _damage;
-        [SerializeField] protected SpriteRenderer _sprite;
-        [SerializeField] protected float _timeToBackPool = 1.5f;
+        [SerializeField] protected Explosion _explosion;
 
+        [SerializeField] protected float _projectileSpeed;
+        protected float _speed;
+        [SerializeField] protected int _damage;
+        [SerializeField] protected SpriteRenderer _renderer;
+        [SerializeField] protected float _timeToBackPool = 1.5f;
         public ProjectilePool MyPool;
 
+        [Header("Audio Setup")]
+        [SerializeField] protected AudioClip _firedAudio;
+        [SerializeField] protected AudioClip _impactAudio;
+        [SerializeField] protected AudioSource _source;
+
+        private Collider2D _collider;
+
+        protected virtual void Awake()
+        {
+            _speed = _projectileSpeed;
+            _source.clip = _firedAudio;
+            _collider = GetComponent<Collider2D>();
+            _source = GetComponent<AudioSource>();
+        }
 
         protected virtual void Update()
         {
@@ -22,7 +39,7 @@ namespace Assets.Scripts.Core.Components.Projectile
         
         protected virtual void LaunchProjectile()
         {
-            transform.Translate(Vector3.up * _projectileSpeed * Time.deltaTime);
+            transform.Translate(Vector3.up * _speed * Time.deltaTime);
         }
 
         protected virtual void OnTriggerEnter2D(Collider2D other)
@@ -31,13 +48,29 @@ namespace Assets.Scripts.Core.Components.Projectile
             if (damageable != null)
             {
                 damageable.TakeDamage(_damage);
-                MyPool.BackToPool(this);
+                DisableComponents();
+                _source.PlayOneShot(_impactAudio);
+                _explosion.PlaySpriteExplosition();
             }
         }
-
-        private void OnEnable()
+        protected void DisableComponents()
         {
+            _collider.enabled = false;
+            _renderer.enabled = false;
+            _speed = 0;
+        }
+
+        protected virtual void OnEnable()
+        {
+            EnableComponents();
             StartOnBackToPool();
+        }
+        private void EnableComponents()
+        {
+            _speed = _projectileSpeed;
+            _renderer.enabled = true;
+            _collider.enabled = true;
+            _source.clip = _firedAudio;
         }
 
         protected virtual void StartOnBackToPool()
