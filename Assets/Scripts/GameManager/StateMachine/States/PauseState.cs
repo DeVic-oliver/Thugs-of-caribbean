@@ -5,6 +5,8 @@
     using UnityEngine.InputSystem;
     using UnityEngine.UI;
     using UnityEngine.SceneManagement;
+    using Assets.Scripts.Core.Components.Audio;
+    using System.Collections;
 
     public class PauseState : IConcreteState
     {
@@ -16,8 +18,9 @@
         private GameObject _pauseMenu;
         private bool _canGoToGameplayState;
         private int _mainMenuSceneIndex = 0;
+        private UIAudioManagerBase _uiAudioManager;
 
-        public PauseState(PlayerInput inputSystem, GameObject pauseMenu, Button resumeButton, Button exitButton)
+        public PauseState(PlayerInput inputSystem, GameObject pauseMenu, Button resumeButton, Button exitButton, UIAudioManagerBase uiAudioManager)
         {
             _inputSystem = inputSystem;
             _pauseAction = _inputSystem.actions.FindAction("Pause");
@@ -27,6 +30,7 @@
             _exitButton = exitButton;
             _exitButton.onClick.AddListener(ExitGame);
             AllowGoToPlayStateByActionsPerformed();
+            _uiAudioManager = uiAudioManager;
         }
         private void AllowGoToPlayStateByActionsPerformed()
         {
@@ -35,16 +39,17 @@
 
         private void ResumeGame()
         {
+            _uiAudioManager.PlayButtonClick();
             _canGoToGameplayState = true;
         }
         private void ExitGame()
         {
+            _uiAudioManager.PlayButtonClick();
             SceneManager.LoadScene(_mainMenuSceneIndex);
         }
 
         public void OnStateEnter(StateMachine stateMachine)
         {
-            Debug.Log("WELCOME TO PAUSE STATE");
             InitStateMachineIfItsNull(stateMachine);
             _canGoToGameplayState = false;
             PauseGame();
