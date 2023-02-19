@@ -9,6 +9,7 @@ namespace Assets.Scripts.Core.Components.Projectile
     public abstract class Projectile : MonoBehaviour
     {
         [SerializeField] protected float _projectileSpeed;
+        protected float _speed;
         [SerializeField] protected int _damage;
         [SerializeField] protected SpriteRenderer _sprite;
         [SerializeField] protected float _timeToBackPool = 1.5f;
@@ -37,7 +38,7 @@ namespace Assets.Scripts.Core.Components.Projectile
         
         protected virtual void LaunchProjectile()
         {
-            transform.Translate(Vector3.up * _projectileSpeed * Time.deltaTime);
+            transform.Translate(Vector3.up * _speed * Time.deltaTime);
         }
 
         protected virtual void OnTriggerEnter2D(Collider2D other)
