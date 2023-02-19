@@ -20,6 +20,10 @@
                 _explosion.PlaySpriteExplosition();
             }
         }
+        protected override void OnEnable()
+        {
+            StartCoroutine("TimerToBackPool");
+        }
         protected override IEnumerator TimerToBackPool()
         {
             float count = 0;

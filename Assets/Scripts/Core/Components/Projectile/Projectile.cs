@@ -8,12 +8,13 @@ namespace Assets.Scripts.Core.Components.Projectile
 
     public abstract class Projectile : MonoBehaviour
     {
+        [SerializeField] protected Explosion _explosion;
+
         [SerializeField] protected float _projectileSpeed;
         protected float _speed;
         [SerializeField] protected int _damage;
-        [SerializeField] protected SpriteRenderer _sprite;
+        [SerializeField] protected SpriteRenderer _renderer;
         [SerializeField] protected float _timeToBackPool = 1.5f;
-
         public ProjectilePool MyPool;
 
         [Header("Audio Setup")]
@@ -59,7 +60,6 @@ namespace Assets.Scripts.Core.Components.Projectile
             _speed = 0;
         }
 
-        private void OnEnable()
         protected virtual void OnEnable()
         {
             EnableComponents();
