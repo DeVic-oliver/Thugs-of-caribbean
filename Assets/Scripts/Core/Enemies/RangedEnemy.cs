@@ -28,7 +28,7 @@
         {
             _isEnemyOnSight = SightRaycaster2D.CheckGameObjectOnSight(transform, _rangeDetection, _enemyLayerMask);
 
-            if (CheckIfEnemyIsNearby() && _isEnemyOnSight)
+            if (CheckIfEnemyIsNearby() && _isEnemyOnSight && _health.IsAlive)
             {
                 _isShooting = true;
                 _weapon.Shoot();
