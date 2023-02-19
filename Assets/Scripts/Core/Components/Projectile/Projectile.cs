@@ -20,6 +20,15 @@ namespace Assets.Scripts.Core.Components.Projectile
         [SerializeField] protected AudioClip _impactAudio;
         [SerializeField] protected AudioSource _source;
 
+        private Collider2D _collider;
+
+        protected virtual void Awake()
+        {
+            _speed = _projectileSpeed;
+            _source.clip = _firedAudio;
+            _collider = GetComponent<Collider2D>();
+            _source = GetComponent<AudioSource>();
+        }
 
         protected virtual void Update()
         {
@@ -37,13 +46,30 @@ namespace Assets.Scripts.Core.Components.Projectile
             if (damageable != null)
             {
                 damageable.TakeDamage(_damage);
-                MyPool.BackToPool(this);
+                DisableComponents();
+                _source.PlayOneShot(_impactAudio);
+                _explosion.PlaySpriteExplosition();
             }
+        }
+        protected void DisableComponents()
+        {
+            _collider.enabled = false;
+            _renderer.enabled = false;
+            _speed = 0;
         }
 
         private void OnEnable()
+        protected virtual void OnEnable()
         {
+            EnableComponents();
             StartOnBackToPool();
+        }
+        private void EnableComponents()
+        {
+            _speed = _projectileSpeed;
+            _renderer.enabled = true;
+            _collider.enabled = true;
+            _source.clip = _firedAudio;
         }
 
         protected virtual void StartOnBackToPool()
