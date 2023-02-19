@@ -1,5 +1,6 @@
 ﻿namespace Assets.Scripts.Core.Components.Audio
 {
+    using System.Collections;
     using UnityEngine;
 
     [RequireComponent(typeof(AudioSource))]
@@ -14,6 +15,7 @@
         public AudioClip CloseSound { get { return _closeSound; }}
 
         [SerializeField] private AudioClip _sliderSound;
+
 
 
         private void Awake()
