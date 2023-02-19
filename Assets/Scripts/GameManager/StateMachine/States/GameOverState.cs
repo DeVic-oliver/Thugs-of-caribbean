@@ -36,7 +36,7 @@
         private void ExitGame()
         {
             _uiAudioManager.PlayButtonClick();
-
+            Time.timeScale = 1;
             SceneManager.LoadScene(_mainMenuSceneIndex);
         }
 
