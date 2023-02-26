@@ -16250,7 +16250,7 @@ GameObject:
   - component: {fileID: 1238321784}
   m_Layer: 0
   m_Name: MainCamera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135262,7 +135262,7 @@ GameObject:
   - component: {fileID: 2100948644}
   m_Layer: 0
   m_Name: Islands
-  m_TagString: island
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -143152,10 +143152,6 @@ PrefabInstance:
     - target: {fileID: 6838194504582583549, guid: 990b0900e0122fe49abc2508e3d36b5d, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 6838194504582583550, guid: 990b0900e0122fe49abc2508e3d36b5d, type: 3}
-      propertyPath: _rotateSpeed
-      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 990b0900e0122fe49abc2508e3d36b5d, type: 3}
