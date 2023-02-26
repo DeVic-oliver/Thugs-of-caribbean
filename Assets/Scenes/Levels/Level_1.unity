@@ -132,7 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 16667767}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ocean Obstacles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1111,7 +1111,7 @@ GameObject:
   - component: {fileID: 425700130}
   - component: {fileID: 425700129}
   - component: {fileID: 425700128}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bridges
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1977,7 +1977,7 @@ GameObject:
   - component: {fileID: 504873874}
   - component: {fileID: 504873876}
   - component: {fileID: 504873875}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Island Waves
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12244,7 +12244,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 671726227}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Island
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13081,7 +13081,7 @@ GameObject:
   - component: {fileID: 1116836346}
   - component: {fileID: 1116836348}
   - component: {fileID: 1116836347}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Islands artifacts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16250,7 +16250,7 @@ GameObject:
   - component: {fileID: 1238321784}
   m_Layer: 0
   m_Name: MainCamera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16366,7 +16366,7 @@ GameObject:
   - component: {fileID: 1247592306}
   - component: {fileID: 1247592308}
   - component: {fileID: 1247592307}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ocean
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110427,7 +110427,7 @@ GameObject:
   - component: {fileID: 1298692806}
   - component: {fileID: 1298692808}
   - component: {fileID: 1298692807}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bridges without collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112343,7 +112343,7 @@ GameObject:
   - component: {fileID: 1435620428}
   - component: {fileID: 1435620427}
   - component: {fileID: 1435620426}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rocks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135005,7 +135005,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1942173957}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135260,9 +135260,9 @@ GameObject:
   - component: {fileID: 2100948643}
   - component: {fileID: 2100948645}
   - component: {fileID: 2100948644}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Islands
-  m_TagString: island
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -143152,10 +143152,6 @@ PrefabInstance:
     - target: {fileID: 6838194504582583549, guid: 990b0900e0122fe49abc2508e3d36b5d, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 6838194504582583550, guid: 990b0900e0122fe49abc2508e3d36b5d, type: 3}
-      propertyPath: _rotateSpeed
-      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 990b0900e0122fe49abc2508e3d36b5d, type: 3}

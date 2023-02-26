@@ -9,10 +9,10 @@ namespace Assets.Scripts.Player
         private PlayerHealth _health;
 
         [SerializeField] private float _moveSpeed = 6;
-        [SerializeField] private float _rotateSpeed = 130f;
+        [SerializeField] private float _rotateSpeed = 2f;
 
         private Rigidbody2D _rigidbody;
-
+        private float _rotationAngleOffset = 90f;
 
         void Start()
         {
@@ -22,28 +22,30 @@ namespace Assets.Scripts.Player
 
         void Update()
         {
-            Move(_health.IsAlive);         
+            Move(_health.IsAlive);
         }
         public void Move(bool isAlive)
         {
             if (isAlive)
             {
-                SetPlayerRotation();
+                RotatePlayerByMousePosition();
             }
         }
-        private void SetPlayerRotation()
+        private void RotatePlayerByMousePosition()
         {
-            Vector3 eulers = GetRotationVector();
-            transform.Rotate(eulers);
+            float angle = GetRotateAngle();
+            transform.rotation = GetSlerpedQuaternionOfPlayerToMousePosition(angle);
         }
-        private Vector3 GetRotationVector()
+        private float GetRotateAngle()
         {
-            float inputValue = GetHorizontalAxisOpositeValue();
-            return new Vector3(0, 0, inputValue * Time.deltaTime * _rotateSpeed);
+            Vector2 diffVector = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            diffVector.Normalize();
+            return Mathf.Atan2(diffVector.y, diffVector.x) * Mathf.Rad2Deg;
         }
-        private float GetHorizontalAxisOpositeValue()
+        private Quaternion GetSlerpedQuaternionOfPlayerToMousePosition(float angle) 
         {
-            return -Input.GetAxis("Horizontal");
+            Quaternion rotation = Quaternion.Euler(0, 0, angle - _rotationAngleOffset);
+            return Quaternion.Slerp(transform.rotation, rotation, 1f * Time.deltaTime * _rotateSpeed);
         }
 
         private void FixedUpdate()
