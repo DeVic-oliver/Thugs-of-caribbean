@@ -4,6 +4,7 @@
     using Devic.Scripts.Utils.Pools;
     using System.Collections;
     using UnityEngine;
+    using UnityEngine.UI;
 
     public abstract class GunBase : MonoBehaviour
     {
@@ -15,6 +16,7 @@
 
         [SerializeField] protected Transform _gunBarrel;
         [SerializeField] protected Projectile _bulletType;
+        [SerializeField] protected Sprite _bulletTypeSprite;
 
         public bool IsReloading { get; private set; }
 
@@ -50,6 +52,11 @@
         public int GetMagazineAmmoAmount()
         {
             return _currentMagazineAmount;
+        }
+
+        public Sprite GetProjectileSprite()
+        {
+            return _bulletTypeSprite;
         }
 
         public virtual void Shoot()

@@ -3,10 +3,14 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerGun : MonoBehaviour
 {
-    [SerializeField] private Image _ammoAmount;
+    [SerializeField] private Image _currentGunAmmoImage;
+    [SerializeField] private Image _currentGunAmmoImageBackground;
+
+    [SerializeField] private TextMeshProUGUI _ammoAmountUI;
 
     [SerializeField] private GunBase _mainGun;
     [SerializeField] private GunBase _gun2;
@@ -19,6 +23,8 @@ public class PlayerGun : MonoBehaviour
     {
         PopulatePlayerGuns();
         _currentGun = _guns[0];
+        _ammoAmountUI.text = _currentGun.GetMagazineAmmoAmount().ToString();
+        ChangeCurrentGunSprites();
     }
     private void PopulatePlayerGuns()
     {
@@ -28,12 +34,17 @@ public class PlayerGun : MonoBehaviour
 
     private void Update()
     {
+        UpdateAmmoAmountUI();
+    }
+    private void UpdateAmmoAmountUI()
+    {
+        _ammoAmountUI.text = _currentGun.GetMagazineAmmoAmount().ToString();
         FillAmmoImageWithMagazineAmount();
     }
 
     private void FillAmmoImageWithMagazineAmount()
     {
-        _ammoAmount.fillAmount = _currentGun.AmmoInMagazinePercentage;
+        _currentGunAmmoImage.fillAmount = _currentGun.AmmoInMagazinePercentage;
     }
 
     public void ChangeCurrentGun(InputAction.CallbackContext context)
@@ -42,8 +53,15 @@ public class PlayerGun : MonoBehaviour
         {
             int weaponIndex = Convert.ToInt32(context.control.name) - 1;
             _currentGun = GetGunFromArray(weaponIndex);
+            ChangeCurrentGunSprites();
         }
     }
+    private void ChangeCurrentGunSprites()
+    {
+        _currentGunAmmoImage.sprite = _currentGun.GetProjectileSprite();
+        _currentGunAmmoImageBackground.sprite = _currentGun.GetProjectileSprite();
+    }
+
     private GunBase GetGunFromArray(int index)
     {
         if (_guns[index] != null) 
