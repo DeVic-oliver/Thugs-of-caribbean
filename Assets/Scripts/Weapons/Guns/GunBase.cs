@@ -54,7 +54,7 @@
 
         public virtual void Shoot()
         {
-            if(MagazineHaveAmmo())
+            if(CheckIfMagazineHaveAmmo())
             {
                 CreateBullet();
                 DecreaseMagazineAmmo();
@@ -65,7 +65,7 @@
                 StartCoroutine(ReloadCoroutine());
             }
         }
-        public bool MagazineHaveAmmo()
+        public bool CheckIfMagazineHaveAmmo()
         {
             if(_currentMagazineAmount > 0)
             {
