@@ -54,7 +54,7 @@ namespace Assets.Scripts.Player
         }
         private void MoveRigidbodyIfIsAlive()
         {
-            if (_health.IsAlive && Input.GetKey(KeyCode.W))
+            if (_health.IsAlive && Input.GetKey(KeyCode.Space))
             {
                 
                 Vector2 dir = GetDirectionWherePlayerFaces();
@@ -63,8 +63,7 @@ namespace Assets.Scripts.Player
         }
         private Vector2 GetDirectionWherePlayerFaces()
         {
-              var value = Mathf.Abs(Input.GetAxis("Vertical"));
-              return transform.position + (value * transform.up * _moveSpeed * Time.deltaTime);
+              return transform.position + (transform.up * _moveSpeed * Time.deltaTime);
         }
 
         private void OnCollisionExit2D(Collision2D collision)

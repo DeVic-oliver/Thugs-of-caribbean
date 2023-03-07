@@ -4,6 +4,7 @@
     using Devic.Scripts.Utils.Pools;
     using System.Collections;
     using UnityEngine;
+    using UnityEngine.UI;
 
     public abstract class GunBase : MonoBehaviour
     {
@@ -15,6 +16,7 @@
 
         [SerializeField] protected Transform _gunBarrel;
         [SerializeField] protected Projectile _bulletType;
+        [SerializeField] protected Sprite _bulletTypeSprite;
 
         public bool IsReloading { get; private set; }
 
@@ -34,14 +36,32 @@
             SetPercentageOfMagazineAmount();
         }
 
+        protected virtual void Update()
+        {
+            AutoReloadIfNoAmmo();
+        }
+        private void AutoReloadIfNoAmmo()
+        {
+            if (!CheckIfMagazineHaveAmmo() && !IsReloading)
+            {
+                IsReloading = true;
+                StartCoroutine(ReloadCoroutine());
+            }
+        }
+
         public int GetMagazineAmmoAmount()
         {
             return _currentMagazineAmount;
         }
 
+        public Sprite GetProjectileSprite()
+        {
+            return _bulletTypeSprite;
+        }
+
         public virtual void Shoot()
         {
-            if(MagazineHaveAmmo())
+            if(CheckIfMagazineHaveAmmo())
             {
                 CreateBullet();
                 DecreaseMagazineAmmo();
@@ -52,7 +72,7 @@
                 StartCoroutine(ReloadCoroutine());
             }
         }
-        public bool MagazineHaveAmmo()
+        public bool CheckIfMagazineHaveAmmo()
         {
             if(_currentMagazineAmount > 0)
             {
