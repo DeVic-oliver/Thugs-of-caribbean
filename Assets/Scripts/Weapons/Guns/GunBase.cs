@@ -34,6 +34,19 @@
             SetPercentageOfMagazineAmount();
         }
 
+        protected virtual void Update()
+        {
+            AutoReloadIfNoAmmo();
+        }
+        private void AutoReloadIfNoAmmo()
+        {
+            if (!CheckIfMagazineHaveAmmo() && !IsReloading)
+            {
+                IsReloading = true;
+                StartCoroutine(ReloadCoroutine());
+            }
+        }
+
         public int GetMagazineAmmoAmount()
         {
             return _currentMagazineAmount;
