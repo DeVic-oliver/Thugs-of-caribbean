@@ -143105,6 +143105,10 @@ PrefabInstance:
       propertyPath: _ammoAmount
       value: 
       objectReference: {fileID: 813274744}
+    - target: {fileID: 6838194504582583547, guid: 990b0900e0122fe49abc2508e3d36b5d, type: 3}
+      propertyPath: _health
+      value: 170
+      objectReference: {fileID: 0}
     - target: {fileID: 6838194504582583548, guid: 990b0900e0122fe49abc2508e3d36b5d, type: 3}
       propertyPath: m_RootOrder
       value: 8
