@@ -9,6 +9,8 @@ public class PlayerGun : MonoBehaviour
 {
     [SerializeField] private Image _currentGunAmmoImage;
     [SerializeField] private Image _currentGunAmmoImageBackground;
+    [SerializeField] protected TextMeshProUGUI _ammoStatusText;
+    private bool _isAmmoTextDisplayed;
 
     [SerializeField] private TextMeshProUGUI _ammoAmountUI;
 
@@ -24,6 +26,7 @@ public class PlayerGun : MonoBehaviour
         PopulatePlayerGuns();
         _currentGun = _guns[0];
         _ammoAmountUI.text = _currentGun.GetMagazineAmmoAmount().ToString();
+        _isAmmoTextDisplayed = false;
         ChangeCurrentGunSprites();
     }
     private void PopulatePlayerGuns()
@@ -34,7 +37,20 @@ public class PlayerGun : MonoBehaviour
 
     private void Update()
     {
+        DisplayAmmoTextIfCurrentGunIsReloading();
         UpdateAmmoAmountUI();
+    }
+    private void DisplayAmmoTextIfCurrentGunIsReloading()
+    {
+        if(!_isAmmoTextDisplayed && _currentGun.IsReloading) 
+        {
+            _ammoStatusText.gameObject.SetActive(true);
+            _isAmmoTextDisplayed = true;
+        }else if (_isAmmoTextDisplayed && !_currentGun.IsReloading)
+        {
+            _ammoStatusText.gameObject.SetActive(false);
+            _isAmmoTextDisplayed = false;
+        }
     }
     private void UpdateAmmoAmountUI()
     {

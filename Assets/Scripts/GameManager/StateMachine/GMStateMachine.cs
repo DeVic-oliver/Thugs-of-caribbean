@@ -29,7 +29,9 @@ namespace Assets.Scripts.GameManager.StateMachine
 
         [Header("Pause State Dependencies")]
         [SerializeField] private GameObject _pauseMenu;
+        [SerializeField] private GameObject _controlsMural;
         [SerializeField] private Button _resumeButton;
+        [SerializeField] private Button _pauseControlsButton;
         [SerializeField] private Button _pauseExitButton;
 
         [Header("Gameover State Dependencies")]
@@ -47,7 +49,7 @@ namespace Assets.Scripts.GameManager.StateMachine
             Dictionary<string, IConcreteState> statesRegistered = new();
             statesRegistered.Add("START", StartState = new StartState(_gameTimer, _scoreCounter, _playerHealth, _enemySpawner));
             statesRegistered.Add("GAMEPLAY", Gameplay = new GamePlayState(_gameTimer, _playerHealth, _playerInputSystem, _pauseMenu, _enemySpawner));
-            statesRegistered.Add("PAUSE", Pause = new PauseState(_playerInputSystem, _pauseMenu, _resumeButton, _pauseExitButton, _uiAudioManager));
+            statesRegistered.Add("PAUSE", Pause = new PauseState(_playerInputSystem, _pauseMenu, _controlsMural, _resumeButton, _pauseControlsButton, _pauseExitButton, _uiAudioManager));
             statesRegistered.Add("GAMEOVER", Gameover = new GameOverState(_gameOverUI, _restartButton, _gameOverExitButton, _uiAudioManager));
 
             return statesRegistered;

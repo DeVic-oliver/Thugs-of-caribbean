@@ -13,14 +13,20 @@
         private StateMachine _machine;
         private PlayerInput _inputSystem;
         private InputAction _pauseAction;
+        #region buttons
         private Button _resumeButton;
+        private Button _controlsButton;
         private Button _exitButton;
+        #endregion
+        #region uiGameObjectes
         private GameObject _pauseMenu;
+        private GameObject _controlsMural;
+        #endregion
         private bool _canGoToGameplayState;
         private int _mainMenuSceneIndex = 0;
         private UIAudioManagerBase _uiAudioManager;
 
-        public PauseState(PlayerInput inputSystem, GameObject pauseMenu, Button resumeButton, Button exitButton, UIAudioManagerBase uiAudioManager)
+        public PauseState(PlayerInput inputSystem, GameObject pauseMenu, GameObject controlsMural, Button resumeButton, Button controlsButton, Button exitButton, UIAudioManagerBase uiAudioManager)
         {
             _inputSystem = inputSystem;
             _pauseAction = _inputSystem.actions.FindAction("Pause");
@@ -29,12 +35,15 @@
             _resumeButton.onClick.AddListener(ResumeGame);
             _exitButton = exitButton;
             _exitButton.onClick.AddListener(ExitGame);
+            _controlsMural = controlsMural;
+            _controlsButton = controlsButton;
+            _controlsButton.onClick.AddListener(ShowControls);
             AllowGoToPlayStateByActionsPerformed();
             _uiAudioManager = uiAudioManager;
         }
         private void AllowGoToPlayStateByActionsPerformed()
         {
-            _pauseAction.performed += ctx => _canGoToGameplayState = true;
+                _pauseAction.performed += ctx => _canGoToGameplayState = true;
         }
 
         private void ResumeGame()
@@ -47,6 +56,11 @@
             _uiAudioManager.PlayButtonClick();
             Time.timeScale = 1;
             SceneManager.LoadScene(_mainMenuSceneIndex);
+        }
+        private void ShowControls()
+        {
+            _uiAudioManager.PlayButtonClick();
+            _controlsMural.SetActive(true);
         }
 
         public void OnStateEnter(StateMachine stateMachine)
@@ -90,6 +104,7 @@
         {
             if (_canGoToGameplayState)
             {
+                _controlsMural.SetActive(false);
                 _machine.SwitchState("GAMEPLAY");
             }
         }
