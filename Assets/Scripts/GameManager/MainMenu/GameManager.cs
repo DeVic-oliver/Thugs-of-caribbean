@@ -11,7 +11,9 @@
     {
         [SerializeField] private int _initialLevelIndex;
         [SerializeField] private Button _playButton;
-        
+        [SerializeField] private GameObject _instructionsMuralUI;
+        [SerializeField] private float _delayToLoadGameplayScene = 2f;
+
         [Space(10f)]
         [Header("Settings setup")]
         [Space(5f)]
@@ -55,7 +57,8 @@
         private IEnumerator LoadGameAfterClickSound()
         {
             _uiAudioManager.PlayButtonClick();
-            yield return new WaitForSeconds(_uiAudioManager.ButtonClick.length);
+            _instructionsMuralUI.SetActive(true);
+            yield return new WaitForSeconds(_delayToLoadGameplayScene);
             SceneManager.LoadScene(_initialLevelIndex);
 
         }
