@@ -4,7 +4,7 @@
     using Devic.Scripts.Utils.Pools;
     using System.Collections;
     using UnityEngine;
-    using UnityEngine.UI;
+    using TMPro;
 
     public abstract class GunBase : MonoBehaviour
     {
@@ -40,7 +40,7 @@
         {
             AutoReloadIfNoAmmo();
         }
-        private void AutoReloadIfNoAmmo()
+        protected void AutoReloadIfNoAmmo()
         {
             if (!CheckIfMagazineHaveAmmo() && !IsReloading)
             {
