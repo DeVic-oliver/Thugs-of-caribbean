@@ -3773,8 +3773,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
-  m_fontSizeBase: 80
+  m_fontSize: 70
+  m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3867,9 +3867,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 367900172}
     m_Modifications:
+    - target: {fileID: 2492792937456334322, guid: a0754510457c9a546a93938a827e5115, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -48
+      objectReference: {fileID: 0}
+    - target: {fileID: 2492792938947764430, guid: a0754510457c9a546a93938a827e5115, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 700
+      objectReference: {fileID: 0}
+    - target: {fileID: 2492792938947764430, guid: a0754510457c9a546a93938a827e5115, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 2492792939019018634, guid: a0754510457c9a546a93938a827e5115, type: 3}
       propertyPath: m_Name
       value: Mural
+      objectReference: {fileID: 0}
+    - target: {fileID: 2492792939019018634, guid: a0754510457c9a546a93938a827e5115, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2492792939019018635, guid: a0754510457c9a546a93938a827e5115, type: 3}
       propertyPath: m_Pivot.x
