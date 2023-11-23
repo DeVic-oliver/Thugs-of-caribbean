@@ -6,7 +6,6 @@ using Assets.Scripts.Core.Components.Counters;
 
 namespace Assets.Scripts.Enemies.Ships
 {
-    public class Chaser : MeleeEnemy, IMoveable, IDamageable, IScoreable
     {
         public bool InstanceScored { get; set; }
 
