@@ -35,7 +35,6 @@
 
         public void OnStateEnter(StateMachine stateMachine)
         {
-            Debug.Log("WELCOME TO GAMEPLAY STATE");
             InitStateMachineIfItsNull(stateMachine);
             _canGoToPauseState = false;
             EnablePlayerInputActions();

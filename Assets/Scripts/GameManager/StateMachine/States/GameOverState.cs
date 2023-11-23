@@ -42,7 +42,6 @@
 
         public void OnStateEnter(StateMachine stateMachine)
         {
-            Debug.Log("WELCOME TO GAME OVER!!");
             Time.timeScale = 0;
             _canRestartGame = false;
             _gameOverUI.SetActive(true);
