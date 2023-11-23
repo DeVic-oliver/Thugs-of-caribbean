@@ -1,12 +1,11 @@
 ﻿namespace Assets.Scripts.GameManager.StateMachine
 { 
-    using Devic.Scripts.Utils.StateMachine;
     using UnityEngine;
     using UnityEngine.UI;
     using UnityEngine.SceneManagement;
     using Assets.Scripts.Core.Components.Audio;
 
-    public class GameOverState : IConcreteState
+    public class GameOverState : GameplayConcreteState
     {
         private GameObject _gameOverUI;
         private Button _restartButton;
@@ -40,23 +39,23 @@
             SceneManager.LoadScene(_mainMenuSceneIndex);
         }
 
-        public void OnStateEnter(StateMachine stateMachine)
+        public override void OnStateEnter(GameplayStateMachine GameplayStateMachine)
         {
             Time.timeScale = 0;
             _canRestartGame = false;
             _gameOverUI.SetActive(true);
         }
 
-        public void OnUpdateState(StateMachine stateMachine)
+        public override void OnUpdateState(GameplayStateMachine GameplayStateMachine)
         {
-            CheckIfCanGoToStartState(stateMachine);
+            CheckIfCanGoToStartState(GameplayStateMachine);
         }
-        private void CheckIfCanGoToStartState(StateMachine stateMachine)
+        private void CheckIfCanGoToStartState(GameplayStateMachine GameplayStateMachine)
         {
             if (_canRestartGame)
             {
                 _gameOverUI.SetActive(false);
-                stateMachine.SwitchState("START");
+                //GameplayStateMachine.SwitchState("START");
             }
         }
     }

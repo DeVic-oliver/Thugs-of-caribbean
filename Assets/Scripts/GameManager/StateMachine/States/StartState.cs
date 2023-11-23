@@ -3,10 +3,9 @@
     using Assets.Scripts.Core.Components.Counters;
     using Assets.Scripts.Core.Components.Spawner;
     using Assets.Scripts.Player;
-    using Devic.Scripts.Utils.StateMachine;
     using UnityEngine;
 
-    public class StartState : IConcreteState
+    public class StartState : GameplayConcreteState
     {
         private TimerCounter _gameTimer;
         private ScoreCounter _scoreCounter;
@@ -20,9 +19,8 @@
             _player = player;
             _enemySpawner = enemySpawner;
         }
-        public void OnStateEnter(StateMachine stateMachine)
+        public override void OnStateEnter(GameplayStateMachine GameplayStateMachine)
         {
-            Debug.Log("WELCOME TO START STATE");
             Time.timeScale = 1;
             _gameTimer.StartTimer();
             _scoreCounter.ResetScore();
@@ -36,9 +34,9 @@
             _player.transform.position = new Vector2(0, 0);
         }
 
-        public void OnUpdateState(StateMachine stateMachine)
+        public override void OnUpdateState(GameplayStateMachine GameplayStateMachine)
         {
-            stateMachine.SwitchState("GAMEPLAY");
+            //GameplayStateMachine.SwitchState("GAMEPLAY");
         }
     }
 }

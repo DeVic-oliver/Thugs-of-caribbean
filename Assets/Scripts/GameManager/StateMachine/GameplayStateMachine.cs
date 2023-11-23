@@ -1,21 +1,22 @@
 namespace Assets.Scripts.GameManager.StateMachine
 {
-    using System.Collections.Generic;
     using Assets.Scripts.Core.Components.Audio;
     using Assets.Scripts.Core.Components.Counters;
     using Assets.Scripts.Core.Components.Spawner;
     using Assets.Scripts.Player;
-    using Devic.Scripts.Utils.StateMachine;
     using UnityEngine;
     using UnityEngine.InputSystem;
     using UnityEngine.UI;
-    public class GMStateMachine : StateMachine
+
+    public class GameplayStateMachine : MonoBehaviour
     {
         #region STATES
-        public IConcreteState StartState;
-        public IConcreteState Gameplay;
-        public IConcreteState Pause;
-        public IConcreteState Gameover;
+        public GameplayConcreteState StartState { get; private set; }
+        public GameplayConcreteState Gameplay { get; private set; }
+        public GameplayConcreteState Pause { get; private set; }
+        public GameplayConcreteState Gameover { get; private set; }
+
+        private GameplayConcreteState _currentState;
         #endregion
 
         #region COMPONENTS DEPENDENCY
@@ -44,21 +45,14 @@ namespace Assets.Scripts.GameManager.StateMachine
         [SerializeField] private UIAudioManagerBase _uiAudioManager;
 
 
-        protected override Dictionary<string, IConcreteState> RegisterConcreteStates()
+        public void SwitchState(GameplayConcreteState newState)
         {
-            Dictionary<string, IConcreteState> statesRegistered = new();
-            statesRegistered.Add("START", StartState = new StartState(_gameTimer, _scoreCounter, _playerHealth, _enemySpawner));
-            statesRegistered.Add("GAMEPLAY", Gameplay = new GamePlayState(_gameTimer, _playerHealth, _playerInputSystem, _pauseMenu, _enemySpawner));
-            statesRegistered.Add("PAUSE", Pause = new PauseState(_playerInputSystem, _pauseMenu, _controlsMural, _resumeButton, _pauseControlsButton, _pauseExitButton, _uiAudioManager));
-            statesRegistered.Add("GAMEOVER", Gameover = new GameOverState(_gameOverUI, _restartButton, _gameOverExitButton, _uiAudioManager));
-
-            return statesRegistered;
+            _currentState = newState;
         }
 
-        protected override IConcreteState SetInitialState()
+        private void Start()
         {
-            return StartState;
+            _currentState = StartState;
         }
-        
     }
 }

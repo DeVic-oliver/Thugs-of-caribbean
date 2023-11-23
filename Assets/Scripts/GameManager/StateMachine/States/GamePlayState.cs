@@ -3,13 +3,12 @@
     using Assets.Scripts.Core.Components.Counters;
     using Assets.Scripts.Core.Components.Spawner;
     using Assets.Scripts.Player;
-    using Devic.Scripts.Utils.StateMachine;
     using UnityEngine;
     using UnityEngine.InputSystem;
 
-    public class GamePlayState : IConcreteState
+    public class GameplayState : GameplayConcreteState
     {
-        private StateMachine _machine;
+        private GameplayStateMachine _machine;
         private TimerCounter _gameTimer;
         private PlayerHealth _playerHealth;
         private PlayerInput _inputSystem;
@@ -18,7 +17,7 @@
         private EnemySpawner _enemySpawner;
         private bool _canGoToPauseState = false;
 
-        public GamePlayState(TimerCounter gameTimer, PlayerHealth playerHealth, PlayerInput inputSystem, GameObject pauseMenu, EnemySpawner enemySpawner)
+        public GameplayState(TimerCounter gameTimer, PlayerHealth playerHealth, PlayerInput inputSystem, GameObject pauseMenu, EnemySpawner enemySpawner)
         {
             _gameTimer = gameTimer;
             _playerHealth = playerHealth;
@@ -33,21 +32,13 @@
             _pauseAction.performed += ctx => _canGoToPauseState = true;
         }
 
-        public void OnStateEnter(StateMachine stateMachine)
+        public override void OnStateEnter(GameplayStateMachine GameplayStateMachine)
         {
-            InitStateMachineIfItsNull(stateMachine);
             _canGoToPauseState = false;
             EnablePlayerInputActions();
             ResumeGame();
             _pauseMenu.SetActive(false);
             _enemySpawner.StartSpawnObjects();
-        }
-        private void InitStateMachineIfItsNull(StateMachine stateMachine)
-        {
-            if (_machine == null)
-            {
-                _machine = stateMachine;
-            }
         }
 
         private void EnablePlayerInputActions()
@@ -64,8 +55,8 @@
                 Time.timeScale = 1;
             }
         }
-       
-        public void OnUpdateState(StateMachine stateMachine)
+
+        public override void  OnUpdateState(GameplayStateMachine GameplayStateMachine)
         {
             GoToPauseStateIfItsAllowed();
             ChangeToGameOverWhenPlayerDiesOrTimeEnds();
@@ -74,7 +65,7 @@
         {
             if (_canGoToPauseState)
             {
-                _machine.SwitchState("PAUSE");
+                //_machine.SwitchState("PAUSE");
             }
         }
        
@@ -82,7 +73,7 @@
         {
             if(_playerHealth.HasDied || _gameTimer.HasTimerReachedZero)
             {
-                _machine.SwitchState("GAMEOVER");
+                //_machine.SwitchState("GAMEOVER");
             }
         }
 

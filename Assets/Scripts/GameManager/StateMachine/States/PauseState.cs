@@ -1,16 +1,14 @@
 ﻿namespace Assets.Scripts.GameManager.StateMachine
 {
-    using Devic.Scripts.Utils.StateMachine;
     using UnityEngine;
     using UnityEngine.InputSystem;
     using UnityEngine.UI;
     using UnityEngine.SceneManagement;
     using Assets.Scripts.Core.Components.Audio;
-    using System.Collections;
 
-    public class PauseState : IConcreteState
+    public class PauseState : GameplayConcreteState
     {
-        private StateMachine _machine;
+        private GameplayStateMachine _machine;
         private PlayerInput _inputSystem;
         private InputAction _pauseAction;
         #region buttons
@@ -63,19 +61,19 @@
             _controlsMural.SetActive(true);
         }
 
-        public void OnStateEnter(StateMachine stateMachine)
+        public override void OnStateEnter(GameplayStateMachine GameplayStateMachine)
         {
-            InitStateMachineIfItsNull(stateMachine);
+            InitGameplayStateMachineIfItsNull(GameplayStateMachine);
             _canGoToGameplayState = false;
             PauseGame();
             DisableAllActionsExceptPause();
             _pauseMenu.SetActive(true);
         }
-        private void InitStateMachineIfItsNull(StateMachine stateMachine)
+        private void InitGameplayStateMachineIfItsNull(GameplayStateMachine GameplayStateMachine)
         {
             if (_machine == null)
             {
-                _machine = stateMachine;
+                _machine = GameplayStateMachine;
             }
         }
         private void DisableAllActionsExceptPause()
@@ -96,7 +94,7 @@
             }
         }
 
-        public void OnUpdateState(StateMachine stateMachine)
+        public override void OnUpdateState(GameplayStateMachine GameplayStateMachine)
         {
             GoToPlayStateIfItsAllowed();
         }
@@ -105,7 +103,7 @@
             if (_canGoToGameplayState)
             {
                 _controlsMural.SetActive(false);
-                _machine.SwitchState("GAMEPLAY");
+                //_machine.SwitchState("GAMEPLAY");
             }
         }
     }
