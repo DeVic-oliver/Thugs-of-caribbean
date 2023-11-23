@@ -20,7 +20,7 @@ public class PlayerGun : MonoBehaviour
     
     private GunBase _currentGun;
 
-    // Start is called before the first frame update
+
     void Start()
     {
         PopulatePlayerGuns();
