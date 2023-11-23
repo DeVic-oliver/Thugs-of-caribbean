@@ -29,7 +29,7 @@
                     "id": "941c4684-1bb8-4183-92e7-f6a81e717178",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Hold(duration=1.401298E-45,pressPoint=1.401298E-45)",
                     "initialStateCheck": false
                 },
                 {
@@ -79,8 +79,8 @@
                 {
                     "name": "",
                     "id": "7a42f4a8-24c9-4ecf-ae1c-6d08b21861d7",
-                    "path": "<Keyboard>/escape",
-                    "interactions": "Press",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Navigation",
