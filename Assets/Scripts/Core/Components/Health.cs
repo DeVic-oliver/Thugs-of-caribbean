@@ -44,11 +44,6 @@
             return health;
         }
 
-        public void SetCurrentHealthToZero()
-        {
-            CurrentHealth = 0;
-        }
-
         public float GetHealthPercentage()
         {
             var percentage = (CurrentHealth * 100f) / GetTotalHealth();
