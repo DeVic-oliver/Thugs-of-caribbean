@@ -1,7 +1,8 @@
 ﻿namespace Assets.Scripts.Player
 {
     using UnityEngine;
-    
+    using UnityEngine.InputSystem;
+
     public class PlayerMovement : MonoBehaviour
     {
         public bool CanMove;
@@ -17,6 +18,11 @@
         private readonly string _obstacleTag = "island";
 
 
+        public void MovePlayer(InputAction.CallbackContext context)
+        {
+            _isMoving = context.performed;
+        }
+
         void Start()
         {
             CanMove = true;
@@ -26,8 +32,6 @@
         {
             if (CanMove)
                 RotatePlayerByMousePosition();
-
-            _isMoving = Input.GetKey(KeyCode.Space);
         }
 
         private void RotatePlayerByMousePosition()
