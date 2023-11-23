@@ -7,14 +7,31 @@
     {
         [SerializeField] private GameObject _objectToMovement;
         [SerializeField] private GameObject _target;
-        [SerializeField] protected float _rangeDetection = 15f;
+        [SerializeField] private float _rangeDetection = 15f;
         [SerializeField] private float _rotationSpeed = 2f;
         [SerializeField] private float _moveSpeed = 4f;
 
+        private bool _shouldPursueTarget;
+
+
+        public void PreventPursue()
+        {
+            _shouldPursueTarget = false;
+        }
+
+        private void Start()
+        {
+            AllowPursue();
+        }
+
+        public void AllowPursue()
+        {
+            _shouldPursueTarget = true;
+        }
 
         void Update()
         {
-            if (IsTargetNearby())
+            if (IsTargetNearby() && _shouldPursueTarget)
                 MoveTowardsEnemy();
         }
 
