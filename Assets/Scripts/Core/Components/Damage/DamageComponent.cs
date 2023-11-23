@@ -1,11 +1,11 @@
-﻿using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
-using UnityEngine;
-
-namespace Assets.Scripts.Core.Components.Damage
+﻿namespace Assets.Scripts.Core.Components.Damage
 {
+    using DG.Tweening;
+    using System.Collections;
+    using System.Collections.Generic;
+    using UnityEditor;
+    using UnityEngine;
+    
     public class DamageComponent : MonoBehaviour
     {
         [Header("Damage settings")]
@@ -23,35 +23,24 @@ namespace Assets.Scripts.Core.Components.Damage
         private Tween _currentColorTween;
 
 
-        private void Start()
-        {
-            if(_currentColorTween != null)
-            {
-                _currentColorTween.Kill();
-            }
-        }
-
         public void FlashShader()
         {
             if (!_currentColorTween.IsActive())
-            {
                 _currentColorTween = _renderer.DOColor(_damageFeedbackColor, _flashSpeed).SetLoops(2, LoopType.Yoyo);
-            }
         }
 
         public void PlayDeathVFX()
         {
             _deathVFX.Play();
-            PlaySpriteExplistion();
+            PlaySpriteExplosion();
         }
 
-        private void PlaySpriteExplistion() 
+        private void PlaySpriteExplosion() 
         {
             if(_explosionCoroutine == null)
-            {
-                StartCoroutine("ChangeExplosionSpritesFowardsAndBackwards");
-            }
+                StartCoroutine(nameof(ChangeExplosionSpritesFowardsAndBackwards));
         }
+
         private IEnumerator ChangeExplosionSpritesFowardsAndBackwards()
         {
             foreach (var sprite in _explosionSpriteList)
@@ -65,9 +54,15 @@ namespace Assets.Scripts.Core.Components.Damage
                 _explosionGameObject.sprite = _explosionSpriteList[spriteIndex];
                 yield return new WaitForSeconds(_spriteChangeSpeed);
             }
+
             _explosionGameObject.sprite = null;
             _explosionCoroutine = null;
         }
 
+        private void Start()
+        {
+            if (_currentColorTween != null)
+                _currentColorTween.Kill();
+        }
     }
 }

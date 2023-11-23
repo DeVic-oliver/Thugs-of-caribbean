@@ -52,9 +52,10 @@ namespace Assets.Scripts.Enemies.Ships
                 DestroyMyself();
             }
         }
+
         private void DestroyMyself()
         {
-            _health.KillMe();
+            _health.SetCurrentHealthToZero();
         }
 
         public void CountScore()

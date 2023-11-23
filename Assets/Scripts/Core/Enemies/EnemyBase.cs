@@ -46,9 +46,9 @@
         }
         private void PlayDeathVFXIfNotAlive()
         {
-            if (!_health.IsAlive && !_health.HasDied)
+            if (!_health.IsAlive && !_health.HasJustDied)
             {
-                _health.HasDied = true;
+                _health.HasJustDied = true;
                 StartCoroutine("DeathCoroutine");
             }
         }

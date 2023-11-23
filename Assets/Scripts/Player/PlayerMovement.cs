@@ -1,78 +1,82 @@
-﻿using UnityEngine;
-using Assets.Scripts.Core.Interfaces;
-
-namespace Assets.Scripts.Player
+﻿namespace Assets.Scripts.Player
 {
-    [RequireComponent(typeof(PlayerHealth))]
-    public class PlayerMovement : MonoBehaviour, IMoveable
+    using UnityEngine;
+    
+    public class PlayerMovement : MonoBehaviour
     {
-        private PlayerHealth _health;
+        public bool CanMove;
 
+        [SerializeField] private GameObject _objectToMove;
         [SerializeField] private float _moveSpeed = 6;
         [SerializeField] private float _rotateSpeed = 2f;
-
-        private Rigidbody2D _rigidbody;
+        [SerializeField] private Rigidbody2D _rigidbody;
+        
         private float _rotationAngleOffset = 90f;
+        private bool _isMoving;
+
+        private readonly string _obstacleTag = "island";
+
 
         void Start()
         {
-            _rigidbody = GetComponent<Rigidbody2D>();
-            _health = GetComponent<PlayerHealth>();
+            CanMove = true;
         }
 
         void Update()
         {
-            Move(_health.IsAlive);
-        }
-        public void Move(bool isAlive)
-        {
-            if (isAlive)
-            {
+            if (CanMove)
                 RotatePlayerByMousePosition();
-            }
+
+            _isMoving = Input.GetKey(KeyCode.Space);
         }
+
         private void RotatePlayerByMousePosition()
         {
-            float angle = GetRotateAngle();
-            transform.rotation = GetSlerpedQuaternionOfPlayerToMousePosition(angle);
+            float angle = GetRotationAngle();
+            _objectToMove.transform.rotation = GetSlerpedQuaternionOfPlayerToMousePosition(angle);
         }
-        private float GetRotateAngle()
+
+        private float GetRotationAngle()
         {
             Vector2 diffVector = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
             diffVector.Normalize();
             return Mathf.Atan2(diffVector.y, diffVector.x) * Mathf.Rad2Deg;
         }
+
         private Quaternion GetSlerpedQuaternionOfPlayerToMousePosition(float angle) 
         {
             Quaternion rotation = Quaternion.Euler(0, 0, angle - _rotationAngleOffset);
-            return Quaternion.Slerp(transform.rotation, rotation, 1f * Time.deltaTime * _rotateSpeed);
+            return Quaternion.Slerp(transform.rotation, rotation, GetClampedRange());
+        }
+
+        private float GetClampedRange()
+        {
+            return (1f * Time.deltaTime * _rotateSpeed);
         }
 
         private void FixedUpdate()
         {
-            MoveRigidbodyIfIsAlive();
+            if (CanMove && _isMoving)
+                MoveRigidbodyPosition();
         }
-        private void MoveRigidbodyIfIsAlive()
+
+        private void MoveRigidbodyPosition()
         {
-            if (_health.IsAlive && Input.GetKey(KeyCode.Space))
-            {
-                
-                Vector2 dir = GetDirectionWherePlayerFaces();
-                _rigidbody.MovePosition(dir);
-            }
+            Vector2 dir = GetDirectionWherePlayerFaces();
+            _rigidbody.MovePosition(dir);
         }
+
         private Vector2 GetDirectionWherePlayerFaces()
         {
-              return transform.position + (transform.up * _moveSpeed * Time.deltaTime);
+              return _objectToMove.transform.position + (_objectToMove.transform.up * _moveSpeed * Time.deltaTime);
         }
 
         private void OnCollisionExit2D(Collision2D collision)
         {
-            if (collision.gameObject.CompareTag("island"))
-            {
+            if (collision.gameObject.CompareTag(_obstacleTag))
                 ResetPhysicsVelocity();
-            }
         }
+
         private void ResetPhysicsVelocity()
         {
             _rigidbody.angularVelocity = 0f;

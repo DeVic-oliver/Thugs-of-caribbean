@@ -71,7 +71,7 @@
        
         private void ChangeToGameOverWhenPlayerDiesOrTimeEnds()
         {
-            if(_playerHealth.HasDied || _gameTimer.HasTimerReachedZero)
+            if(_playerHealth.HasJustDied || _gameTimer.HasTimerReachedZero)
             {
                 //_machine.SwitchState("GAMEOVER");
             }

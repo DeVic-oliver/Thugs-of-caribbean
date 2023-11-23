@@ -1,11 +1,9 @@
-﻿using Assets.Scripts.Core.Components;
-using Assets.Scripts.Core.Components.Damage;
-using Assets.Scripts.Core.Interfaces;
-using System.Collections;
-using UnityEngine;
-
-namespace Assets.Scripts.Player
+﻿namespace Assets.Scripts.Player
 {
+    using Assets.Scripts.Core.Components;
+    using Assets.Scripts.Core.Components.Damage;
+    using Assets.Scripts.Core.Interfaces;
+    
     public class PlayerHealth : Health, IDamageable
     {
         private DamageComponent _damageComponent;
@@ -26,11 +24,12 @@ namespace Assets.Scripts.Player
             base.Update();
             PlayDeathVFXWhenDie();
         }
+
         private void PlayDeathVFXWhenDie()
         {
-            if (!IsAlive && !HasDied)
+            if (!IsAlive && !HasJustDied)
             {
-                HasDied = true;
+                HasJustDied = true;
                 _damageComponent.PlayDeathVFX();
             }
         }
