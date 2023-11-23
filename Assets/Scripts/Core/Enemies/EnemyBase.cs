@@ -3,13 +3,14 @@
     using System.Collections;
     using UnityEngine;
     using Assets.Scripts.Core.Components.Damage;
+    using Assets.Scripts.Core.Components;
 
-    [RequireComponent(typeof(DamageComponent), typeof(EnemyHealth))]
+    [RequireComponent(typeof(DamageComponent), typeof(Health))]
     public abstract class EnemyBase : MonoBehaviour
     {
         [SerializeField] protected int _enemyScoreValue;
 
-        protected EnemyHealth _health;
+        protected Health _health;
         [Header("Death Setup")]
         [SerializeField] private float _timeToDisapearAfterDeath = 2.5f;
         private float _timeToDeisapear;
@@ -30,7 +31,7 @@
         {
             _damageComponent = GetComponent<DamageComponent>();
             _collider = GetComponent<Collider2D>();
-            _health = GetComponent<EnemyHealth>();
+            _health = GetComponent<Health>();
         }
 
         protected virtual void Start()
