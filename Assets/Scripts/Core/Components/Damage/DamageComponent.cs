@@ -17,9 +17,9 @@
         [Header("Explosion Sprite Settings")]
         [SerializeField] private SpriteRenderer _explosionGameObject;
         [SerializeField] private List<Sprite> _explosionSpriteList;
+        [SerializeField] private float _spriteChangeSpeed = 0.1f;
+        
         private Coroutine _explosionCoroutine;
-        private float _spriteChangeSpeed = 0.1f;
-
         private Tween _currentColorTween;
 
 
@@ -43,20 +43,39 @@
 
         private IEnumerator ChangeExplosionSpritesFowardsAndBackwards()
         {
-            foreach (var sprite in _explosionSpriteList)
-            {
-                _explosionGameObject.sprite = sprite;
-                yield return new WaitForSeconds(_spriteChangeSpeed);
-            }
-
-            for (int spriteIndex = _explosionSpriteList.Count - 1; spriteIndex > 0; spriteIndex--)
-            {
-                _explosionGameObject.sprite = _explosionSpriteList[spriteIndex];
-                yield return new WaitForSeconds(_spriteChangeSpeed);
-            }
+            yield return ChangeSpritesForwards();
+            yield return ChangeSpriteBackwards();
 
             _explosionGameObject.sprite = null;
             _explosionCoroutine = null;
+        }
+
+        private IEnumerator ChangeSpritesForwards()
+        {
+            foreach (Sprite sprite in _explosionSpriteList)
+            {
+                ChangeExplostionSpriteTo(sprite);
+                yield return ReturnWaitForSeconds();
+            }
+        }
+
+        private IEnumerator ChangeSpriteBackwards()
+        {
+            for (int spriteIndex = _explosionSpriteList.Count - 1; spriteIndex > 0; spriteIndex--)
+            {
+                ChangeExplostionSpriteTo(_explosionSpriteList[spriteIndex]);
+                yield return ReturnWaitForSeconds();
+            }
+        }
+
+        private void ChangeExplostionSpriteTo(Sprite newSprite)
+        {
+            _explosionGameObject.sprite = newSprite;
+        }
+
+        private IEnumerator ReturnWaitForSeconds()
+        {
+            yield return new WaitForSeconds(_spriteChangeSpeed);
         }
 
         private void Start()
