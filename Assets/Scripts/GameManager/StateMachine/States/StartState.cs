@@ -25,7 +25,6 @@
             _gameTimer.StartTimer();
             _scoreCounter.ResetScore();
             ResetPlayerData();
-            _enemySpawner.ResetEnemies();
             _enemySpawner.StopSpawning();
         }
         private void ResetPlayerData()
