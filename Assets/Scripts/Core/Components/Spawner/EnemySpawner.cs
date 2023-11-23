@@ -3,47 +3,27 @@ namespace Assets.Scripts.Core.Components.Spawner
     using Assets.Scripts.Core.Enemies;
     using System.Collections;
     using System.Collections.Generic;
-    using UnityEditor;
     using UnityEngine;
 
     public class EnemySpawner : MonoBehaviour
     {
-        [SerializeField] private GameObject _enemyTarget;
+        [SerializeField] private GameObject _target;
 
         [Header("Spawn areas")]
         [SerializeField] private List<SpawnArea> _spawnAreas;
-        private int _spawnInterval;
 
         [Space(10f)]
-        [Header("GameObjects to spawn")]
-        [SerializeField] private List<EnemyBase> _enemiesToSpawn;
+        [Header("Enemies to spawn")]
+        [SerializeField] private List<EnemyBase> _enemiesList;
 
         private Coroutine _currentCoroutine;
+        private int _spawnInterval;
 
-        void Start()
-        {
-            _spawnInterval = PlayerPrefs.GetInt("ENEMEIS_SPAWN_INTERVAL");
-        }
 
         public void StartSpawnObjects()
         {
-            if(_currentCoroutine == null)
-            {
-                _currentCoroutine = StartCoroutine("SpawnObject");
-            }
-        }
-
-        public void StopSpawning()
-        {
-            if( _currentCoroutine != null)
-            {
-                StopCoroutine(_currentCoroutine);
-            }
-        }
-
-        public void ResetEnemies()
-        {
-
+            if (_currentCoroutine == null)
+                _currentCoroutine = StartCoroutine(nameof(SpawnObject));
         }
 
         private IEnumerator SpawnObject()
@@ -54,27 +34,46 @@ namespace Assets.Scripts.Core.Components.Spawner
                 yield return new WaitForSeconds(_spawnInterval);
             }
         }
+
         private void SearchForInvisibleAreaToSpawnRandomEnemy()
         {
-            foreach (var area in _spawnAreas)
+            foreach (SpawnArea area in _spawnAreas)
             {
                 if (area.IsInvisible)
                 {
-                    EnemyBase gameObject = _enemiesToSpawn.GetRandomItem();
-                    InjectEnemyTarget(gameObject, _enemyTarget);
-                    var obj = GetEnemyObjectAfterCast(gameObject);
+                    GameObject obj = GetEnemyObject();
                     area.SpawnGameObject(obj);
                     break;
                 }
             }
         }
-        private void InjectEnemyTarget(EnemyBase enemy, GameObject target)
+
+        private GameObject GetEnemyObject()
+        {
+            EnemyBase enemy = _enemiesList.GetRandomItem();
+            InjectTarget(enemy, _target);
+            return enemy.gameObject;
+        }
+
+        private void InjectTarget(EnemyBase enemy, GameObject target)
         {
             enemy.EnemyGameObject = target;
         }
-        private GameObject GetEnemyObjectAfterCast(EnemyBase enemy)
+
+        public void StopSpawning()
         {
-            return enemy.gameObject;
+            if (_currentCoroutine != null)
+                StopCoroutine(_currentCoroutine);
+        }
+
+        void Start()
+        {
+            SetTheEnemiesSpawnInterval();
+        }
+
+        private void SetTheEnemiesSpawnInterval()
+        {
+            _spawnInterval = PlayerPrefs.GetInt("ENEMEIS_SPAWN_INTERVAL");
         }
     }
 }
