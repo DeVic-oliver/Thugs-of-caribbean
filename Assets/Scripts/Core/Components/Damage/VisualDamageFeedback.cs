@@ -6,7 +6,7 @@
     using UnityEditor;
     using UnityEngine;
     
-    public class DamageComponent : MonoBehaviour
+    public class VisualDamageFeedback : MonoBehaviour
     {
         [Header("Damage settings")]
         [SerializeField] private SpriteRenderer _renderer;
