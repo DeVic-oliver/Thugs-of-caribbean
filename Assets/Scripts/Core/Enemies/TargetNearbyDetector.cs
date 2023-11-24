@@ -12,6 +12,11 @@
         [SerializeField] private float _rangeDetection = 15; 
 
 
+        public float GetRangeDetection()
+        {
+            return _rangeDetection;
+        }
+
         private void Update()
         {
             if (IsTargetNearby())
