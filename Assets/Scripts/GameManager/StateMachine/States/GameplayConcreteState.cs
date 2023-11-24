@@ -2,8 +2,16 @@
 {
     public abstract class GameplayConcreteState
     {
-        public abstract void OnStateEnter(GameplayStateMachine GameplayStateMachine);
+        protected GameplayStateMachine _stateMachine;
 
-        public abstract void OnUpdateState(GameplayStateMachine GameplayStateMachine);
+
+        public GameplayConcreteState(GameplayStateMachine stateMachine) 
+        {
+            _stateMachine = stateMachine;
+        }
+
+        public abstract void OnStateEnter();
+
+        public abstract void OnUpdateState();
     }
 }

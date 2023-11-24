@@ -11,10 +11,10 @@ namespace Assets.Scripts.GameManager.StateMachine
     public class GameplayStateMachine : MonoBehaviour
     {
         #region STATES
-        public GameplayConcreteState StartState { get; private set; }
-        public GameplayConcreteState Gameplay { get; private set; }
-        public GameplayConcreteState Pause { get; private set; }
-        public GameplayConcreteState Gameover { get; private set; }
+        public StartState StartState { get; private set; }
+        public GameplayState Gameplay { get; private set; }
+        public PauseState Pause { get; private set; }
+        public GameoverState Gameover { get; private set; }
 
         private GameplayConcreteState _currentState;
         #endregion
@@ -48,11 +48,27 @@ namespace Assets.Scripts.GameManager.StateMachine
         public void SwitchState(GameplayConcreteState newState)
         {
             _currentState = newState;
+            _currentState.OnStateEnter();
         }
 
         private void Start()
         {
+            InitStates();
             _currentState = StartState;
+            _currentState.OnStateEnter();
+        }
+
+        private void InitStates()
+        {
+            StartState = new StartState(this, _gameTimer, _scoreCounter, _playerHealth, _enemySpawner);
+            Gameplay = new GameplayState(this, _gameTimer, _playerHealth, _playerInputSystem, _pauseMenu, _enemySpawner);
+            Pause = new PauseState(this, _playerInputSystem, _pauseMenu, _controlsMural, _resumeButton, _pauseControlsButton, _gameOverExitButton, _uiAudioManager);
+            Gameover = new GameoverState(this, _gameOverUI, _restartButton, _pauseExitButton, _uiAudioManager);
+        }
+
+        private void Update()
+        {
+            _currentState.OnUpdateState();
         }
     }
 }

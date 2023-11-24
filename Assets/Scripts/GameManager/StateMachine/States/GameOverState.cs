@@ -5,7 +5,7 @@
     using UnityEngine.SceneManagement;
     using Assets.Scripts.Core.Components.Audio;
 
-    public class GameOverState : GameplayConcreteState
+    public class GameoverState : GameplayConcreteState
     {
         private GameObject _gameOverUI;
         private Button _restartButton;
@@ -16,7 +16,8 @@
 
         private UIAudioManagerBase _uiAudioManager;
 
-        public GameOverState(GameObject gameoverUI, Button restartButton, Button exitButton, UIAudioManagerBase uiAudioManager)
+
+        public GameoverState(GameplayStateMachine stateMachine, GameObject gameoverUI, Button restartButton, Button exitButton, UIAudioManagerBase uiAudioManager) : base(stateMachine)
         {
             _gameOverUI = gameoverUI;
             _restartButton = restartButton;
@@ -25,13 +26,14 @@
             _restartButton.onClick.AddListener(RestartGame);
             _exitButton.onClick.AddListener(ExitGame);
             _uiAudioManager = uiAudioManager;
-
         }
+
         private void RestartGame()
         {
             _uiAudioManager.PlayButtonClick();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+
         private void ExitGame()
         {
             _uiAudioManager.PlayButtonClick();
@@ -39,23 +41,19 @@
             SceneManager.LoadScene(_mainMenuSceneIndex);
         }
 
-        public override void OnStateEnter(GameplayStateMachine GameplayStateMachine)
+        public override void OnStateEnter()
         {
             Time.timeScale = 0;
             _canRestartGame = false;
             _gameOverUI.SetActive(true);
         }
 
-        public override void OnUpdateState(GameplayStateMachine GameplayStateMachine)
-        {
-            CheckIfCanGoToStartState(GameplayStateMachine);
-        }
-        private void CheckIfCanGoToStartState(GameplayStateMachine GameplayStateMachine)
+        public override void OnUpdateState()
         {
             if (_canRestartGame)
             {
                 _gameOverUI.SetActive(false);
-                //GameplayStateMachine.SwitchState("START");
+                _stateMachine.SwitchState(_stateMachine.StartState);
             }
         }
     }

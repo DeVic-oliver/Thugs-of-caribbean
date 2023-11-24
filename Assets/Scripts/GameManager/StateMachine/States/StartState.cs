@@ -12,30 +12,38 @@
         private PlayerHealth _player;
         private EnemySpawner _enemySpawner;
 
-        public StartState(TimerCounter gameTimer, ScoreCounter scoreCounter, PlayerHealth player, EnemySpawner enemySpawner)
+
+        public StartState(GameplayStateMachine stateMachine, TimerCounter gameTimer, ScoreCounter scoreCounter, PlayerHealth player, EnemySpawner enemySpawner) : base(stateMachine)
         {
             _gameTimer = gameTimer;
             _scoreCounter = scoreCounter;
             _player = player;
             _enemySpawner = enemySpawner;
         }
-        public override void OnStateEnter(GameplayStateMachine GameplayStateMachine)
+
+        public override void OnStateEnter()
         {
             Time.timeScale = 1;
             _gameTimer.StartTimer();
             _scoreCounter.ResetScore();
-            ResetPlayerData();
             _enemySpawner.StopSpawning();
+            ResetPlayerData();
         }
+
         private void ResetPlayerData()
         {
             _player.ResetStatus();
-            _player.transform.position = new Vector2(0, 0);
+            GetPlayerTransform().position = new Vector2(0, 0);
         }
 
-        public override void OnUpdateState(GameplayStateMachine GameplayStateMachine)
+        private Transform GetPlayerTransform()
         {
-            //GameplayStateMachine.SwitchState("GAMEPLAY");
+            return _player.transform;
+        }
+
+        public override void OnUpdateState()
+        {
+            _stateMachine.SwitchState(_stateMachine.Gameplay);
         }
     }
 }
