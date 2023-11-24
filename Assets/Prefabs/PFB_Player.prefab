@@ -120,18 +120,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 6721931797384734225}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ecd298456670b04c8c548d99f9dc7ec, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f9dbb8f850067f42803e87e45849d4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _renderer: {fileID: 6838194503505313666}
-  _damageFeedbackColor: {r: 1, g: 0.2028302, b: 0.2028302, a: 1}
-  _flashSpeed: 0.05
+  _damageFeedbackColor: {r: 1, g: 0.24056602, b: 0.24056602, a: 0.72156864}
+  _flashSpeed: 1
   _deathVFX: {fileID: 6838194502935997828}
   _explosionGameObject: {fileID: 6838194504515409345}
   _explosionSpriteList:
-  - {fileID: 21300000, guid: 511ca9d807357744d81b2ba878f97060, type: 3}
-  - {fileID: 21300000, guid: 50f9fa1ed09074747a363c80d1fc1139, type: 3}
-  - {fileID: 21300000, guid: 69aedbbcb5e4653459d1a215230ee4ba, type: 3}
+  - {fileID: 21300000, guid: 6f1a85ff9ae6f1840bb3affa07f30cde, type: 3}
+  - {fileID: 21300000, guid: a6dfe65ea46681146848a1bc739698d6, type: 3}
+  - {fileID: 21300000, guid: ad4829539b3bead4b93ccd9d9329ca9c, type: 3}
   _spriteChangeSpeed: 0.1
 --- !u!1 &6838194502728812824
 GameObject:
