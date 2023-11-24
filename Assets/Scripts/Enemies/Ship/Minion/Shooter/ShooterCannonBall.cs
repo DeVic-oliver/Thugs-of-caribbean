@@ -1,29 +1,25 @@
-﻿namespace Assets.Scripts.Weapons.Guns.Projectiles
+﻿namespace Assets.Scripts.Enemies.Ship.Minion.Shooter
 {
+    using Assets.Scripts.Core.Components.Damage;
     using Assets.Scripts.Core.Components.Projectile;
-    using Assets.Scripts.Core.Components.Weapon;
-    using Assets.Scripts.Player;
-    using UnityEngine;
     using System.Collections;
+    using UnityEngine;
+    
 
-    public class EnemyCannonBall : Projectile
+    public class ShooterCannonBall : CannonBall
     {
-
         protected override void OnTriggerEnter2D(Collider2D other)
         {
-            PlayerHealth player = other.GetComponent<PlayerHealth>();
-            if (player != null)
+            if (other.gameObject.CompareTag("Player"))
             {
-                player.TakeDamage(_damage);
-                DisableComponents();
+                DamageGateway damageGateway = other.GetComponent<DamageGateway>();
+                damageGateway.ApplyDamageOnHealth(_damage);
+                DisableVisualAndCollisionComponents();
                 _source.PlayOneShot(_impactAudio);
                 _explosion.PlaySpriteExplosition();
             }
         }
-        protected override void OnEnable()
-        {
-            StartCoroutine("TimerToBackPool");
-        }
+
         protected override IEnumerator TimerToBackPool()
         {
             float count = 0;
@@ -32,7 +28,7 @@
                 count += Time.deltaTime;
                 yield return null;
             }
-            RangedWeapon.Pool.BackToPool(this);
+            ShooterCannon.ShooterCannonBallPool.BackToPool(this);
         }
     }
 }
