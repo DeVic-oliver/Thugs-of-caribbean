@@ -64,23 +64,6 @@
             gameObject.SetActive(false);
         }
 
-        protected virtual bool CheckIfEnemyIsNearby()
-        {
-            if(Vector3.Distance(EnemyGameObject.transform.position, gameObject.transform.position) < _rangeDetection)
-            {
-                return true;
-            }
-            return false;
-        }
-        protected void LookToTargetSmoothly()
-        {
-            var direction = (EnemyGameObject.transform.position - transform.position).normalized;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            float offset = 90f;
-            var lookRotation = Quaternion.Euler(new Vector3(0, 0, angle - offset));
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, _rotationSlerpStep * Time.deltaTime);
-        }
-
         protected void DecreaseHealthByDamageWithFlashFeedback(int damage)
         {
             _damageComponent.FlashShader();
