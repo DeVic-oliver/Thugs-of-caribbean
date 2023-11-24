@@ -1,12 +1,13 @@
 ﻿namespace Assets.Scripts.Enemies.Ship.Minion.Chaser
 {
+    using Assets.Scripts.Core.Enemies;
     using UnityEngine;
 
 
     public class ChaserMovement : MonoBehaviour
     {
         [SerializeField] private GameObject _objectToMovement;
-        [SerializeField] private GameObject _target;
+        [SerializeField] private TargetNearbyDetector _detector;
         [SerializeField] private float _rangeDetection = 15f;
         [SerializeField] private float _rotationSpeed = 2f;
         [SerializeField] private float _moveSpeed = 4f;
@@ -31,13 +32,8 @@
 
         void Update()
         {
-            if (IsTargetNearby() && _shouldPursueTarget)
+            if (_shouldPursueTarget)
                 MoveTowardsEnemy();
-        }
-
-        private bool IsTargetNearby()
-        {
-            return (Vector3.Distance(GetTargetTransform().position, GetObjectTransform().position) < _rangeDetection);
         }
 
         private void MoveTowardsEnemy()
@@ -74,7 +70,7 @@
 
         private Transform GetTargetTransform()
         {
-            return _target.transform;
+            return _detector.Target.transform;
         }
 
     }
