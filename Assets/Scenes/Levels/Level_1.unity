@@ -1360,19 +1360,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6838194504582583548, guid: 990b0900e0122fe49abc2508e3d36b5d, type: 3}
   m_PrefabInstance: {fileID: 6838194504713176573}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &416895236
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416895232}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69307dd04a43ffc4eab3858c89c58faa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _health: {fileID: 1696961147}
 --- !u!1 &425700126
 GameObject:
   m_ObjectHideFlags: 0
@@ -2177,6 +2164,17 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &453617844 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7006756713073425642, guid: b6876783af6c3994f9c34f751c84a8be, type: 3}
+  m_PrefabInstance: {fileID: 1776907050}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b2f75cdc0e368142b1e574f04f02a2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &476331886
 GameObject:
   m_ObjectHideFlags: 0
@@ -12969,17 +12967,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &777473303 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6838194503618860156, guid: 990b0900e0122fe49abc2508e3d36b5d, type: 3}
-  m_PrefabInstance: {fileID: 6838194504713176573}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69333ef321447654ea96a1f6dc5ad368, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &813274742
 GameObject:
   m_ObjectHideFlags: 0
@@ -134892,9 +134879,9 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 777473303}
-        m_TargetAssemblyTypeName: PlayerGun, Assembly-CSharp
-        m_MethodName: FireGun
+      - m_Target: {fileID: 6838194504713176574}
+        m_TargetAssemblyTypeName: Assets.Scripts.Player.PlayerAttack, Assembly-CSharp
+        m_MethodName: FireCannon
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -134908,9 +134895,9 @@ MonoBehaviour:
     m_ActionName: Default/Shoot[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 777473303}
-        m_TargetAssemblyTypeName: PlayerGun, Assembly-CSharp
-        m_MethodName: ChangeCurrentGun
+      - m_Target: {fileID: 6838194504713176574}
+        m_TargetAssemblyTypeName: Assets.Scripts.Player.PlayerAttack, Assembly-CSharp
+        m_MethodName: ChangeCurrentCannonType
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -135262,6 +135249,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PFB_Enemy_Shooter_01
       objectReference: {fileID: 0}
+    - target: {fileID: 142458460917278500, guid: b6876783af6c3994f9c34f751c84a8be, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3537547660201686346, guid: b6876783af6c3994f9c34f751c84a8be, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.5736393
@@ -135302,6 +135293,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6957435234774395083, guid: b6876783af6c3994f9c34f751c84a8be, type: 3}
+      propertyPath: _shootercannon
+      value: 
+      objectReference: {fileID: 453617844}
     - target: {fileID: 8599471531868887387, guid: b6876783af6c3994f9c34f751c84a8be, type: 3}
       propertyPath: Target
       value: 
@@ -143943,10 +143938,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 118661818}
     m_Modifications:
-    - target: {fileID: 639664517073781930, guid: 990b0900e0122fe49abc2508e3d36b5d, type: 3}
-      propertyPath: health
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 6838194503618860156, guid: 990b0900e0122fe49abc2508e3d36b5d, type: 3}
       propertyPath: _ammoAmountUI
       value: 
@@ -144010,11 +144001,19 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6838194504582583549, guid: 990b0900e0122fe49abc2508e3d36b5d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 416895236}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 990b0900e0122fe49abc2508e3d36b5d, type: 3}
+--- !u!114 &6838194504713176574 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7809351071000292090, guid: 990b0900e0122fe49abc2508e3d36b5d, type: 3}
+  m_PrefabInstance: {fileID: 6838194504713176573}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69333ef321447654ea96a1f6dc5ad368, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6973776842614305250
 PrefabInstance:
   m_ObjectHideFlags: 0
