@@ -1,5 +1,92 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2563302238313345210
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8067471780675733802}
+  - component: {fileID: 7809351071000292090}
+  m_Layer: 3
+  m_Name: Attack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8067471780675733802
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2563302238313345210}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9047874972575919165}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7809351071000292090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2563302238313345210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69333ef321447654ea96a1f6dc5ad368, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentGunAmmoImage: {fileID: 0}
+  _currentGunAmmoImageBackground: {fileID: 0}
+  _ammoStatusText: {fileID: 0}
+  _ammoAmountUI: {fileID: 0}
+  _reloadTime: 2
+  _shootsBeforeReload: 5
+  _cannonBall: {fileID: 8014393617178877986, guid: ad9c696f9769ead4b8d901246f86ec4c, type: 3}
+  _mainCannon: {fileID: 6838194504584752735}
+  _cannons:
+  - {fileID: 6838194502728812827}
+  - {fileID: 6838194504584752735}
+  - {fileID: 4778623320207734813}
+--- !u!1 &2715274571489306960
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4778623320207734813}
+  m_Layer: 3
+  m_Name: Right Cannon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4778623320207734813
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2715274571489306960}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: -0.21643952, w: 0.97629607}
+  m_LocalPosition: {x: 0.1, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6838194503618860157}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -25}
 --- !u!1 &4307488626997098070
 GameObject:
   m_ObjectHideFlags: 0
@@ -31,6 +118,7 @@ Transform:
   m_Children:
   - {fileID: 3893183309345783085}
   - {fileID: 8207793555030853383}
+  - {fileID: 8067471780675733802}
   - {fileID: 6838194503618860157}
   m_Father: {fileID: 6838194504582583548}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -142,9 +230,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6838194502728812827}
-  - component: {fileID: 6838194502728812826}
   m_Layer: 3
-  m_Name: Single_Cannon
+  m_Name: Left Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -158,30 +245,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6838194502728812824}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.2164396, w: 0.97629607}
+  m_LocalPosition: {x: -0.1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6838194503618860157}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6838194502728812826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6838194502728812824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b52df2f0075e1334a8450f19083fd02f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _ammoMagazineCapacity: 20
-  _reloadTime: 5
-  _gunBarrel: {fileID: 6838194502728812827}
-  _bulletType: {fileID: 8014393617178877986, guid: ad9c696f9769ead4b8d901246f86ec4c, type: 3}
-  _bulletTypeSprite: {fileID: 21300000, guid: 849bbb9f48c2db84ca684d544130517a, type: 3}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 25}
 --- !u!1 &6838194502935997829
 GameObject:
   m_ObjectHideFlags: 0
@@ -5365,9 +5435,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6838194503618860157}
-  - component: {fileID: 6838194503618860156}
   m_Layer: 3
-  m_Name: Guns
+  m_Name: Cannons
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -5382,32 +5451,15 @@ Transform:
   m_GameObject: {fileID: 6838194503618860162}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.6459999, z: 0}
+  m_LocalPosition: {x: 0, y: 0.76, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6838194502728812827}
   - {fileID: 6838194504584752735}
+  - {fileID: 4778623320207734813}
   m_Father: {fileID: 9047874972575919165}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6838194503618860156
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6838194503618860162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69333ef321447654ea96a1f6dc5ad368, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _currentGunAmmoImage: {fileID: 0}
-  _currentGunAmmoImageBackground: {fileID: 0}
-  _ammoStatusText: {fileID: 0}
-  _ammoAmountUI: {fileID: 0}
-  _mainGun: {fileID: 6838194502728812826}
-  _gun2: {fileID: 6838194504584752732}
 --- !u!1 &6838194503641111852
 GameObject:
   m_ObjectHideFlags: 0
@@ -5578,6 +5630,7 @@ GameObject:
   - component: {fileID: 6838194504582583548}
   - component: {fileID: 1364834012000341176}
   - component: {fileID: 3683900149497258081}
+  - component: {fileID: 2889197837201944010}
   m_Layer: 3
   m_Name: PFB_Player
   m_TagString: Player
@@ -5676,6 +5729,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &2889197837201944010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6838194504582583549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69307dd04a43ffc4eab3858c89c58faa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: {fileID: 5012602752612073047}
 --- !u!1 &6838194504584752733
 GameObject:
   m_ObjectHideFlags: 0
@@ -5685,9 +5751,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6838194504584752735}
-  - component: {fileID: 6838194504584752732}
   m_Layer: 3
-  m_Name: Triple_Cannon
+  m_Name: Middle Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5708,24 +5773,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6838194503618860157}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6838194504584752732
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6838194504584752733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b321f37f85f3efe4dbaa51b52cfe4dc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _ammoMagazineCapacity: 10
-  _reloadTime: 2
-  _gunBarrel: {fileID: 6838194504584752735}
-  _bulletType: {fileID: 8014393617178877986, guid: ad9c696f9769ead4b8d901246f86ec4c, type: 3}
-  _bulletTypeSprite: {fileID: 21300000, guid: 1a06da30e1fa2f94983c6b28688add90, type: 3}
-  _spreadAngle: 8
 --- !u!1 &7054897012952073646
 GameObject:
   m_ObjectHideFlags: 0

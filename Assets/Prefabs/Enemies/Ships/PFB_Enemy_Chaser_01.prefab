@@ -5043,8 +5043,6 @@ MonoBehaviour:
   _objectToMovement: {fileID: 4258240438542307602}
   _detector: {fileID: 1796647986237343020}
   _shipRotation: {fileID: 1697178645229963535}
-  _rangeDetection: 30
-  _rotationSpeed: 2
   _moveSpeed: 2
 --- !u!114 &1697178645229963535
 MonoBehaviour:
@@ -5147,6 +5145,7 @@ GameObject:
   - component: {fileID: 2695530429883604252}
   - component: {fileID: 5632655240390401859}
   - component: {fileID: 1796647986237343020}
+  - component: {fileID: 2694945018921849806}
   m_Layer: 0
   m_Name: PFB_Enemy_Chaser_01
   m_TagString: Untagged
@@ -5332,6 +5331,19 @@ MonoBehaviour:
         m_CallState: 2
   Target: {fileID: 0}
   _rangeDetection: 15
+--- !u!114 &2694945018921849806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4258240438542307602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69307dd04a43ffc4eab3858c89c58faa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: {fileID: 3910674705615990674}
 --- !u!1 &4842224423778722096
 GameObject:
   m_ObjectHideFlags: 0
