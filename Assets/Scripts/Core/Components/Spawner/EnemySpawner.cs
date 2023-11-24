@@ -14,7 +14,7 @@ namespace Assets.Scripts.Core.Components.Spawner
 
         [Space(10f)]
         [Header("Enemies to spawn")]
-        [SerializeField] private List<EnemyBase> _enemiesList;
+        [SerializeField] private List<TargetNearbyDetector> _targetDetectors;
 
         private Coroutine _currentCoroutine;
         private int _spawnInterval;
@@ -50,14 +50,9 @@ namespace Assets.Scripts.Core.Components.Spawner
 
         private GameObject GetEnemyObject()
         {
-            EnemyBase enemy = _enemiesList.GetRandomItem();
-            InjectTarget(enemy, _target);
-            return enemy.gameObject;
-        }
-
-        private void InjectTarget(EnemyBase enemy, GameObject target)
-        {
-            enemy.EnemyGameObject = target;
+            TargetNearbyDetector detector = _targetDetectors.GetRandomItem();
+            detector.Target = _target;
+            return detector.gameObject;
         }
 
         public void StopSpawning()
