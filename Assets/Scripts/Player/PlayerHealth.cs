@@ -6,7 +6,7 @@
     
     public class PlayerHealth : Health, IDamageable
     {
-        private DamageComponent _damageComponent;
+        private VisualDamageFeedback _damageComponent;
 
         public void TakeDamage(int damageValue)
         {
@@ -16,7 +16,7 @@
 
         private void Start()
         {
-            _damageComponent = GetComponent<DamageComponent>();
+            _damageComponent = GetComponent<VisualDamageFeedback>();
         }
 
         new void Update()
