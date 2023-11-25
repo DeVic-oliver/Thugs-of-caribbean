@@ -16,6 +16,10 @@ namespace Assets.Scripts.Player
         }
 
         public int ShootsRemaing { get; private set; }
+        public static int ShootsRemaing { get; private set; }
+        public static float ShootsRemaingPercentage { get; private set; }
+        public static bool IsReloading { get; private set; }
+        public static CannonTypes CurrentCannon { get; private set; }
 
 
         [Header("Cannons Setup")]
