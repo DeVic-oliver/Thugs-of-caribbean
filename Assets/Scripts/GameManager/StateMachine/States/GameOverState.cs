@@ -1,12 +1,11 @@
 ﻿namespace Assets.Scripts.GameManager.StateMachine
 { 
-    using Devic.Scripts.Utils.StateMachine;
     using UnityEngine;
     using UnityEngine.UI;
     using UnityEngine.SceneManagement;
     using Assets.Scripts.Core.Components.Audio;
 
-    public class GameOverState : IConcreteState
+    public class GameoverState : GameplayConcreteState
     {
         private GameObject _gameOverUI;
         private Button _restartButton;
@@ -17,7 +16,8 @@
 
         private UIAudioManagerBase _uiAudioManager;
 
-        public GameOverState(GameObject gameoverUI, Button restartButton, Button exitButton, UIAudioManagerBase uiAudioManager)
+
+        public GameoverState(GameplayStateMachine stateMachine, GameObject gameoverUI, Button restartButton, Button exitButton, UIAudioManagerBase uiAudioManager) : base(stateMachine)
         {
             _gameOverUI = gameoverUI;
             _restartButton = restartButton;
@@ -26,13 +26,14 @@
             _restartButton.onClick.AddListener(RestartGame);
             _exitButton.onClick.AddListener(ExitGame);
             _uiAudioManager = uiAudioManager;
-
         }
+
         private void RestartGame()
         {
             _uiAudioManager.PlayButtonClick();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+
         private void ExitGame()
         {
             _uiAudioManager.PlayButtonClick();
@@ -40,24 +41,19 @@
             SceneManager.LoadScene(_mainMenuSceneIndex);
         }
 
-        public void OnStateEnter(StateMachine stateMachine)
+        public override void OnStateEnter()
         {
-            Debug.Log("WELCOME TO GAME OVER!!");
             Time.timeScale = 0;
             _canRestartGame = false;
             _gameOverUI.SetActive(true);
         }
 
-        public void OnUpdateState(StateMachine stateMachine)
-        {
-            CheckIfCanGoToStartState(stateMachine);
-        }
-        private void CheckIfCanGoToStartState(StateMachine stateMachine)
+        public override void OnUpdateState()
         {
             if (_canRestartGame)
             {
                 _gameOverUI.SetActive(false);
-                stateMachine.SwitchState("START");
+                _stateMachine.SwitchState(_stateMachine.StartState);
             }
         }
     }

@@ -1,24 +1,17 @@
-﻿using Assets.Scripts.Core.Components;
-using Assets.Scripts.Core.Components.Damage;
-using Assets.Scripts.Core.Interfaces;
-using System.Collections;
-using UnityEngine;
-
-namespace Assets.Scripts.Player
+﻿namespace Assets.Scripts.Player
 {
-    public class PlayerHealth : Health, IDamageable
-    {
-        private DamageComponent _damageComponent;
+    using Assets.Scripts.Core.Components;
+    using Assets.Scripts.Core.Components.Damage;
+    
 
-        public void TakeDamage(int damageValue)
-        {
-            DecreaseHealth(damageValue);
-            _damageComponent.FlashShader();
-        }
+    public class PlayerHealth : Health
+    {
+        private VisualDamageFeedback _damageComponent;
+
 
         private void Start()
         {
-            _damageComponent = GetComponent<DamageComponent>();
+            _damageComponent = GetComponent<VisualDamageFeedback>();
         }
 
         new void Update()
@@ -26,11 +19,12 @@ namespace Assets.Scripts.Player
             base.Update();
             PlayDeathVFXWhenDie();
         }
+
         private void PlayDeathVFXWhenDie()
         {
-            if (!IsAlive && !HasDied)
+            if (!IsAlive && !HasJustDied)
             {
-                HasDied = true;
+                HasJustDied = true;
                 _damageComponent.PlayDeathVFX();
             }
         }
