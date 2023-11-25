@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 5012602752612073047}
   - component: {fileID: 639664517073781930}
   - component: {fileID: 4307668302167205455}
+  - component: {fileID: 5870899138559719404}
   m_Layer: 3
   m_Name: Health
   m_TagString: Untagged
@@ -215,12 +216,23 @@ MonoBehaviour:
   _damageFeedbackColor: {r: 1, g: 0.24056602, b: 0.24056602, a: 0.72156864}
   _flashSpeed: 1
   _deathVFX: {fileID: 6838194502935997828}
+--- !u!114 &5870899138559719404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6721931797384734225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1598831f746ac9469ee9f8c80a06195, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _explosionGameObject: {fileID: 6838194504515409345}
   _explosionSpriteList:
   - {fileID: 21300000, guid: 6f1a85ff9ae6f1840bb3affa07f30cde, type: 3}
   - {fileID: 21300000, guid: a6dfe65ea46681146848a1bc739698d6, type: 3}
   - {fileID: 21300000, guid: ad4829539b3bead4b93ccd9d9329ca9c, type: 3}
-  _spriteChangeSpeed: 0.1
 --- !u!1 &6838194502728812824
 GameObject:
   m_ObjectHideFlags: 0

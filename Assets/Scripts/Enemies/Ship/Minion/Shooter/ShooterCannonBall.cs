@@ -16,7 +16,7 @@
                 damageGateway.ApplyDamageOnHealth(_damage);
                 DisableVisualAndCollisionComponents();
                 _source.PlayOneShot(_impactAudio);
-                _explosion.PlaySpriteExplosition();
+                _explosion.PlaySpriteExplosion();
                 _currentSpeed = 0;
             }
         }

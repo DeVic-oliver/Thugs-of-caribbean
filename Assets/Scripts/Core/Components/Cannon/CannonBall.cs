@@ -12,7 +12,7 @@ namespace Assets.Scripts.Core.Components.Projectile
         
         [Header("Visual Setup")]
         [SerializeField] protected SpriteRenderer _renderer;
-        [SerializeField] protected Explosion _explosion;
+        [SerializeField] protected ExplosionSpriteChanger _explosion;
 
         [Header("Attributes")]
         [SerializeField] protected float _speed = 10;
@@ -53,7 +53,7 @@ namespace Assets.Scripts.Core.Components.Projectile
                 damageGateway.ApplyDamageOnHealth(_damage);
                 DisableVisualAndCollisionComponents();
                 _source.PlayOneShot(_impactAudio);
-                _explosion.PlaySpriteExplosition();
+                _explosion.PlaySpriteExplosion();
                 _currentSpeed = 0;
             }
         }

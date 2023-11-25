@@ -5657,6 +5657,7 @@ GameObject:
   - component: {fileID: 1650424157212094580}
   - component: {fileID: 8285983642132691023}
   - component: {fileID: 8139509648558236248}
+  - component: {fileID: 7968634956059608038}
   m_Layer: 0
   m_Name: ExplosionSprite
   m_TagString: Untagged
@@ -5747,12 +5748,23 @@ MonoBehaviour:
   _damageFeedbackColor: {r: 1, g: 0.21226418, b: 0.21226418, a: 0.8235294}
   _flashSpeed: 1
   _deathVFX: {fileID: 1186118696533655975}
+--- !u!114 &7968634956059608038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7036880681932651275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1598831f746ac9469ee9f8c80a06195, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _explosionGameObject: {fileID: 8285983642132691023}
   _explosionSpriteList:
   - {fileID: 21300000, guid: 6f1a85ff9ae6f1840bb3affa07f30cde, type: 3}
   - {fileID: 21300000, guid: a6dfe65ea46681146848a1bc739698d6, type: 3}
   - {fileID: 21300000, guid: ad4829539b3bead4b93ccd9d9329ca9c, type: 3}
-  _spriteChangeSpeed: 0.1
 --- !u!1 &7499579189453334747
 GameObject:
   m_ObjectHideFlags: 0
