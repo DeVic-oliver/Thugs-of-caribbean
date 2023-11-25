@@ -21,7 +21,7 @@
             base.Start();
         }
 
-        private void LateUpdate()
+        private void Update()
         {
             SwitchSpriteByHealthPercentage();
         }
@@ -33,12 +33,12 @@
             if(healthPercentage >= 50f && healthPercentage <= 80f) 
             {
                 ChangeCurrentSpriteTo(HealthStates.DAMAGED);
-
-            }else if (healthPercentage >= 1f && healthPercentage <= 49f)
+            }
+            else if (healthPercentage >= 1f && healthPercentage <= 49f)
             {
                 ChangeCurrentSpriteTo(HealthStates.CRITICAL);
-
-            }else if(healthPercentage <= 0f)
+            }
+            else if(healthPercentage <= 0f)
             {
                 ChangeCurrentSpriteTo(HealthStates.DESTROYED);
             }
