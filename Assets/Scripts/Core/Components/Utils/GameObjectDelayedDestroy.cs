@@ -2,9 +2,12 @@
 {
     using System.Collections;
     using UnityEngine;
-    
+    using UnityEngine.Events;
+
     public class GameObjectDelayedDestroyer : MonoBehaviour
     {
+        public UnityEvent PreOnDestroyCallbacks;
+
         [SerializeField] protected float _secondsToDestroy = 1.5f;
         private Coroutine _currentCoroutine;
 
@@ -17,8 +20,10 @@
 
         private IEnumerator DestroyInstance()
         {
+            PreOnDestroyCallbacks?.Invoke();
             yield return new WaitForSeconds(_secondsToDestroy);
             Destroy(gameObject);
         }
+
     }
 }
