@@ -2,8 +2,6 @@ namespace Assets.Scripts.Player
 {
     using UnityEngine;
     using UnityEngine.InputSystem;
-    using UnityEngine.UI;
-    using TMPro;
     using Devic.Scripts.Utils.Pools;
     using System.Collections.Generic;
     using Assets.Scripts.Core.Components.Projectile;
@@ -19,11 +17,6 @@ namespace Assets.Scripts.Player
 
         public int ShootsRemaing { get; private set; }
 
-        [Header("Visual Feedback")]
-        [SerializeField] private Image _currentGunAmmoImage;
-        [SerializeField] private Image _currentGunAmmoImageBackground;
-        [SerializeField] protected TextMeshProUGUI _ammoStatusText;
-        [SerializeField] private TextMeshProUGUI _ammoAmountUI;
 
         [Header("Cannons Setup")]
         [SerializeField] private float _reloadTime;
@@ -34,8 +27,6 @@ namespace Assets.Scripts.Player
 
 
         private CannonBallPool _pool;
-        private bool _isReloading;
-        private bool _isAmmoTextDisplayed;
         private CannonTypes _currentCannon;
 
 
@@ -53,8 +44,6 @@ namespace Assets.Scripts.Player
         private void Update()
         {
             AutoReloadIfNoAmmo();
-            //IfReloadingDisplayText();
-            //UpdateAmmoAmountUI();
         }
 
         private void AutoReloadIfNoAmmo()
@@ -77,21 +66,6 @@ namespace Assets.Scripts.Player
 
             ShootsRemaing = _shootsBeforeReload;
             _isReloading = false;
-        }
-
-        private void IfReloadingDisplayText()
-        {
-            if(!_isAmmoTextDisplayed && _isReloading) 
-            {
-                _ammoStatusText.gameObject.SetActive(true);
-                _isAmmoTextDisplayed = true;
-            }
-        }
-
-        private void UpdateAmmoAmountUI()
-        {
-            _ammoAmountUI.text = ShootsRemaing.ToString();
-            _currentGunAmmoImage.fillAmount = GetAmmoPercentage();
         }
 
         private float GetAmmoPercentage()
