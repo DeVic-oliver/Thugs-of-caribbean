@@ -8,15 +8,13 @@
     public class StartState : GameplayConcreteState
     {
         private TimerCounter _gameTimer;
-        private ScoreCounter _scoreCounter;
         private PlayerHealth _player;
         private EnemySpawner _enemySpawner;
 
 
-        public StartState(GameplayStateMachine stateMachine, TimerCounter gameTimer, ScoreCounter scoreCounter, PlayerHealth player, EnemySpawner enemySpawner) : base(stateMachine)
+        public StartState(GameplayStateMachine stateMachine, TimerCounter gameTimer, PlayerHealth player, EnemySpawner enemySpawner) : base(stateMachine)
         {
             _gameTimer = gameTimer;
-            _scoreCounter = scoreCounter;
             _player = player;
             _enemySpawner = enemySpawner;
         }
@@ -25,7 +23,7 @@
         {
             Time.timeScale = 1;
             _gameTimer.StartTimer();
-            _scoreCounter.ResetScore();
+            ScoreCounter.ResetScore();
             _enemySpawner.StopSpawning();
             ResetPlayerData();
         }
