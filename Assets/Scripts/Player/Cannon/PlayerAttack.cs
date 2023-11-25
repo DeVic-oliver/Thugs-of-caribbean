@@ -39,6 +39,7 @@ namespace Assets.Scripts.Player
         {
             ShootsRemaing = _shootsBeforeReload;
             IsReloading = false;
+            CurrentCannon = CannonTypes.Single;
         }
 
         private void Update()
