@@ -6,16 +6,11 @@ namespace Assets.Scripts.Player
     using System.Collections.Generic;
     using Assets.Scripts.Core.Components.Projectile;
     using System.Collections;
+    using Assets.Scripts.Core.Enums;
+    using Assets.Scripts.Core.Enums.Parser;
 
     public class PlayerAttack : MonoBehaviour
     {
-        public enum CannonTypes
-        {
-            Single,
-            Multiple
-        }
-
-        public int ShootsRemaing { get; private set; }
         public static int ShootsRemaing { get; private set; }
         public static float ShootsRemaingPercentage { get; private set; }
         public static bool IsReloading { get; private set; }
@@ -31,7 +26,6 @@ namespace Assets.Scripts.Player
 
 
         private CannonBallPool _pool;
-        private CannonTypes _currentCannon;
 
 
         private void Awake()
