@@ -18,6 +18,8 @@ namespace Assets.Scripts.Player
         public static CannonTypes CurrentCannon { get; private set; }
 
         public UnityEvent<CannonTypes> OnSwapCannonType;
+        public UnityEvent OnShoot;
+
 
         [Header("Cannons Setup")]
         [SerializeField] private float _reloadTime;
@@ -88,7 +90,9 @@ namespace Assets.Scripts.Player
         {
             if(context.performed && HasShootsRemaning())
             {
-                if(CurrentCannon == CannonTypes.Single)
+                OnShoot?.Invoke();
+
+                if (CurrentCannon == CannonTypes.Single)
                 {
                     CreateCannonBall(_mainCannon.transform);
                 }

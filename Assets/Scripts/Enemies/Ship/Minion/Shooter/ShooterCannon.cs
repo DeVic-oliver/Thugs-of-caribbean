@@ -5,10 +5,13 @@
     using Assets.Scripts.Core.Components.Projectile;
     using Devic.Scripts.Utils.Pools;
     using Assets.Scripts.Core.Components.Cannon;
+    using UnityEngine.Events;
 
     public class ShooterCannon : Cannon
     {
         public static CannonBallPool ShooterCannonBallPool;
+
+        public UnityEvent OnShoot;
 
         [Header("Attributes")]
         [SerializeField] protected float _intervalBetweenShoots;
@@ -33,6 +36,7 @@
                 {
                     shootsMade++;
                     ShootProjectileFromWeaponPosition();
+                    OnShoot?.Invoke();
                     yield return new WaitForSeconds(_intervalBetweenShoots);
                 }
 
