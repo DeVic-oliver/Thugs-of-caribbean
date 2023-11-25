@@ -17,6 +17,7 @@
                 DisableVisualAndCollisionComponents();
                 _source.PlayOneShot(_impactAudio);
                 _explosion.PlaySpriteExplosition();
+                _currentSpeed = 0;
             }
         }
 
