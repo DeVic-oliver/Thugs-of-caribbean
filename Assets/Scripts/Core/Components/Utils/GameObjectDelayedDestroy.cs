@@ -6,10 +6,13 @@
     public class GameObjectDelayedDestroyer : MonoBehaviour
     {
         [SerializeField] protected float _secondsToDestroy = 1.5f;
+        private Coroutine _currentCoroutine;
+
 
         public void DestroyGameObjectAfterDelay()
         {
-            StartCoroutine(nameof(DestroyInstance));
+            if (_currentCoroutine == null)
+                _currentCoroutine = StartCoroutine(nameof(DestroyInstance));
         }
 
         private IEnumerator DestroyInstance()
