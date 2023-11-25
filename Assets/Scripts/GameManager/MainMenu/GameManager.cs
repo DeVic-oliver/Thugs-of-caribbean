@@ -20,6 +20,7 @@
         [SerializeField] private Button _settingsButton;
         [SerializeField] private GameObject _settingsUI;
         [SerializeField] private Button _saveSettingsButton;
+        
         [Space(5f)]
         [Header("Sliders")]
         [SerializeField] private Slider _enemySpawnIntervalSlider;
@@ -27,9 +28,11 @@
         [Space(5f)]
         [SerializeField] private Slider _gameTimeLimitSlider;
         [SerializeField] private TextMeshProUGUI _gameTimeLimitCounterUI;
+        
         [Space(5f)]
         [Header("Audio")]
         [SerializeField] private UIAudioManagerBase _uiAudioManager;
+
 
         private void Start()
         {
@@ -52,7 +55,7 @@
         private void PlayGame()
         {
             CheckIfSettingsWasSaved();
-            StartCoroutine("LoadGameAfterClickSound");
+            StartCoroutine(nameof(LoadGameAfterClickSound));
         }
         private IEnumerator LoadGameAfterClickSound()
         {
