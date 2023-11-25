@@ -43,7 +43,7 @@ namespace Assets.Scripts.Core.Components.Projectile
         
         protected virtual void TranslateCannonballFoward()
         {
-            transform.Translate(_speed * Time.deltaTime * Vector3.up);
+            transform.Translate(_currentSpeed * Time.deltaTime * Vector3.up);
         }
 
         protected virtual void OnTriggerEnter2D(Collider2D other)
