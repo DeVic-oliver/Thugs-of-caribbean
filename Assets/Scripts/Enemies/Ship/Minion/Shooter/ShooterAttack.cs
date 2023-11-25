@@ -14,18 +14,6 @@
 
         private readonly string _targetLayerMask = "Player";
 
-        private bool _canAttack;
-
-
-        public void AllowAttack()
-        {
-            _canAttack = true;
-        }
-
-        public void PreventAttack() 
-        {
-            _canAttack = false;
-        }
 
         private void Awake()
         {
@@ -36,8 +24,14 @@
         {
             _isEnemyOnSight = SightRaycaster2D.CheckGameObjectOnSight(transform, _targetNearbyDetector.GetRangeDetection(), _targetLayerMask);
 
-            if (_canAttack && _isEnemyOnSight)
+            if (_isEnemyOnSight)
+            {
                 _shooterCannon.Shoot();
+            }
+            else
+            {
+                _shooterCannon.StopShoot();
+            }
         }
     }
 }
