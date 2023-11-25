@@ -8,6 +8,7 @@ namespace Assets.Scripts.Player
     using System.Collections;
     using Assets.Scripts.Core.Enums;
     using Assets.Scripts.Core.Enums.Parser;
+    using UnityEngine.Events;
 
     public class PlayerAttack : MonoBehaviour
     {
@@ -16,6 +17,7 @@ namespace Assets.Scripts.Player
         public static bool IsReloading { get; private set; }
         public static CannonTypes CurrentCannon { get; private set; }
 
+        public UnityEvent<CannonTypes> OnSwapCannonType;
 
         [Header("Cannons Setup")]
         [SerializeField] private float _reloadTime;
@@ -74,7 +76,10 @@ namespace Assets.Scripts.Player
         public void ChangeCurrentCannonType(InputAction.CallbackContext context)
         {
             if (context.performed)
-                _currentCannon = (_currentCannon == CannonTypes.Single) ? CannonTypes.Multiple : CannonTypes.Single;
+            {
+                CurrentCannon = (CannonTypeParser.IsSingleCannon(CurrentCannon)) ? CannonTypes.Multiple : CannonTypes.Single;
+                OnSwapCannonType?.Invoke(CurrentCannon);
+            }
         }
 
         public void FireCannon(InputAction.CallbackContext context) 
