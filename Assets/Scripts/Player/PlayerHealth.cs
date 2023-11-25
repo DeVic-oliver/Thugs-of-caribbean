@@ -2,18 +2,12 @@
 {
     using Assets.Scripts.Core.Components;
     using Assets.Scripts.Core.Components.Damage;
-    using Assets.Scripts.Core.Interfaces;
     
 
-    public class PlayerHealth : Health, IDamageable
+    public class PlayerHealth : Health
     {
         private VisualDamageFeedback _damageComponent;
 
-        public void TakeDamage(int damageValue)
-        {
-            DecreaseHealth(damageValue);
-            _damageComponent.FlashShader();
-        }
 
         private void Start()
         {
