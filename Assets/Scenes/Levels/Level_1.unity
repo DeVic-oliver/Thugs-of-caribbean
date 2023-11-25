@@ -135334,6 +135334,18 @@ PrefabInstance:
       propertyPath: Target
       value: 
       objectReference: {fileID: 416895232}
+    - target: {fileID: 8599471531868887387, guid: b6876783af6c3994f9c34f751c84a8be, type: 3}
+      propertyPath: _rangeDetection
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8599471531868887387, guid: b6876783af6c3994f9c34f751c84a8be, type: 3}
+      propertyPath: OnTargetNearby.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8599471531868887387, guid: b6876783af6c3994f9c34f751c84a8be, type: 3}
+      propertyPath: OnTargetNotNearby.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

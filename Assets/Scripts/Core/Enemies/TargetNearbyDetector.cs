@@ -32,7 +32,7 @@
         private bool IsTargetNearby()
         {
             float distance = Vector3.Distance(transform.position, GetTargetTransform().position);
-            return distance < _rangeDetection;
+            return (distance < _rangeDetection);
         }
         
         private Transform GetTargetTransform()

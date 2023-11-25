@@ -5146,6 +5146,7 @@ GameObject:
   - component: {fileID: 5632655240390401859}
   - component: {fileID: 1796647986237343020}
   - component: {fileID: 2694945018921849806}
+  - component: {fileID: 34302263762204856}
   m_Layer: 0
   m_Name: PFB_Enemy_Chaser_01
   m_TagString: Untagged
@@ -5344,6 +5345,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: {fileID: 3910674705615990674}
+--- !u!114 &34302263762204856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4258240438542307602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89d12b342896416408a8f5dede2b574a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _secondsToDestroy: 1.5
 --- !u!1 &4842224423778722096
 GameObject:
   m_ObjectHideFlags: 0
@@ -5774,6 +5788,19 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 34302263762204856}
+        m_TargetAssemblyTypeName: Assets.Scripts.Core.Components.Utils.GameObjectDelayedDestroyer,
+          Assembly-CSharp
+        m_MethodName: DestroyGameObjectAfterDelay
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
