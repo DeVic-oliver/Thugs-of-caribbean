@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8599471531868887387}
   - component: {fileID: 4023145279427648833}
   - component: {fileID: 4405104599758256341}
+  - component: {fileID: 5780740302285307338}
   m_Layer: 0
   m_Name: PFB_Enemy_Shooter_01
   m_TagString: Untagged
@@ -184,7 +185,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89d12b342896416408a8f5dede2b574a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PreOnDestroyCallbacks:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5780740302285307338}
+        m_TargetAssemblyTypeName: Assets.Scripts.Core.Components.ScoreGateway, Assembly-CSharp
+        m_MethodName: IncrementScore
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _secondsToDestroy: 1.5
+--- !u!114 &5780740302285307338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142458460917278500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e40c0872d6e5344d88f2a7515799ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &739071472322161536
 GameObject:
   m_ObjectHideFlags: 0

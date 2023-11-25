@@ -21,7 +21,7 @@
             Score++;
         }
 
-        private void LateUpdate()
+        private void Update()
         {
             foreach (TextMeshProUGUI counter in _pointCounterUI)
                 counter.text = $"Score: {Score}";
