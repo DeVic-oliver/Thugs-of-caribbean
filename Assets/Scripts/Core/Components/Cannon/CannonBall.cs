@@ -12,6 +12,8 @@ namespace Assets.Scripts.Core.Components.Projectile
         
         [Header("Visual Setup")]
         [SerializeField] protected SpriteRenderer _renderer;
+        private Sprite _defaultSprite;
+
         [SerializeField] protected ExplosionSpriteChanger _explosion;
 
         [Header("Attributes")]
@@ -32,6 +34,7 @@ namespace Assets.Scripts.Core.Components.Projectile
         {
             _currentSpeed = _speed;
             _source.clip = _firedAudio;
+            _defaultSprite = _renderer.sprite;
             _collider = GetComponent<Collider2D>();
             _source = GetComponent<AudioSource>();
         }
@@ -69,6 +72,7 @@ namespace Assets.Scripts.Core.Components.Projectile
             EnableVisualAndColisionComponents();
             ResetSpeedAndAudio();
             StartOnBackToPool();
+            _source.Play();
         }
 
         protected void EnableVisualAndColisionComponents()

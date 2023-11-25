@@ -25,8 +25,8 @@
             yield return ChangeSpritesForwards();
             yield return ChangeSpriteBackwards();
 
-            _explosionGameObject.sprite = null;
-            _explosionCoroutine = null;
+            SetExplosionSpriteNull();
+            SetCoroutineExplosionNull();
         }
 
         private IEnumerator ChangeSpritesForwards()
@@ -55,6 +55,26 @@
         private IEnumerator ReturnWaitForSeconds()
         {
             yield return new WaitForSeconds(_spriteChangeSpeed);
+        }
+
+        private void OnEnable()
+        {
+            SetExplosionSpriteNull();
+        }
+
+        private void SetExplosionSpriteNull()
+        {
+            _explosionGameObject.sprite = null;
+        }
+
+        private void OnDisable()
+        {
+            SetCoroutineExplosionNull();
+        }
+
+        private void SetCoroutineExplosionNull()
+        {
+            _explosionCoroutine = null;
         }
     }
 }
