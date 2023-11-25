@@ -24,7 +24,7 @@
         private void Update()
         {
             foreach (TextMeshProUGUI counter in _pointCounterUI)
-                counter.text = $"Score: {Score}";
+                counter.text = Score.ToString();
         }
 
     }
