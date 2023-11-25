@@ -50,9 +50,7 @@
             CannonBall projectile = ShooterCannonBallPool.GetProjectileFromPool();
             
             foreach (Transform cannonTransfom in _cannonsTransform)
-            {
                 projectile.transform.SetPositionAndRotation(cannonTransfom.position, cannonTransfom.rotation);
-            }
             
             RemoveParent(projectile.gameObject);
             ShooterCannonBallPool.SetProjectilPoolIfItHasNone(projectile);

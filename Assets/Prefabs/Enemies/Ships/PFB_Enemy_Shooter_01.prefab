@@ -461,6 +461,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7169616098798670950}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6000658753950593317}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _health: 100
 --- !u!1 &1919105779937899366
 GameObject:
@@ -5584,7 +5608,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b2f75cdc0e368142b1e574f04f02a2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cannonsTransform: []
+  _cannonsTransform:
+  - {fileID: 4229493745564572135}
   _cannonBall: {fileID: 2317378387054697295, guid: 85546f2ae8300bf4ca4bb7e737ec610e, type: 3}
   _intervalBetweenShoots: 2
   _ammoAmount: 10

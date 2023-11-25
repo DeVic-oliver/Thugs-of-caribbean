@@ -71,6 +71,5 @@
         {
             return (CurrentHealth > 0);
         }
-
     }
 }
