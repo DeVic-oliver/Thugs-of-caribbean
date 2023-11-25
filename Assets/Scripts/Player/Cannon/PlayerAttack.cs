@@ -38,19 +38,20 @@ namespace Assets.Scripts.Player
         void Start()
         {
             ShootsRemaing = _shootsBeforeReload;
-            _isReloading = false;
+            IsReloading = false;
         }
 
         private void Update()
         {
             AutoReloadIfNoAmmo();
+            ShootsRemaingPercentage = GetShotsPercentage();
         }
 
         private void AutoReloadIfNoAmmo()
         {
-            if (!HasShootsRemaning() && !_isReloading)
+            if (!HasShootsRemaning() && !IsReloading)
             {
-                _isReloading = true;
+                IsReloading = true;
                 StartCoroutine(nameof(ReloadShoots));
             }
         }
@@ -65,10 +66,10 @@ namespace Assets.Scripts.Player
             }
 
             ShootsRemaing = _shootsBeforeReload;
-            _isReloading = false;
+            IsReloading = false;
         }
 
-        private float GetAmmoPercentage()
+        private float GetShotsPercentage()
         {
             return ((ShootsRemaing * 100f) / _shootsBeforeReload) / 100f;
         }
@@ -86,7 +87,7 @@ namespace Assets.Scripts.Player
         {
             if(context.performed && HasShootsRemaning())
             {
-                if(_currentCannon == CannonTypes.Single)
+                if(CurrentCannon == CannonTypes.Single)
                 {
                     CreateCannonBall(_mainCannon.transform);
                 }
