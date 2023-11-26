@@ -1,31 +1,47 @@
-﻿using UnityEngine;
-
-namespace Assets.Scripts.Core.Components
+﻿namespace Assets.Scripts.Core.Components
 {
-    public abstract class Health : MonoBehaviour
+    using UnityEngine;
+    using UnityEngine.Events;
+
+    public class Health : MonoBehaviour
     {
+        public UnityEvent OnDie;
+
         public bool IsAlive { get; protected set; }
-        public bool HasDied { get; set; }
+        public bool HasJustDied { get; set; }
         public float CurrentHealth { get; protected set; }
+
         [SerializeField] protected float _health = 100f;
 
-        public virtual void DecreaseHealth()
+
+        public void ResetStatus()
         {
-            CurrentHealth = GetZeroOrPositiveHealthDecreasedByValue(1f);
+            CurrentHealth = _health;
+            IsAlive = true;
+            HasJustDied = false;
         }
+
+        public virtual void DecrementHealth()
+        {
+            CurrentHealth = GetZeroOrPositiveHealthDecreasedBy(1f);
+        }
+
         public virtual void DecreaseHealth(float value)
         {
-            CurrentHealth = GetZeroOrPositiveHealthDecreasedByValue(value);
+            CurrentHealth = GetZeroOrPositiveHealthDecreasedBy(value);
         }
-
-        public float GetTotalHealth()
+        
+        protected float GetZeroOrPositiveHealthDecreasedBy(float value)
         {
-            return _health;
-        }
+            var health = CurrentHealth - value;
 
-        public void KillMe()
-        {
-            CurrentHealth = 0;
+            if (health <= 0f)
+            {
+                OnDie?.Invoke();
+                return 0;
+            }
+
+            return health;
         }
 
         public float GetHealthPercentage()
@@ -34,20 +50,15 @@ namespace Assets.Scripts.Core.Components
             return percentage;
         }
 
-        protected float GetZeroOrPositiveHealthDecreasedByValue(float value)
+        public float GetTotalHealth()
         {
-            var health = CurrentHealth - value;
-            if(health < 0)
-            {
-                return 0;
-            }
-            return health;
+            return _health;
         }
 
         private void Awake()
         {
             CurrentHealth = _health;
-            HasDied = false;
+            HasJustDied = false;
             IsAlive = CheckIfIsAliveByHealthAmmout();
         }
 
@@ -58,19 +69,7 @@ namespace Assets.Scripts.Core.Components
         
         public bool CheckIfIsAliveByHealthAmmout()
         {
-            if (CurrentHealth > 0)
-            {
-                return true;
-            }
-            return false;
+            return (CurrentHealth > 0);
         }
-
-        public void ResetStatus()
-        {
-            CurrentHealth = _health;
-            IsAlive = true;
-            HasDied = false;
-        }
-
     }
 }

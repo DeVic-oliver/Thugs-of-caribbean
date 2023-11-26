@@ -1,27 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using UnityEngine;
-
-namespace Assets.Scripts.Core.Components.Counters
+﻿namespace Assets.Scripts.Core.Components.Counters
 {
+    using System.Collections.Generic;
+    using TMPro;
+    using UnityEngine;
+    
     public class ScoreCounter : MonoBehaviour
     {
-        public static int PlayerPoints;
+        public static int Score { get; private set; }
 
         [SerializeField] private List<TextMeshProUGUI> _pointCounterUI;
 
-        private void LateUpdate()
+
+        public static void ResetScore()
         {
-            foreach (var counter in _pointCounterUI)
-            {
-                counter.text = $"Score: {PlayerPoints.ToString()}";
-            }
+            Score = 0;
         }
 
-        public void ResetScore()
+        public static void IncrementScore()
         {
-            PlayerPoints = 0;
+            Score++;
         }
+
+        private void Update()
+        {
+            foreach (TextMeshProUGUI counter in _pointCounterUI)
+                counter.text = Score.ToString();
+        }
+
     }
 }

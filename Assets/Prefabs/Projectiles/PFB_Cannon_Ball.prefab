@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5422674028793016146}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7697713707802538695}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5565545676534751611
 MonoBehaviour:
@@ -129,6 +129,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7983572406348100724}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.8407607, y: 4.625685, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
@@ -136,7 +137,6 @@ Transform:
   m_Children:
   - {fileID: 4696187989951290650}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8358855896569305926
 SpriteRenderer:
@@ -199,16 +199,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 7983572406348100724}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7f9a8eacb411b445a3218bcf8839781, type: 3}
+  m_Script: {fileID: 11500000, guid: fb62a707dbb24794e8df797ce11eca8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosion: {fileID: 5565545676534751611}
-  _projectileSpeed: 30
-  _damage: 15
   _renderer: {fileID: 8358855896569305926}
+  _explosion: {fileID: 5565545676534751611}
+  _speed: 25
+  _damage: 10
   _timeToBackPool: 1.5
-  _firedAudio: {fileID: 8300000, guid: 7bef0064f8567430cac22499c6b93d4f, type: 3}
-  _impactAudio: {fileID: 8300000, guid: cabfae866cab347928b74b7d0ca6bfa9, type: 3}
+  _firedAudio: {fileID: 8300000, guid: 7e26c9daf4c32483b9c2790e662d3f1b, type: 3}
+  _impactAudio: {fileID: 8300000, guid: 7bef0064f8567430cac22499c6b93d4f, type: 3}
   _source: {fileID: 164139985988163894}
 --- !u!58 &1338619019919997079
 CircleCollider2D:
@@ -220,6 +220,25 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0

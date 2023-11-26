@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using UnityEngine;
-using UnityEngine.UI;
-
-namespace Assets.Scripts.Core.Components
+﻿namespace Assets.Scripts.Core.Components
 {
+    using UnityEngine;
+    using UnityEngine.UI;
+    
     public class HealthUIManager : MonoBehaviour
     {
         [SerializeField] protected Image _fillableHealthBar;
@@ -14,13 +13,15 @@ namespace Assets.Scripts.Core.Components
         {
             UpdateHealthBar();
         }
+        
         private void UpdateHealthBar()
         {
             _fillableHealthBar.fillAmount = GetNormalizedPercentage();
         }
+
         private float GetNormalizedPercentage()
         {
-            var percentage = _health.GetHealthPercentage();
+            float percentage = _health.GetHealthPercentage();
             return percentage / 100f;
         }
     }

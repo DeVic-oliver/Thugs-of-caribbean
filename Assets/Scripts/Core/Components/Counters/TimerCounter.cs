@@ -1,22 +1,26 @@
-﻿using System.Collections;
-using UnityEngine;
-using TMPro;
-
-namespace Assets.Scripts.Core.Components.Counters
+﻿namespace Assets.Scripts.Core.Components.Counters
 {
+    using System.Collections;
+    using UnityEngine;
+    using TMPro;
+    
     public class TimerCounter : MonoBehaviour
     {
         public bool HasTimerReachedZero { get; private set; }
-        private float _timer;
+
         [SerializeField] private TextMeshProUGUI _timerUI;
+        
+        private float _timer;
+
 
         public void StartTimer()
         {
             var limit = PlayerPrefs.GetInt("TIMER_LIMIT");
             _timer = limit * 60;
             HasTimerReachedZero = false;
-            StartCoroutine("StartCounter");
+            StartCoroutine(nameof(StartCounter));
         }
+
         private IEnumerator StartCounter()
         {
             while(_timer >= 0)
@@ -25,9 +29,11 @@ namespace Assets.Scripts.Core.Components.Counters
                 _timerUI.text = DisplayTime(_timer);
                 yield return new WaitForSeconds(Time.deltaTime);
             }
+
             HasTimerReachedZero = true;
             _timerUI.text = "00:00";
         }
+
         private string DisplayTime(float timeToDisplay)
         {
             float minutes = Mathf.FloorToInt(timeToDisplay / 60);

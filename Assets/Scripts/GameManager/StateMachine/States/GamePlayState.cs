@@ -3,13 +3,11 @@
     using Assets.Scripts.Core.Components.Counters;
     using Assets.Scripts.Core.Components.Spawner;
     using Assets.Scripts.Player;
-    using Devic.Scripts.Utils.StateMachine;
     using UnityEngine;
     using UnityEngine.InputSystem;
 
-    public class GamePlayState : IConcreteState
+    public class GameplayState : GameplayConcreteState
     {
-        private StateMachine _machine;
         private TimerCounter _gameTimer;
         private PlayerHealth _playerHealth;
         private PlayerInput _inputSystem;
@@ -18,73 +16,59 @@
         private EnemySpawner _enemySpawner;
         private bool _canGoToPauseState = false;
 
-        public GamePlayState(TimerCounter gameTimer, PlayerHealth playerHealth, PlayerInput inputSystem, GameObject pauseMenu, EnemySpawner enemySpawner)
+        public GameplayState(GameplayStateMachine stateMachine, TimerCounter gameTimer, PlayerHealth playerHealth, PlayerInput inputSystem, GameObject pauseMenu, EnemySpawner enemySpawner) : base(stateMachine)
         {
             _gameTimer = gameTimer;
             _playerHealth = playerHealth;
             _inputSystem = inputSystem;
-            _pauseAction = _inputSystem.actions.FindAction("Pause");
+            _pauseAction = inputSystem.actions.FindAction("Pause");
             _pauseMenu = pauseMenu;
             _enemySpawner = enemySpawner;
             AllowGoToPauseStateByActionsPerformed();
         }
+
         private void AllowGoToPauseStateByActionsPerformed()
         {
             _pauseAction.performed += ctx => _canGoToPauseState = true;
         }
 
-        public void OnStateEnter(StateMachine stateMachine)
+        public override void OnStateEnter()
         {
-            Debug.Log("WELCOME TO GAMEPLAY STATE");
-            InitStateMachineIfItsNull(stateMachine);
             _canGoToPauseState = false;
             EnablePlayerInputActions();
-            ResumeGame();
+            ResumeTimeScaleToOne();
             _pauseMenu.SetActive(false);
             _enemySpawner.StartSpawnObjects();
-        }
-        private void InitStateMachineIfItsNull(StateMachine stateMachine)
-        {
-            if (_machine == null)
-            {
-                _machine = stateMachine;
-            }
         }
 
         private void EnablePlayerInputActions()
         {
             foreach (var item in _inputSystem.actions)
-            {
-                    item.Enable();
-            }
+                item.Enable();
         }
-        private void ResumeGame()
+
+        private void ResumeTimeScaleToOne()
         {
             if(Time.timeScale == 0)
-            {
                 Time.timeScale = 1;
-            }
         }
-       
-        public void OnUpdateState(StateMachine stateMachine)
+
+        public override void  OnUpdateState()
         {
-            GoToPauseStateIfItsAllowed();
+            GoToPauseStateIfAllowed();
             ChangeToGameOverWhenPlayerDiesOrTimeEnds();
         }
-        private void GoToPauseStateIfItsAllowed()
+
+        private void GoToPauseStateIfAllowed()
         {
             if (_canGoToPauseState)
-            {
-                _machine.SwitchState("PAUSE");
-            }
+                _stateMachine.SwitchState(_stateMachine.Pause);
         }
        
         private void ChangeToGameOverWhenPlayerDiesOrTimeEnds()
         {
-            if(_playerHealth.HasDied || _gameTimer.HasTimerReachedZero)
-            {
-                _machine.SwitchState("GAMEOVER");
-            }
+            if(_playerHealth.HasJustDied || _gameTimer.HasTimerReachedZero)
+                _stateMachine.SwitchState(_stateMachine.Gameover);
         }
 
     }
