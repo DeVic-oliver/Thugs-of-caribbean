@@ -18,7 +18,7 @@
         private Tween _currentColorTween;
 
 
-        public void FlashShader()
+        public void FlashDamage()
         {
             if (!_currentColorTween.IsActive())
                 _currentColorTween = _renderer.DOColor(_damageFeedbackColor, _flashSpeed).SetLoops(2, LoopType.Yoyo);
