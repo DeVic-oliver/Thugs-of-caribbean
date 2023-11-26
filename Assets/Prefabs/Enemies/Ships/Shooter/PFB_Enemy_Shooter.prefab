@@ -173,6 +173,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69307dd04a43ffc4eab3858c89c58faa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8139509648558236248}
+        m_TargetAssemblyTypeName: Assets.Scripts.Core.Components.Damage.VisualDamageFeedback,
+          Assembly-CSharp
+        m_MethodName: FlashDamage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _health: {fileID: 5594931953954699590}
 --- !u!114 &4405104599758256341
 MonoBehaviour:
@@ -6157,7 +6173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _renderer: {fileID: 9080596551089767915}
   _damageFeedbackColor: {r: 1, g: 0.21226418, b: 0.21226418, a: 0.8235294}
-  _flashSpeed: 1
+  _flashSpeed: 0.1
   _deathVFX: {fileID: 1186118696533655975}
 --- !u!114 &7968634956059608038
 MonoBehaviour:

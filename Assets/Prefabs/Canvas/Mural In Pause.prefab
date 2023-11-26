@@ -504,7 +504,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2492792937384665917, guid: a0754510457c9a546a93938a827e5115, type: 3}
       propertyPath: m_text
-      value: asdasd
+      value: '- Use SPACE to move'
       objectReference: {fileID: 0}
     - target: {fileID: 2492792938947764430, guid: a0754510457c9a546a93938a827e5115, type: 3}
       propertyPath: m_SizeDelta.y
