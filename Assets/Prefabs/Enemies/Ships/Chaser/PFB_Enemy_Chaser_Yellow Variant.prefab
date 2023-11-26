@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6365253422286953330
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 998318977, guid: 293831d3d8f7ad547b3e25f485832bea, type: 3}
+      propertyPath: _spritesList.Array.data[0].Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9fecca876a435b641b868554c4c8387d, type: 3}
+    - target: {fileID: 998318977, guid: 293831d3d8f7ad547b3e25f485832bea, type: 3}
+      propertyPath: _spritesList.Array.data[1].Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2228fa1ceb5ff9346ba5dd2c2b210038, type: 3}
+    - target: {fileID: 998318977, guid: 293831d3d8f7ad547b3e25f485832bea, type: 3}
+      propertyPath: _spritesList.Array.data[2].Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b6923f2a785e5de439ec52eebce45db7, type: 3}
+    - target: {fileID: 998318977, guid: 293831d3d8f7ad547b3e25f485832bea, type: 3}
+      propertyPath: _spritesList.Array.data[3].Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 76e4e8333edf72041bc48e03f41660e2, type: 3}
+    - target: {fileID: 861796061388751740, guid: 293831d3d8f7ad547b3e25f485832bea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.5736393
+      objectReference: {fileID: 0}
+    - target: {fileID: 861796061388751740, guid: 293831d3d8f7ad547b3e25f485832bea, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.17958663
+      objectReference: {fileID: 0}
+    - target: {fileID: 861796061388751740, guid: 293831d3d8f7ad547b3e25f485832bea, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 861796061388751740, guid: 293831d3d8f7ad547b3e25f485832bea, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 861796061388751740, guid: 293831d3d8f7ad547b3e25f485832bea, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 861796061388751740, guid: 293831d3d8f7ad547b3e25f485832bea, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 861796061388751740, guid: 293831d3d8f7ad547b3e25f485832bea, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 861796061388751740, guid: 293831d3d8f7ad547b3e25f485832bea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 861796061388751740, guid: 293831d3d8f7ad547b3e25f485832bea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 861796061388751740, guid: 293831d3d8f7ad547b3e25f485832bea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1796647986237343020, guid: 293831d3d8f7ad547b3e25f485832bea, type: 3}
+      propertyPath: Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4258240438542307602, guid: 293831d3d8f7ad547b3e25f485832bea, type: 3}
+      propertyPath: m_Name
+      value: PFB_Enemy_Chaser_Yellow Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964814358764483549, guid: 293831d3d8f7ad547b3e25f485832bea, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9fecca876a435b641b868554c4c8387d, type: 3}
+    - target: {fileID: 4964814358764483549, guid: 293831d3d8f7ad547b3e25f485832bea, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 293831d3d8f7ad547b3e25f485832bea, type: 3}
