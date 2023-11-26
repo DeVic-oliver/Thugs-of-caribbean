@@ -477,8 +477,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 416895233}
   - {fileID: 2000719614}
+  - {fileID: 416895233}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &132347205
@@ -806,7 +806,9 @@ MonoBehaviour:
   - {fileID: 2011592083}
   _targetDetectors:
   - {fileID: 1796647986237343020, guid: 293831d3d8f7ad547b3e25f485832bea, type: 3}
+  - {fileID: 7990106085938303269, guid: 2128891b22617e34480fbe02deb0b561, type: 3}
   - {fileID: 8599471531868887387, guid: b6876783af6c3994f9c34f751c84a8be, type: 3}
+  - {fileID: 8003597178805559134, guid: 0079aa9718755894ead259bfe29cc613, type: 3}
 --- !u!1 &255920980
 GameObject:
   m_ObjectHideFlags: 0
@@ -145810,7 +145812,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7809351071000292090, guid: 990b0900e0122fe49abc2508e3d36b5d, type: 3}
       propertyPath: _shootsBeforeReload
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7809351071000292090, guid: 990b0900e0122fe49abc2508e3d36b5d, type: 3}
       propertyPath: OnSwapCannonType.m_PersistentCalls.m_Calls.Array.size
