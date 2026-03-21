@@ -59,15 +59,15 @@
         {
             CurrentHealth = _health;
             HasJustDied = false;
-            IsAlive = CheckIfIsAliveByHealthAmmout();
+            IsAlive = CheckIfIsAliveByHealthAmount();
         }
 
         protected virtual void Update()
         {
-            IsAlive = CheckIfIsAliveByHealthAmmout();
+            IsAlive = CheckIfIsAliveByHealthAmount();
         }
         
-        public bool CheckIfIsAliveByHealthAmmout()
+        public bool CheckIfIsAliveByHealthAmount()
         {
             return (CurrentHealth > 0);
         }

@@ -12,8 +12,8 @@ namespace Assets.Scripts.Player
 
     public class PlayerAttack : MonoBehaviour
     {
-        public static int ShootsRemaing { get; private set; }
-        public static float ShootsRemaingPercentage { get; private set; }
+        public static int ShootsRemaining { get; private set; }
+        public static float ShootsRemainingPercentage { get; private set; }
         public static bool IsReloading { get; private set; }
         public static CannonTypes CurrentCannon { get; private set; }
 
@@ -39,7 +39,7 @@ namespace Assets.Scripts.Player
 
         void Start()
         {
-            ShootsRemaing = _shootsBeforeReload;
+            ShootsRemaining = _shootsBeforeReload;
             IsReloading = false;
             CurrentCannon = CannonTypes.Single;
         }
@@ -47,12 +47,12 @@ namespace Assets.Scripts.Player
         private void Update()
         {
             AutoReloadIfNoAmmo();
-            ShootsRemaingPercentage = GetShotsPercentage();
+            ShootsRemainingPercentage = GetShotsPercentage();
         }
 
         private void AutoReloadIfNoAmmo()
         {
-            if (!HasShootsRemaning() && !IsReloading)
+            if (!HasShotsRemaining() && !IsReloading)
             {
                 IsReloading = true;
                 StartCoroutine(nameof(ReloadShoots));
@@ -68,13 +68,13 @@ namespace Assets.Scripts.Player
                 yield return new WaitForEndOfFrame();
             }
 
-            ShootsRemaing = _shootsBeforeReload;
+            ShootsRemaining = _shootsBeforeReload;
             IsReloading = false;
         }
 
         private float GetShotsPercentage()
         {
-            return ((ShootsRemaing * 100f) / _shootsBeforeReload) / 100f;
+            return ((ShootsRemaining * 100f) / _shootsBeforeReload) / 100f;
         }
 
         public void ChangeCurrentCannonType(InputAction.CallbackContext context)
@@ -88,7 +88,7 @@ namespace Assets.Scripts.Player
 
         public void FireCannon(InputAction.CallbackContext context) 
         {
-            if(context.performed && HasShootsRemaning())
+            if(context.performed && HasShotsRemaining())
             {
                 OnShoot?.Invoke();
 
@@ -102,13 +102,13 @@ namespace Assets.Scripts.Player
                         CreateCannonBall(cannonTransfom);
                 }
 
-                ShootsRemaing--;
+                ShootsRemaining--;
             }
         }
 
-        private bool HasShootsRemaning()
+        private bool HasShotsRemaining()
         {
-            return (ShootsRemaing > 0);
+            return (ShootsRemaining > 0);
         }
 
         private void CreateCannonBall(Transform transfomToCannonBall)

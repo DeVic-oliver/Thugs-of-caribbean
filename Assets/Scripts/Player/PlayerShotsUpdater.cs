@@ -42,8 +42,8 @@
 
         private void UpdateShotsRemaining()
         {
-            _shotsRemainingTMP.text = PlayerAttack.ShootsRemaing.ToString();
-            _ammoTypeImage.fillAmount = PlayerAttack.ShootsRemaingPercentage;
+            _shotsRemainingTMP.text = PlayerAttack.ShootsRemaining.ToString();
+            _ammoTypeImage.fillAmount = PlayerAttack.ShootsRemainingPercentage;
         }
     }
 }
