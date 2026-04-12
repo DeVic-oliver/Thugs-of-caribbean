@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Player_Identity
   m_EditorClassIdentifier: Assembly-CSharp::TOC.Core.EntitySystem.EntityIdentityParameters
   m_EntityName: Hero
-  m_Sprite: {fileID: 21300000, guid: 7784d64816d97704cacc38745afa8ddb, type: 3}
+  m_Visuals: {fileID: 11400000, guid: 6d77d7108a6079e42bc022dc75005b06, type: 2}

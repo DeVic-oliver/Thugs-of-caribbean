@@ -14,6 +14,7 @@ namespace TOC.Core.EntitySystem
 
         [Space]
         [SerializeField] private Rigidbody2D m_Rigidbody;
+        [SerializeField] private SpriteRenderer m_SailRenderer;
         
         private EntityIdentityParameters.EntityIdentityData m_IdentityData;
         private EntityWellbeingParameters.EntityWellbeingData m_WellbeingData;
@@ -49,12 +50,24 @@ namespace TOC.Core.EntitySystem
             InitData(m_MovementParameters, ref m_MovementData);
             InitData(m_WellbeingParameters, ref m_WellbeingData);
             InitData(m_IdentityParameters, ref m_IdentityData);
+
+            UpdateSailSprite();
         }
 
         public float ApplyDamage(float value) => RemoveHealth(value);
-        public float AddHealth(float value) => m_WellbeingData.AddHealth(value);
+        public float AddHealth(float value)
+        {
+          float h = m_WellbeingData.AddHealth(value);
+            UpdateSailSprite();
+            return h;  
+        }
+        public float RemoveHealth(float value)
+        {
+            float h = m_WellbeingData.RemoveHealth(value);
+            UpdateSailSprite();
+            return h;
+        }
         public float AddStamina(float value) => m_WellbeingData.AddStamina(value);
-        public float RemoveHealth(float value) => m_WellbeingData.RemoveHealth(value);
         public float RemoveStamina(float value) => m_WellbeingData.RemoveStamina(value);
         #endregion
 
@@ -75,6 +88,11 @@ namespace TOC.Core.EntitySystem
             }
 
             output = default;
+        }
+
+        private void UpdateSailSprite()
+        {
+            m_SailRenderer.sprite = m_IdentityData.Visuals.GetWellbeingStatusSprite(m_WellbeingData);
         }
         #endregion
     }

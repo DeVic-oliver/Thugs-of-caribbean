@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: CannonBall_Default
   m_EditorClassIdentifier: Assembly-CSharp::TOC.Core.CombatSystem.CannonBallParameters
   m_Damage: 1
-  m_Speed: 0.3
+  m_Speed: 1.5
