@@ -3,12 +3,16 @@ using UnityEngine;
 
 namespace TOC.Core.EntitySystem.Data
 {
-    [CreateAssetMenu(fileName = "EntityIdentity_Parameters_", menuName = "TOC/Entity/Identity")]
+    [CreateAssetMenu(fileName = "EntityIdentity_", menuName = "TOC/Entity/Identity")]
     public class EntityIdentityParameters : ScriptableObject, IParameters<EntityIdentityParameters.EntityIdentityData>
     {
         #region Fields
         [SerializeField] private string m_EntityName;
-        [SerializeField] private Sprite m_Sprite;
+        [SerializeField] private EntityVisualParameters m_Visuals;
+        #endregion
+
+        #region Properties
+        public EntityVisualParameters Visuals => m_Visuals;
         #endregion
 
         #region Public Methods
@@ -20,25 +24,25 @@ namespace TOC.Core.EntitySystem.Data
         {
             #region Fields
             private string m_Name;
-            private Sprite m_Sprite;
+            private EntityVisualParameters m_Visuals;
             #endregion
 
             #region Properties
             public string Name => m_Name;
-            public Sprite Sprite => m_Sprite;
+            public EntityVisualParameters Visuals => m_Visuals;
             #endregion
 
             #region Constructors
             public EntityIdentityData(EntityIdentityParameters parameters)
             {
                 m_Name = parameters.m_EntityName;
-                m_Sprite = parameters.m_Sprite;
+                m_Visuals = parameters.m_Visuals;
             }
 
-            public EntityIdentityData(string name, Sprite sprite)
+            public EntityIdentityData(string name, EntityVisualParameters visuals)
             {
                 m_Name = name;
-                m_Sprite = sprite;
+                m_Visuals = visuals;
             }
             #endregion
         }

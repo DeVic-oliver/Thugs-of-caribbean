@@ -19,26 +19,18 @@ namespace TOC.Core.EntitySystem.Data
         public class EntityMovementData
         {
             #region Fields
-            private float m_MovementSpeed;
-            private float m_RotationSpeed;
+            private EntityMovementParameters m_Parameters;
             #endregion
 
             #region Properties
-            public float MovementSpeed => m_MovementSpeed;
-            public float RotationSpeed => m_RotationSpeed;
+            public float MovementSpeed => m_Parameters.m_MovementSpeed;
+            public float RotationSpeed => m_Parameters.m_RotationSpeed;
             #endregion
 
             #region Constructors
             public EntityMovementData(EntityMovementParameters parameters)
             {
-                m_MovementSpeed = parameters.m_MovementSpeed;
-                m_RotationSpeed = parameters.m_RotationSpeed;
-            }
-
-            public EntityMovementData(float movementSpeed, float rotationSpeed)
-            {
-                m_MovementSpeed = movementSpeed;
-                m_RotationSpeed = rotationSpeed;
+                m_Parameters = parameters;
             }
             #endregion
         }

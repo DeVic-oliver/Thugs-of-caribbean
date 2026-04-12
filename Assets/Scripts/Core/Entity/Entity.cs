@@ -5,7 +5,7 @@ using UnityEngine;
 namespace TOC.Core.EntitySystem
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class Entity : MonoBehaviour
+    public class Entity : MonoBehaviour, IDamageable
     {
         #region Fields
         [SerializeField] private EntityIdentityParameters m_IdentityParameters;
@@ -28,6 +28,11 @@ namespace TOC.Core.EntitySystem
         #endregion
 
         #region Unity Methods
+        private void Awake()
+        {
+            Init();    
+        }
+
         void Start()
         {
         }
@@ -45,6 +50,12 @@ namespace TOC.Core.EntitySystem
             InitData(m_WellbeingParameters, ref m_WellbeingData);
             InitData(m_IdentityParameters, ref m_IdentityData);
         }
+
+        public float ApplyDamage(float value) => RemoveHealth(value);
+        public float AddHealth(float value) => m_WellbeingData.AddHealth(value);
+        public float AddStamina(float value) => m_WellbeingData.AddStamina(value);
+        public float RemoveHealth(float value) => m_WellbeingData.RemoveHealth(value);
+        public float RemoveStamina(float value) => m_WellbeingData.RemoveStamina(value);
         #endregion
 
         #region Private Methods

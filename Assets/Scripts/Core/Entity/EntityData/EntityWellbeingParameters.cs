@@ -1,9 +1,10 @@
-﻿using TOC.Core.Interfaces;
+﻿using TOC.Core.Enums;
+using TOC.Core.Interfaces;
 using UnityEngine;
 
 namespace TOC.Core.EntitySystem.Data
 {
-    [CreateAssetMenu(fileName = "EntityMovement_Parameters_", menuName = "TOC/Entity/Wellbeing")]
+    [CreateAssetMenu(fileName = "EntityMovement_", menuName = "TOC/Entity/Wellbeing")]
     public class EntityWellbeingParameters : ScriptableObject, IParameters<EntityWellbeingParameters.EntityWellbeingData>
     {
         #region Fields
@@ -26,6 +27,25 @@ namespace TOC.Core.EntitySystem.Data
             #region Properties
             public float Health => m_Health;
             public float Stamina => m_Stamina;
+            public EWellbeingTypes WellbeingStatus 
+            { 
+                get 
+                {
+                    if (m_Health <= 0)
+                        return EWellbeingTypes.Dead;
+
+                    if (m_Health <= 25f)
+                        return EWellbeingTypes.Critical;
+
+                    if (m_Health <= 50f)
+                        return EWellbeingTypes.Damaged;
+
+                    if (m_Health <= 75f)
+                        return EWellbeingTypes.Good;
+
+                    return EWellbeingTypes.Healthy;
+                } 
+            }
             #endregion
 
             #region Constructors
@@ -41,7 +61,48 @@ namespace TOC.Core.EntitySystem.Data
                 m_Stamina = stamina;
             }
             #endregion
-        } 
+
+            #region Public Methods
+            public float AddHealth(float value)
+            {
+                AddValue(value, ref m_Health);
+                return m_Health;
+            }
+
+            public float RemoveHealth(float value)
+            {
+                RemoveValue(value, ref m_Health);
+                return m_Health;
+            }
+
+            public float AddStamina(float value)
+            {
+                AddValue(value, ref m_Stamina);
+                return m_Stamina;
+            }
+
+            public float RemoveStamina(float value)
+            {
+                RemoveValue(value, ref m_Stamina);
+                return m_Stamina;
+            }
+            #endregion
+
+            #region Private Methods
+            private void AddValue(float arg0, ref float arg1)
+            {
+                arg1 += arg0;
+            }
+
+            private void RemoveValue(float arg0, ref float arg1)
+            {
+                if (arg0 >= arg1)
+                    arg1 = 0f;
+                else
+                    arg1 -= arg0;
+            }
+            #endregion
+        }
         #endregion
     }
 }

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20fabceb9bfa48848a5ce43fecebba7b, type: 3}
   m_Name: Player_Identity
   m_EditorClassIdentifier: Assembly-CSharp::TOC.Core.EntitySystem.EntityIdentityParameters
-  m_Name: 
-  m_Sprite: {fileID: 0}
+  m_EntityName: Hero
+  m_Sprite: {fileID: 21300000, guid: 7784d64816d97704cacc38745afa8ddb, type: 3}

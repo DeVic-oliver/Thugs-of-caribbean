@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20fabceb9bfa48848a5ce43fecebba7b, type: 3}
   m_Name: Default_Entity_Identity
   m_EditorClassIdentifier: Assembly-CSharp::TOC.Core.EntitySystem.EntityIdentityParameters
-  m_EntityName: 
-  m_Sprite: {fileID: 0}
+  m_EntityName: Pirate
+  m_Sprite: {fileID: 21300000, guid: e211fd24365b9c74c8a6ff92a44f3022, type: 3}
