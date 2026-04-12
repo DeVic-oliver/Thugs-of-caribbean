@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43cccd8fcec25344d956f50a5bc61817, type: 3}
-  m_Name: EntityVisual_
+  m_Name: EntityVisual_Bones
   m_EditorClassIdentifier: Assembly-CSharp::TOC.Core.EntitySystem.Data.EntityVisualParameters
   m_MainVisual: {fileID: 21300000, guid: 9e811f4fd3a7a5941ab2ab660887ad05, type: 3}
   m_EntityWellbeingVisual:
