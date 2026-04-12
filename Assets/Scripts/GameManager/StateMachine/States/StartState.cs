@@ -2,20 +2,17 @@
 {
     using Assets.Scripts.Core.Components.Counters;
     using Assets.Scripts.Core.Components.Spawner;
-    using Assets.Scripts.Player;
     using UnityEngine;
 
     public class StartState : GameplayConcreteState
     {
         private TimerCounter _gameTimer;
-        private PlayerHealth _player;
         private EnemySpawner _enemySpawner;
 
 
-        public StartState(GameplayStateMachine stateMachine, TimerCounter gameTimer, PlayerHealth player, EnemySpawner enemySpawner) : base(stateMachine)
+        public StartState(GameplayStateMachine stateMachine, TimerCounter gameTimer, EnemySpawner enemySpawner) : base(stateMachine)
         {
             _gameTimer = gameTimer;
-            _player = player;
             _enemySpawner = enemySpawner;
         }
 
@@ -30,13 +27,12 @@
 
         private void ResetPlayerData()
         {
-            _player.ResetStatus();
             GetPlayerTransform().position = new Vector2(0, 0);
         }
 
         private Transform GetPlayerTransform()
         {
-            return _player.transform;
+            return null;
         }
 
         public override void OnUpdateState()

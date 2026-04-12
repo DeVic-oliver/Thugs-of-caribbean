@@ -3,7 +3,6 @@ namespace Assets.Scripts.GameManager.StateMachine
     using Assets.Scripts.Core.Components.Audio;
     using Assets.Scripts.Core.Components.Counters;
     using Assets.Scripts.Core.Components.Spawner;
-    using Assets.Scripts.Player;
     using UnityEngine;
     using UnityEngine.InputSystem;
     using UnityEngine.UI;
@@ -23,7 +22,6 @@ namespace Assets.Scripts.GameManager.StateMachine
         [Header("Rquired Components Setup")]
         [Space(10)]
         [SerializeField] private TimerCounter _gameTimer;
-        [SerializeField] private PlayerHealth _playerHealth;
         [SerializeField] private PlayerInput _playerInputSystem;
         [SerializeField] private EnemySpawner _enemySpawner;
 
@@ -59,8 +57,6 @@ namespace Assets.Scripts.GameManager.StateMachine
 
         private void InitStates()
         {
-            StartState = new StartState(this, _gameTimer, _playerHealth, _enemySpawner);
-            Gameplay = new GameplayState(this, _gameTimer, _playerHealth, _playerInputSystem, _pauseMenu, _enemySpawner);
             Pause = new PauseState(this, _playerInputSystem, _pauseMenu, _controlsMural, _resumeButton, _pauseControlsButton, _gameOverExitButton, _uiAudioManager);
             Gameover = new GameoverState(this, _gameOverUI, _restartButton, _pauseExitButton, _uiAudioManager);
         }

@@ -2,24 +2,21 @@
 {
     using Assets.Scripts.Core.Components.Counters;
     using Assets.Scripts.Core.Components.Spawner;
-    using Assets.Scripts.Player;
     using UnityEngine;
     using UnityEngine.InputSystem;
 
     public class GameplayState : GameplayConcreteState
     {
         private TimerCounter _gameTimer;
-        private PlayerHealth _playerHealth;
         private PlayerInput _inputSystem;
         private InputAction _pauseAction;
         private GameObject _pauseMenu;
         private EnemySpawner _enemySpawner;
         private bool _canGoToPauseState = false;
 
-        public GameplayState(GameplayStateMachine stateMachine, TimerCounter gameTimer, PlayerHealth playerHealth, PlayerInput inputSystem, GameObject pauseMenu, EnemySpawner enemySpawner) : base(stateMachine)
+        public GameplayState(GameplayStateMachine stateMachine, TimerCounter gameTimer, PlayerInput inputSystem, GameObject pauseMenu, EnemySpawner enemySpawner) : base(stateMachine)
         {
             _gameTimer = gameTimer;
-            _playerHealth = playerHealth;
             _inputSystem = inputSystem;
             _pauseAction = inputSystem.actions.FindAction("Pause");
             _pauseMenu = pauseMenu;
@@ -67,8 +64,6 @@
        
         private void ChangeToGameOverWhenPlayerDiesOrTimeEnds()
         {
-            if(_playerHealth.HasJustDied || _gameTimer.HasTimerReachedZero)
-                _stateMachine.SwitchState(_stateMachine.Gameover);
         }
 
     }

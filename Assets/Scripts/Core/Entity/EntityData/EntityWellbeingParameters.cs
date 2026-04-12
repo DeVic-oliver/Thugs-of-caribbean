@@ -32,16 +32,13 @@ namespace TOC.Core.EntitySystem.Data
                 get 
                 {
                     if (m_Health <= 0)
-                        return EWellbeingTypes.Dead;
+                        return EWellbeingTypes.Destroyed;
 
                     if (m_Health <= 25f)
                         return EWellbeingTypes.Critical;
 
-                    if (m_Health <= 50f)
-                        return EWellbeingTypes.Damaged;
-
                     if (m_Health <= 75f)
-                        return EWellbeingTypes.Good;
+                        return EWellbeingTypes.Damaged;
 
                     return EWellbeingTypes.Healthy;
                 } 
