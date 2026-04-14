@@ -33,15 +33,6 @@ namespace TOC.Core.EntitySystem
         {
             Init();    
         }
-
-        void Start()
-        {
-        }
-
-        void Update()
-        {
-
-        }
         #endregion
 
         #region Public Methods
@@ -76,7 +67,6 @@ namespace TOC.Core.EntitySystem
         {
             if (input == null)
             {
-                Debug.LogError($"Null detected when trying to initialize at {gameObject.name}");
                 output = default;
                 return;
             }

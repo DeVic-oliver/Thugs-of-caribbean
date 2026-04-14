@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20fabceb9bfa48848a5ce43fecebba7b, type: 3}
-  m_Name: SmallPirate_Entity_Identity
+  m_Name: Pirate_Shooter_Identity
   m_EditorClassIdentifier: Assembly-CSharp::TOC.Core.EntitySystem.EntityIdentityParameters
-  m_EntityName: Small Pirate
+  m_EntityName: Chaser
   m_Visuals: {fileID: 11400000, guid: dc79b903c750b264cb52c41408c2e0fa, type: 2}
