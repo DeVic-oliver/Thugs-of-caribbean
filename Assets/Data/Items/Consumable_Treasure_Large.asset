@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc364cd51f2d1b24d980ac45041a6a2f, type: 3}
+  m_Name: Consumable_Treasure_Large
+  m_EditorClassIdentifier: Assembly-CSharp::TOC.Core.Items.ConsumableParameters
+  m_Icon: {fileID: 21300000, guid: 9a0dcebc10c84d645908217906deb19a, type: 3}
+  m_ResourceName: Lerge Treasure
+  m_Rarity: 2
+  m_Rewards:
+  - {fileID: 11400000, guid: b196392567e9d834b88d2d527fb2f39a, type: 2}

@@ -8,11 +8,6 @@ namespace TOC.Core.SpawnSystem
         [SerializeField] private SpawnSpotParameters m_Parameters;
         private Coroutine m_Interval;
 
-        void Start()
-        {
-        
-        }
-
         void Update()
         {
             m_Interval ??= StartCoroutine(nameof(OnWaitInterval));

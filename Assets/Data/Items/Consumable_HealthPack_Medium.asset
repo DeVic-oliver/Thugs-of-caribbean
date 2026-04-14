@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc364cd51f2d1b24d980ac45041a6a2f, type: 3}
+  m_Name: Consumable_HealthPack_Medium
+  m_EditorClassIdentifier: Assembly-CSharp::TOC.Core.Items.ConsumableParameters
+  m_Icon: {fileID: 21300040, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+  m_ResourceName: Medium Health Pack
+  m_Rarity: 1
+  m_Rewards: []

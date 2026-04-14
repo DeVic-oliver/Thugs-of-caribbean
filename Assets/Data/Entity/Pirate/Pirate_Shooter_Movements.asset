@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 569becb42623f7a469286338c7761ef0, type: 3}
   m_Name: Pirate_Shooter_Movements
   m_EditorClassIdentifier: Assembly-CSharp::TOC.Core.EntitySystem.EntityMovementParameters
-  m_MovementSpeed: 1
-  m_RotationSpeed: 1
+  m_MovementSpeed: 0
+  m_RotationSpeed: 2

@@ -19,6 +19,8 @@ namespace TOC.Core.EntitySystem
         private EntityIdentityParameters.EntityIdentityData m_IdentityData;
         private EntityWellbeingParameters.EntityWellbeingData m_WellbeingData;
         private EntityMovementParameters.EntityMovementData m_MovementData;
+
+        private int m_Money;
         #endregion
         
         #region Properties
@@ -26,6 +28,16 @@ namespace TOC.Core.EntitySystem
         public EntityWellbeingParameters.EntityWellbeingData WellbeingData => m_WellbeingData;
         public EntityMovementParameters.EntityMovementData MovementData => m_MovementData;
         public Rigidbody2D Rigidbody => m_Rigidbody;
+        public int Money 
+        {
+            get => m_Money;
+            set
+            {
+                m_Money = value;
+                Debug.Log($"Current Money {m_Money}");
+            }
+        }
+
         #endregion
 
         #region Unity Methods
