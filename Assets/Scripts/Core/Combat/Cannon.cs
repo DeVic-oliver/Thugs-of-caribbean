@@ -1,23 +1,39 @@
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 namespace TOC.Core.CombatSystem
 { 
     public class Cannon : MonoBehaviour
     {
+        #region Fields
+        [SerializeField] private bool m_Available;
+        [SerializeField] private bool m_LeftSide;
         [SerializeField] private GameObject m_Prefab;
-        [SerializeField] private List<Transform> m_SpawnSpots;
+        [SerializeField] private Transform m_SpawnSpot;
 
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-                Fire();
-        }
+        private Coroutine m_OnFireCannon;
+        #endregion
 
+        #region Properties
+        public bool Available => m_Available;
+        public bool LeftSide => m_LeftSide;
+        #endregion
+
+        #region Public Methods
         public void Fire()
         {
-            foreach (Transform t in m_SpawnSpots)
-                Instantiate(m_Prefab, t.position, t.rotation);
+            m_OnFireCannon ??= StartCoroutine(nameof(OnFireCannon));
         }
+        #endregion
+
+        #region Events
+        private IEnumerator OnFireCannon()
+        {
+            float rnd = Random.Range(0.1f, 0.3f);
+            yield return new WaitForSeconds(rnd);
+            Instantiate(m_Prefab, m_SpawnSpot.position, m_SpawnSpot.rotation);
+            m_OnFireCannon = null;
+        } 
+        #endregion
     }
 }
