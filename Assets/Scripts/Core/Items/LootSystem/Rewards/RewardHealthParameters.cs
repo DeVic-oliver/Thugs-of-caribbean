@@ -1,9 +1,9 @@
 ﻿using TOC.Core.EntitySystem;
 using UnityEngine;
 
-namespace TOC.Core.LootSystem
+namespace TOC.Core.Items.LootSystem
 {
-    [CreateAssetMenu(fileName = "Reward_Health_", menuName = "TOC/LootSystem/Reward/Health")]
+    [CreateAssetMenu(fileName = "Reward_Health_", menuName = "TOC/Items/LootSystem/Reward/Health")]
     public class RewardHealthParameters : RewardParameters
     {
         public override void GiveReward(Entity value)

@@ -1,8 +1,7 @@
 using TOC.Core.EntitySystem;
-using System;
 using UnityEngine;
 
-namespace TOC.Core.LootSystem
+namespace TOC.Core.Items.LootSystem
 {
     public abstract class RewardParameters : ScriptableObject
     {

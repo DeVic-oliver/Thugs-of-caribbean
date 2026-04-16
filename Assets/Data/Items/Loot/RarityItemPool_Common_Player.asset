@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdc84ca366d8a464d8608805576e6824, type: 3}
+  m_Name: RarityItemPool_Common_Player
+  m_EditorClassIdentifier: Assembly-CSharp::TOC.Core.Items.LootSystem.RarityItemPoolParameters
+  m_RarityLevel:
+  - m_Rarity: 0
+    m_Rate: 70
+    m_Pool:
+    - {fileID: 11400000, guid: 0e90c60a2c10b8f42be10fc57e286d62, type: 2}
+  - m_Rarity: 1
+    m_Rate: 30
+    m_Pool:
+    - {fileID: 11400000, guid: 0e90c60a2c10b8f42be10fc57e286d62, type: 2}

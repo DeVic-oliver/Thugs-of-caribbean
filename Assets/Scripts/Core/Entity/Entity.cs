@@ -8,6 +8,8 @@ namespace TOC.Core.EntitySystem
     public class Entity : MonoBehaviour, IDamageable
     {
         #region Fields
+        private const int LAYER_PLAYER = 3;
+
         [SerializeField] private EntityIdentityParameters m_IdentityParameters;
         [SerializeField] private EntityWellbeingParameters m_WellbeingParameters;
         [SerializeField] private EntityMovementParameters m_MovementParameters;
@@ -28,6 +30,7 @@ namespace TOC.Core.EntitySystem
         public EntityWellbeingParameters.EntityWellbeingData WellbeingData => m_WellbeingData;
         public EntityMovementParameters.EntityMovementData MovementData => m_MovementData;
         public Rigidbody2D Rigidbody => m_Rigidbody;
+        public bool IsPlayer => gameObject.layer == LAYER_PLAYER;
         public int Money 
         {
             get => m_Money;
@@ -37,7 +40,6 @@ namespace TOC.Core.EntitySystem
                 Debug.Log($"Current Money {m_Money}");
             }
         }
-
         #endregion
 
         #region Unity Methods

@@ -1,3 +1,4 @@
+using TOC.Core.EntitySystem;
 using TOC.Core.Enums;
 using UnityEngine;
 
@@ -14,10 +15,14 @@ namespace TOC.Core.Items
         #endregion
 
         #region Classes
-        public class ItemData
+        public abstract class ItemData
         {
             #region Fields
             protected readonly ItemParameters m_Parameters;
+            #endregion
+
+            #region Properties
+            public ItemParameters Parameters => m_Parameters;
             #endregion
 
             #region Constructor
@@ -26,7 +31,11 @@ namespace TOC.Core.Items
                 m_Parameters = parameters;
             }
             #endregion
-        } 
+
+            #region Public Method
+            public abstract void Use(Entity entity);
+            #endregion
+        }
         #endregion
     }
 }
